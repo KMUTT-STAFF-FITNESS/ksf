@@ -10952,6 +10952,15 @@ video {
   }
 }
 
+.buttonLogin{
+  width: 144px;
+  height: 35px;
+  left: 108px;
+  top: 456px;
+  background: linear-gradient(212.09deg, #F58426 0.9%, #192527 100%), #009CDE;
+  border-radius: 5px;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
