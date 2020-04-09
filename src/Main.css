@@ -10959,6 +10959,8 @@ video {
   top: 456px;
   background: linear-gradient(212.09deg, #F58426 0.9%, #192527 100%), #009CDE;
   border-radius: 5px;
+  color: #FFE9E9;
+  font-family: Montserrat;
 }
 
 @media (min-width: 640px) {

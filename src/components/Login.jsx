@@ -1,10 +1,11 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import Logo from './core/Logo'
-import Button from './core/Button'
+import BtnNext from './core/BtnNext'
 
 export default function Login() {
     const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    
     return (
         <div class="container mx-auto">
             <Logo />
@@ -66,7 +67,7 @@ export default function Login() {
                             />
                         </div>
                         <div className="btn text-center">
-                            <Button/>
+                            <BtnNext/>
                         </div>
                       
 

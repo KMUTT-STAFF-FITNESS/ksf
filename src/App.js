@@ -9,7 +9,7 @@ import Info2 from './components/Info2'
 function App() {
   return (
     <Router>
-      <Route path="/">
+      <Route path="/" exact>
         <Login />
       </Route>
       <Route path="/register">
