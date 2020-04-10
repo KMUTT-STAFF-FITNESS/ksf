@@ -10955,12 +10955,19 @@ video {
 .buttonLogin{
   width: 144px;
   height: 35px;
-  left: 108px;
-  top: 456px;
   background: linear-gradient(212.09deg, #F58426 0.9%, #192527 100%), #009CDE;
   border-radius: 5px;
   color: #FFE9E9;
-  font-family: Montserrat;
+}
+
+.buttonBack{
+  width: 144px;
+  height: 35px;
+  background: linear-gradient(218.13deg, #FFFFFF 0.9%, #FFFFFF 100%), #009CDE;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: #C2691C;
 }
 
 @media (min-width: 640px) {
