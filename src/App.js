@@ -5,6 +5,7 @@ import './Main.css';
 import Login from './components/Login'
 import Info1 from './components/Info1'
 import Info2 from './components/Info2'
+import Info3 from './components/Info3'
 
 function App() {
   return (
@@ -14,6 +15,12 @@ function App() {
       </Route>
       <Route path="/register">
         <Info1 />
+      </Route>
+      <Route path="/register2">
+        <Info2 />
+      </Route>
+      <Route path="/register3">
+        <Info3 />
       </Route>
     </Router>
 
