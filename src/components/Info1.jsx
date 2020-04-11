@@ -86,12 +86,19 @@ export default function Info1() {
                                 <Field
                                     id="gender"
                                     name="gender"
-                                    placeholder="เพศ"
+                                    as="select"
                                     onChange={formik.handleChange}
                                     value={formik.values.gender}
-                                    className={`shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline form-control `}
+                                    className={`shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline form-control `}
 
-                                />
+                                >
+                                    
+                                        <option value="male" class="w-full text-gray-700">ชาย</option>
+                                        <option value="female" class="w-full">หญิง</option>
+                                        <option value="non" class="w-full">ไม่ระบุ</option>
+                                   
+                                    
+                                </Field>
 
 
                             </form>
