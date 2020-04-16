@@ -27,7 +27,7 @@ export default function Info1() {
           <Logo />
         </div>
         <div className="col-12">
-          <div className="col-12 col-sm-8 col-md-8 col-lg-4 text-center mx-auto">
+          <div className="text-center mx-auto">
             <div className="max-w-sm overflow-hidden py-4 rounded shadow mx-auto">
               <p className="text-gray-700 text-lg font-bold ">
                 ประวัติส่วนตัว
