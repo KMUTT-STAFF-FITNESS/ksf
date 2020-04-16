@@ -1,11 +1,9 @@
 import React from 'react'
 
-export default function BtnBack() {
-    return (
-        <div>
-            <button className="buttonBack">
-                Back
-            </button>
-        </div>
-    )
+export default function BtnBack(props) {
+  return (
+    <button className="buttonBack btn btn-block">
+      {props.text}
+    </button>
+  )
 }
