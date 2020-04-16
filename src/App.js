@@ -7,6 +7,7 @@ import Info1 from './components/Register/Info1'
 import Info2 from './components/Register/Info2'
 import Info3 from './components/Register/Info3'
 import StatusType from './components/Register/StatusType'
+import Pdpa from './components/Register/Pdpa'
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
       </Route>
       <Route path="/StatusType">
         <StatusType />
+      </Route>
+      <Route path="/pdpa">
+        <Pdpa />
       </Route>
     </Router>
 
