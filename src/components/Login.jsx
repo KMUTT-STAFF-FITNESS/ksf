@@ -37,7 +37,7 @@ export default function Login() {
             >
               {({ touched, errors, isSubmitting }) => (
                 <Form>
-                  <div class="form-group mx-auto mb-4  max-w-xs">
+                  <div className="form-group mx-auto mb-4  max-w-xs">
                     <Field
                       type="email"
                       name="email"

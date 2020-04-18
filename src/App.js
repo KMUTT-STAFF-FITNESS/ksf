@@ -3,11 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './Main.css';
 
 import Login from './components/Login'
-import Info1 from './components/Register/Info1'
-import Info2 from './components/Register/Info2'
-import Info3 from './components/Register/Info3'
-import StatusType from './components/Register/StatusType'
-import Pdpa from './components/Register/Pdpa'
+import Register from './components/Register/Register'
 
 function App() {
   return (
@@ -16,19 +12,7 @@ function App() {
         <Login />
       </Route>
       <Route path="/register">
-        <Info1 />
-      </Route>
-      <Route path="/register2">
-        <Info2 />
-      </Route>
-      <Route path="/register3">
-        <Info3 />
-      </Route>
-      <Route path="/StatusType">
-        <StatusType />
-      </Route>
-      <Route path="/pdpa">
-        <Pdpa />
+        <Register />
       </Route>
     </Router>
 
