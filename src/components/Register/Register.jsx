@@ -5,10 +5,11 @@ import Info3 from "./Info3";
 import StatusType from "./StatusType";
 import Pdpa from "./Pdpa";
 import Logo from "../core/Logo";
+import QRPayment from "./QRPayment";
 import { Stepper, Step, StepLabel, Button } from "@material-ui/core";
 
 function getSteps() {
-  return ["information", "Address", "Health", "Status", "Payment"];
+  return ["information", "Address", "Health", "Status", "Payment", "Upload"];
 }
 
 export default function Register() {
@@ -43,7 +44,7 @@ export default function Register() {
               {activeStep === 1 && <Info2 />}
               {activeStep === 2 && <Info3 />}
               {activeStep === 3 && <StatusType />}
-              {/* {activeStep === 4 && } */}
+              { activeStep === 4 &&  <QRPayment />}
             </div>
           </div>
           <div className="col-12 col-sm-8 col-md-8 col-lg-4 mx-auto my-3">
