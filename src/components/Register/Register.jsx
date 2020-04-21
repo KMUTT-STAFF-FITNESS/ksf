@@ -5,8 +5,6 @@ import Info3 from "./Info3";
 import StatusType from "./StatusType";
 import Pdpa from "./Pdpa";
 import Logo from "../core/Logo";
-import BtnNext from "../core/BtnNext";
-import BtnBack from "../core/BtnBack";
 import { Stepper, Step, StepLabel, Button } from "@material-ui/core";
 
 function getSteps() {
@@ -45,25 +43,24 @@ export default function Register() {
               {activeStep === 1 && <Info2 />}
               {activeStep === 2 && <Info3 />}
               {activeStep === 3 && <StatusType />}
-              {activeStep === 4 && <Pdpa />}
+              {/* {activeStep === 4 && } */}
             </div>
           </div>
           <div className="col-12 col-sm-8 col-md-8 col-lg-4 mx-auto my-3">
             <div className="row">
               <div className="col-6 text-center">
                 <Button
-                  variant="contained"
+                  className="buttonBack"
                   disabled={activeStep === 0}
                   onClick={handleBack}
-                  // text="Back"
+                  text="Back"
                 >
                   Back
                 </Button>
               </div>
               <div className="col-6 text-center">
                 <Button
-                  variant="contained"
-                  color="primary"
+                  className="buttonLogin"
                   onClick={handleNext}
                   // text={activeStep === steps.length - 1 ? "Submit" : "Next"}
                 >
