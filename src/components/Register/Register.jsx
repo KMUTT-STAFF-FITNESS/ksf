@@ -3,9 +3,60 @@ import Info1 from "./Info1";
 import Info2 from "./Info2";
 import Info3 from "./Info3";
 import StatusType from "./StatusType";
-import Pdpa from "./Pdpa";
 import Logo from "../core/Logo";
 import { Stepper, Step, StepLabel, Button } from "@material-ui/core";
+import StepConnector from '@material-ui/core/StepConnector';
+import { makeStyles,withStyles } from '@material-ui/core/styles';
+
+
+const useColorlibStepIconStyles = makeStyles({
+  root: {
+    backgroundColor: '#ccc',
+    zIndex: 1,
+    color: '#fff',
+    width: 50,
+    height: 50,
+    display: 'flex',
+    borderRadius: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  active: {
+    backgroundImage:
+      'linear-gradient(to top right, #192527 -17%, #c2691c 100%)',
+    boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
+  },
+  completed: {
+    backgroundImage:
+      'linear-gradient(to top right, #192527 -17%, #c2691c 100%)',
+  },
+})
+
+
+
+const ColorlibConnector = withStyles({
+  alternativeLabel: {
+    top: 22,
+  },
+  active: {
+    '& $line': {
+      backgroundImage:
+        'linear-gradient(to right, #192527 0%, #c2691c 100%)',
+    },
+  },
+  completed: {
+    '& $line': {
+      backgroundImage:
+        'linear-gradient(to right, #192527 0%, #c2691c 100%)',
+    },
+  },
+  line: {
+    height: 3,
+    border: 0,
+    backgroundColor: '#eaeaf0',
+    borderRadius: 1,
+  },
+})(StepConnector)
 
 function getSteps() {
   return ["information", "Address", "Health", "Status", "Payment"];
@@ -17,7 +68,7 @@ export default function Register() {
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
-  };
+  }
 
   function handleBack() {
     setActiveStep(activeStep - 1);
@@ -30,15 +81,15 @@ export default function Register() {
           <Logo />
         </div>
         <div className="col-12">
-          <Stepper activeStep={activeStep} alternativeLabel>
+  <Stepper connector={<ColorlibConnector />} activeStep={activeStep} alternativeLabel>
             {steps.map((label) => (
               <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+                <StepLabel >{label}</StepLabel>
               </Step>
             ))}
           </Stepper>
           <div className="text-center mx-auto">
-            <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
+            <div  className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
               {activeStep === 0 && <Info1 />}
               {activeStep === 1 && <Info2 />}
               {activeStep === 2 && <Info3 />}
