@@ -49,7 +49,7 @@ class Upload extends React.Component {
             return (
                 <div>
                     <br />
-
+                    Please upload the file and press the upload button. Before pressing the next button.
                 </div>
             );
         }
