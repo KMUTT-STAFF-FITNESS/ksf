@@ -1,24 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './Main.css';
-import Login from './components/Login'
-import Register from './components/Register/Register'
+import { Router } from "@reach/router"
+import Login from './pages/Login'
+import Register from './pages/Register'
 import Home from './components/ProfileSetting/Home'
+import Viewprofile from './components/ProfileSetting/ViweProfile'
 
 function App() {
   return (
     <Router>
-      <Route path="/" exact>
-        <Login />
-      </Route>
-      <Route path="/register">
-        <Register />
-      </Route>
-      <Route path="/home">
-        <Home />
-      </Route>
+     <Login  path="/" exact/>
+     <Register path="/register" />
+     <Home path="/home" />
+     <Viewprofile path="/view" />
     </Router>
-
   );
 }
 

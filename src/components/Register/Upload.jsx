@@ -1,5 +1,5 @@
 import React from 'react'
-import axios, { post } from 'axios';
+// import axios, { post } from 'axios';
 
 class Upload extends React.Component {
 
@@ -26,7 +26,7 @@ class Upload extends React.Component {
 
         console.log(this.state.selectedFile);
 
-        axios.post("api/uploadfile", formData);
+        // axios.post("api/uploadfile", formData);
     };
 
 

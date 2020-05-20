@@ -1,57 +1,44 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import ImageProfile from "../core/ImageProfile";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ReportProblemIcon from "@material-ui/icons/ReportProblem";
 import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import CropFreeIcon from "@material-ui/icons/CropFree";
+import { Link } from "@reach/router";
 
 export default function Home() {
-  const [Name, setName] = useState(
-    {
-      fname: "Sarinrat",
-      lname: "Charoenkunasit"
-    }
-  );
-  const [Type, setType] = useState(
-    {
-      status: "Year",
-    }
-  );const [Department, setDepartment] = useState(
-    {
-      depart: "IT",
-    }
-  );
+  const [MemberCard, setMemberCard] = useState({
+    fname: "Sarinrat",
+    lname: "Charoenkunasit",
+    status: "Year",
+    depart: "Information Technology",
+    memberID: "xxx-xxx-xxxx"
+  });
+ 
   return (
     <div className="container">
       <div className="row">
         <div className="col-12 ">
-          <div className="cardcolor md:flex rounded-lg m-6  px-4 lg:max-w-full shadow mx-auto">
-            <ImageProfile className="buttonHome " />
-            <div>
-            </div>
-            <div className="text-center md:text-left  ">
-              <div className="col-2">
-                <h2 className="text-lg-mx text-white ">
-                {Name.fname}
-              </h2>
-              <h2 className="text-lg-mx text-white">
-                {Name.lname}
-              </h2>
+          <Link to="/view">
+            <div class="col-12 md:flex cardcolor rounded-lg p-6shadow ">
+              <ImageProfile className="buttonHome " />
+              <div class=" md:text-left text-center ">
+                <div class="text-lg-mx text-white">{MemberCard.fname} {MemberCard.lname}</div>
+                <div class="text-green-500">Status: {MemberCard.status}</div>
+                <div class="text-white">{MemberCard.memberID}</div>
+                <div class="text-white">{MemberCard.depart}</div>
               </div>
-              
-              <div className="text-white col-2">{Type.status}</div>
-              <div className="text-white col-2">{Department.depart}</div>
             </div>
-          </div>
+          </Link>
           <div className="row">
             <div className="col-12 text-center">
               <button className=" bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-20 px-20 border md:mr-6 hover:border-transparent rounded ">
                 <NotificationsIcon className="buttonHome" fontSize="large" />
-                <h5> Notification</h5>
+                <h5>Notification</h5>
               </button>
               <button className="bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-20 px-20 border md:my-6 hover:border-transparent rounded ">
                 <ReportProblemIcon className="buttonHome" fontSize="large" />
-                <h5> Notification</h5>
+                <h5>Report Issue</h5>
               </button>
             </div>
           </div>
@@ -59,11 +46,11 @@ export default function Home() {
             <div className="col-12 text-center">
               <button className="bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-20 px-20 border md:mr-6 hover:border-transparent rounded ">
                 <CropFreeIcon className="buttonHome" fontSize="large" />
-                <h5> Notification</h5>
+                <h5>Scan QR code</h5>
               </button>
               <button className="bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-20 px-20 border hover:border-transparent rounded ">
                 <FitnessCenterIcon className="buttonHome" fontSize="large" />
-                <h5> Notification</h5>
+                <h5>Activity</h5>
               </button>
             </div>
           </div>
