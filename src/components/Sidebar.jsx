@@ -1,5 +1,5 @@
-import React from 'react'
-import { navigate } from '@reach/router'
+import React, { useState } from "react";
+import { navigate } from "@reach/router";
 import {
   DescriptionRounded,
   PersonRounded,
@@ -12,11 +12,12 @@ import {
   RadioRounded,
   StorageRounded,
   DashboardRounded,
-} from '@material-ui/icons'
-import { Menu } from '@material-ui/core'
-import { useObserver } from 'mobx-react-lite'
+} from "@material-ui/icons";
+import { Menu } from "@material-ui/core";
+import { useObserver } from "mobx-react-lite";
+import SidebarTab from "./SidebarTab";
 
-import SidebarTab from './SidebarTab'
+// import SidebarTab from "./SidebarTab";
 
 export default function Sidebar(props) {
   /**
@@ -31,7 +32,7 @@ export default function Sidebar(props) {
 | States
 |--------------------------------------------------
 */
-  const [anchorEl, setAnchorEl] = useState(null)
+  const [anchorEl, setAnchorEl] = useState(null);
 
   /**
 |--------------------------------------------------
@@ -39,11 +40,11 @@ export default function Sidebar(props) {
 |--------------------------------------------------
 */
   function handleClick(event) {
-    setAnchorEl(event.currentTarget)
+    setAnchorEl(event.currentTarget);
   }
 
   function handleClose() {
-    setAnchorEl(null)
+    setAnchorEl(null);
   }
 
   /**
@@ -52,7 +53,7 @@ export default function Sidebar(props) {
 |--------------------------------------------------
 */
   function handlerTabClick(url) {
-    navigate(url)
+    navigate(url);
   }
 
   /**
@@ -61,37 +62,37 @@ export default function Sidebar(props) {
 |--------------------------------------------------
 */
   return useObserver(() => (
-    <div className='flex-shrink-0 w-56 bg-primary-dark'>
-      <div className='py-4'>
-        <div className='px-4 mb-4'>
-          <p className='text-white'>KSF</p>
+    <div className="flex-shrink-0 w-56 bg-primary">
+      <div className="py-4">
+        <div className="px-4 mb-4">
+          <p className="text-white">KSF</p>
         </div>
-        <div className='flex justify-between'>
+        <div className="flex justify-between">
           <Menu
-            id='long-menu'
+            id="long-menu"
             elevation={0}
             anchorEl={anchorEl}
             getContentAnchorEl={null}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'center',
+              vertical: "bottom",
+              horizontal: "center",
             }}
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'center',
+              vertical: "top",
+              horizontal: "center",
             }}
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleClose}
             MenuListProps={{ disablePadding: true }}
           >
-            <div className='border rounded py-2'>
+            <div className="border rounded py-2">
               <div
-                className='flex w-48 py-2 px-3 cursor-pointer text-center items-center hover:bg-gray-200'
+                className="flex w-48 py-2 px-3 cursor-pointer text-center items-center hover:bg-gray-200"
                 onClick={() => navigate(`/signout`)}
               >
-                <ExitToAppRounded className='text-gray-600 mr-3' />
-                <p className='w-auto text-sm'>ลงชื่อออก</p>
+                <ExitToAppRounded className="text-gray-600 mr-3" />
+                <p className="w-auto text-sm">ลงชื่อออก</p>
               </div>
             </div>
           </Menu>
@@ -99,12 +100,12 @@ export default function Sidebar(props) {
       </div>
 
       <SidebarTab
-        id='dashboard'
-        name='แดชบอร์ด'
+        id="dashboard"
+        name="แดชบอร์ด"
         icon={DashboardRounded}
-        onClick={() => handlerTabClick('/')}
+        onClick={() => handlerTabClick("/")}
         currentTab={props.currentTab}
       />
     </div>
-  ))
+  ));
 }
