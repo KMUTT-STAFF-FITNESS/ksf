@@ -65,7 +65,7 @@ export default function Sidebar(props) {
     <div className="flex-shrink-0 w-56 bg-primary">
       <div className="py-4">
         <div className="px-4 mb-4">
-          <p className="text-white">KSF</p>
+          <p className="text-white">KMUTT STAFF FITNESS</p>
         </div>
         <div className="flex justify-between">
           <Menu
@@ -101,9 +101,16 @@ export default function Sidebar(props) {
 
       <SidebarTab
         id="dashboard"
-        name="แดชบอร์ด"
+        name="Dashboard"
         icon={DashboardRounded}
-        onClick={() => handlerTabClick("/")}
+        onClick={() => handlerTabClick("/admin")}
+        currentTab={props.currentTab}
+      />
+      <SidebarTab
+        id="register"
+        name="Register Manage"
+        icon={DashboardRounded}
+        onClick={() => handlerTabClick("/admin/register")}
         currentTab={props.currentTab}
       />
     </div>
