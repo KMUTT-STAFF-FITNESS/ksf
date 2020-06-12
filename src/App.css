@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 .App {
   text-align: center;
 }
@@ -36,3 +41,43 @@
     transform: rotate(360deg);
   }
 }
+
+.buttonLogin{
+  padding: 5px;
+  background: linear-gradient(212.09deg, #F58426 0.9%, #192527 100%), #009CDE;
+  border-radius: 5px;
+  color: #FFE9E9 !important;
+}
+
+.buttonBack{
+  padding: 5px;
+  background: linear-gradient(218.13deg, #FFFFFF 0.9%, #FFFFFF 100%), #009CDE;
+  border: 1px solid rgba(0, 0, 0, 0.5) !important;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: #C2691C !important;
+}
+
+.status{
+  background: #FFFFFF;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.step{
+  background: #C2691C
+}
+
+.cardcolor{
+  background: linear-gradient(235.13deg, #AA4C09 0.9%, #413B43 100%), #009CDE;
+  box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 20px 40px 20px 20px;
+}
+
+.buttonHome{
+  background: linear-gradient(212.09deg, #F58426 0.9%, #192527 100%), #009CDE;
+  border-radius: 50%;
+  color: white;
+  padding: 5px;
+  }

@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./Main.css";
+import { Router } from "@reach/router";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./components/ProfileSetting/Home";
+import Viewprofile from "./components/ProfileSetting/ViweProfile";
+import MainLayout from "./components/MainLayout";
+import Dashboard from "./pages/admin/Dashboard";
+import RegisterManage from "./pages/admin/RegisterManage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Login path="/" exact />
+      <Register path="/register" />
+      <Home path="/home" />
+      <Viewprofile path="/view" />
+
+      {/* admin */}
+      <MainLayout component={Dashboard} path="/admin" />
+      <MainLayout component={RegisterManage} path="/admin/register" />
+    </Router>
   );
 }
 
