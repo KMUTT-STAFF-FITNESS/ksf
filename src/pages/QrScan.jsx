@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import QrPage from "../components/QrScanner/QrScan";
+import HowToPlay from "../components/QrScanner/HowToPlay";
 import Logo from "../components/core/Logo";
 import { Stepper, Step, StepLabel, Button } from "@material-ui/core";
 import StepConnector from "@material-ui/core/StepConnector";
@@ -54,6 +55,7 @@ const ColorlibConnector = withStyles({
 function getSteps() {
   return [
     "QrScanner",
+    "HowToPlay",
   ];
 }
 
@@ -81,6 +83,7 @@ export default function QrScan() {
             <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
            
                 {activeStep === 0 && <QrPage />}
+                {activeStep === 1 && <HowToPlay />}
 
 
     
