@@ -9,7 +9,7 @@ import MainLayout from "./components/MainLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import RegisterManage from "./pages/admin/RegisterManage";
 import QrScan from "./pages/QrScan";
-
+import ReportProblem from "./pages/ReportProblem"
 function App() {
   return (
     <Router>
@@ -18,7 +18,7 @@ function App() {
       <Home path="/home" />
       <Viewprofile path="/view" />
       <QrScan path="/qrscanner"/>
-
+      <ReportProblem path="/reportproblem"/>
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />
