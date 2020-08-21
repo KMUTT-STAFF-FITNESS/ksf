@@ -11,7 +11,7 @@ import {
   PermMediaRounded,
   RadioRounded,
   StorageRounded,
-  DashboardRounded,
+  DashboardRounded
 } from "@material-ui/icons";
 import { Menu } from "@material-ui/core";
 import { useObserver } from "mobx-react-lite";

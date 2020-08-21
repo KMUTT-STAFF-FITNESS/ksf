@@ -8,6 +8,7 @@ import Viewprofile from "./components/ProfileSetting/ViweProfile";
 import MainLayout from "./components/MainLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import RegisterManage from "./pages/admin/RegisterManage";
+import QrScan from "./pages/QrScan";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Register path="/register" />
       <Home path="/home" />
       <Viewprofile path="/view" />
+      <QrScan path="/qrscanner"/>
 
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
