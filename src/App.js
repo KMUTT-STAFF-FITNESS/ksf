@@ -9,7 +9,8 @@ import MainLayout from "./components/MainLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import RegisterManage from "./pages/admin/RegisterManage";
 import QrScan from "./pages/QrScan";
-import ReportProblem from "./pages/ReportProblem"
+import ReportProblem from "./pages/ReportProblem";
+import ExerciseDashboard from "./components/ExerciseDashboard/Dashboard";
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
       <Viewprofile path="/view" />
       <QrScan path="/qrscanner"/>
       <ReportProblem path="/reportproblem"/>
+      <ExerciseDashboard path="/exercise" />
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />
