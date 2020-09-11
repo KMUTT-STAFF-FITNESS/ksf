@@ -981,7 +981,9 @@ video {
 .bg-purple-300 {
   background-color: #d6bcfa;
 }
-
+.adminNev{
+  background-color: #023356 !important;
+}
 .bg-purple-400 {
   background-color: #b794f4;
 }

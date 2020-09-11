@@ -10,6 +10,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import RegisterManage from "./pages/admin/RegisterManage";
 import QrScan from "./pages/QrScan";
 import ReportProblem from "./pages/ReportProblem"
+import FormUpdate from "./pages/admin/FormUpdate"
 function App() {
   return (
     <Router>
@@ -22,6 +23,7 @@ function App() {
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />
+      <MainLayout component={FormUpdate} path ="/admin/formupdate"/>
     </Router>
   );
 }

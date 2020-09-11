@@ -1183,6 +1183,18 @@
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
 
+"@devexpress/dx-grid-core@2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-grid-core/-/dx-grid-core-2.7.1.tgz#f91d336aab560140a6a0f825add1f8fa6cdfdc12"
+  integrity sha512-SnwixpidAI3TgkRNZRmKTMza9ggkpRXQtgnPaPRaZ1K6lkgYbkMiToWWJYeaIyXjRbOYkfuuJdZodfNq9DFyMg==
+
+"@devexpress/dx-react-grid@^2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@devexpress/dx-react-grid/-/dx-react-grid-2.7.1.tgz#3153d26dff14912b7bb6822e38ed2c403dc9fbd3"
+  integrity sha512-1DE3Rp4N01sv5mXoQS3Q1kMJdDXX6GpKtXFFXl2YdkR1NXTkAlgaf84i8NcHD+w8RO6cHIHnlavGF6WGxcGFfA==
+  dependencies:
+    "@devexpress/dx-grid-core" "2.7.1"
+
 "@emotion/cache@^10.0.27", "@emotion/cache@^10.0.9":
   version "10.0.29"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.29.tgz#87e7e64f412c060102d589fe7c6dc042e6f9d1e0"
