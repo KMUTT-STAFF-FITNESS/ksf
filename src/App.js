@@ -9,6 +9,7 @@ import MainLayout from "./components/MainLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import RegisterManage from "./pages/admin/RegisterManage";
 import QrScan from "./pages/QrScan";
+import Notification from "./pages/Notification";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Home path="/home" />
       <Viewprofile path="/view" />
       <QrScan path="/qrscanner"/>
+      <Notification path="/notification" />
 
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
