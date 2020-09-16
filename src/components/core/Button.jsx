@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
 export default function Button() {
-    return (
-        <div>
-            <button className="buttonLogin">
-                submit
-            </button>
-        </div>
-    )
+  return (
+    <div className="text-center">
+      <button className="buttonLogin">submit</button>
+    </div>
+  );
 }
