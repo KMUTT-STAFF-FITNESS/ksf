@@ -96,7 +96,7 @@ export default function Register() {
           >
             {steps.map((label) => (
               <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+                <StepLabel></StepLabel>
               </Step>
             ))}
           </Stepper>
