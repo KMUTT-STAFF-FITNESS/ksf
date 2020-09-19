@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import ImageProfile from "../core/ImageProfile";
 import { Formik, Form, Field } from "formik";
+import BtnBack from "../core/BtnBack";
+import BtnSave from "../core/BtnNext";
+import { navigate } from "@reach/router";
 
 export default function Home() {
   const [Information, setInformation] = useState({
@@ -114,6 +117,14 @@ export default function Home() {
                 </div>
               </Form>
             </Formik>
+          </div>
+          <div className="row">
+            <div className="col-6 py-4">
+              <BtnBack text="Back" onClick={() => navigate('/home')} />
+            </div>
+            <div className="col-6 py-4">
+              <BtnSave text="Save" />
+            </div>
           </div>
         </div>
       </div>

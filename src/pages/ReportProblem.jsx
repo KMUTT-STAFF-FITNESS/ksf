@@ -3,6 +3,7 @@ import ReportInput from "../components/ReportProblem/Report";
 import Logo from "../components/core/Logo";
 import BtnNext from "../components/core/BtnNext";
 import BtnBack from "../components/core/BtnBack";
+import { navigate } from "@reach/router";
 
 export default function ReportProblem() {
   const [ReportText, setReportText] = useState([
@@ -46,7 +47,9 @@ export default function ReportProblem() {
       <div className="w-full lg:w-1/3 overflow-hidden py-4 mx-auto">
         <div className="row">
           <div className="col-6 py-4">
-            <BtnBack text="Back" />
+            <BtnBack text="Back" 
+            onClick={() => navigate('/home')}
+            />
           </div>
           <div className="col-6 py-4">
             <BtnNext text="Submit" 

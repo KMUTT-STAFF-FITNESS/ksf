@@ -4,7 +4,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import ReportProblemIcon from "@material-ui/icons/ReportProblem";
 import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import CropFreeIcon from "@material-ui/icons/CropFree";
-import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 
 export default function Home() {
   const [MemberCard, setMemberCard] = useState({
@@ -19,8 +19,8 @@ export default function Home() {
     <div className="container">
       <div className="row">
         <div className="col-12 py-4">
-          <Link to="/view">
-            <div class="col-12  md:flex cardcolor rounded-lg p-6shadow ">
+          
+            <div class="col-12  md:flex cardcolor rounded-lg p-6shadow " onClick={() => navigate('/view')}>
               <ImageProfile className="buttonHome " />
               <div class=" md:text-left text-center ">
                 <div class="text-lg-mx text-white">
@@ -31,8 +31,8 @@ export default function Home() {
                 <div class="text-white">{MemberCard.depart}</div>
               </div>
             </div>
-          </Link>
-          <div className="row py-6">
+        
+          <div className="row py-8">
             <div className="col-6 text-center">
               <div className="shadow rounded">
                 <button className=" bg-transparent font-semibold py-10 w-full">
@@ -43,21 +43,21 @@ export default function Home() {
             </div>
             <div className="col-6 text-center">
               <div className="shadow rounded">
-                <button className="bg-transparent font-semibold  py-10 w-full">
+                <button className="bg-transparent font-semibold  py-10 w-full" onClick={() => navigate('/reportproblem')}>
                   <ReportProblemIcon className="buttonHome" fontSize="large" />
                   <h5 className="whitespace-no-wrap">Report Issue</h5>
                 </button>
               </div>
             </div>
-            <div className="col-6 text-center">
+            <div className="col-6 text-center py-4">
               <div className="shadow rounded">
-                <button className="bg-transparent font-semibold  py-10 w-full">
+                <button className="bg-transparent font-semibold  py-10 w-full" onClick={() => navigate('/qrscanner')}>
                   <CropFreeIcon className="buttonHome" fontSize="large" />
                   <h5 className="whitespace-no-wrap">Scan QR code</h5>
                 </button>
               </div>
             </div>
-            <div className="col-6 text-center">
+            <div className="col-6 text-center py-4">
               <div className="shadow rounded">
                 <button className="bg-transparent font-semibold  py-10 w-full">
                   <FitnessCenterIcon className="buttonHome" fontSize="large" />
