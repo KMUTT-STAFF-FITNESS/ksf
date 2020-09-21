@@ -23,7 +23,7 @@ export default function Login() {
         </div>
       </div>
       <div className="row justify-content-center">
-        <div className="col-6">
+        <div className="col-12">
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={LoginSchema}

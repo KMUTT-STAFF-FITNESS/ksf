@@ -1,34 +1,28 @@
-import React from 'react';
-import Select from 'react-select';
- 
-const options = [
-  { value: 'เครื่องเล่น1', label: 'เครื่องเล่น1' },
-  { value: 'เครื่องเล่น2', label: 'เครื่องเล่น2' },
-  { value: 'เครื่องเล่น3', label: 'เครื่องเล่น3' },
-];
- 
-class SelectMachine extends React.Component {
-  state = {
-    selectedOption: null,
-  };
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
-  };
-  render() {
-    const { selectedOption } = this.state;
- 
-    return (
+import React, { useState } from "react";
+import {Field,Formik } from "formik";
+
+export default function SelectMachine() {
+  const [formik, setFormik] = useState([
+    {
+      machine: "",
+    },
+  ]);
+
+  return (
     <>
-      <Select
-        value={selectedOption}
-        onChange={this.handleChange}
-        options={options}
-      />
-
+      <Formik initialValues={formik}>
+        <div className=" mx-auto max-w-xs py-2">    
+          <Field
+            name="machine"
+            as="select"
+            className={`shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline form-control `}
+          >
+            <option value="เครื่องเล่น 1">เครื่องเล่น 1</option>
+            <option value="เครื่องเล่น 2">เครื่องเล่น 2</option>
+            <option value="เครื่องเล่น 3">เครื่องเล่น 3</option>
+          </Field>
+        </div>
+      </Formik>
     </>
-    );
-  }
+  );
 }
-
-export default SelectMachine;
