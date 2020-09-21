@@ -11,7 +11,7 @@ import {
   PermMediaRounded,
   RadioRounded,
   StorageRounded,
-  DashboardRounded,
+  DashboardRounded
 } from "@material-ui/icons";
 import { Menu } from "@material-ui/core";
 import { useObserver } from "mobx-react-lite";
@@ -111,6 +111,13 @@ export default function Sidebar(props) {
         name="Register Manage"
         icon={DashboardRounded}
         onClick={() => handlerTabClick("/admin/register")}
+        currentTab={props.currentTab}
+      />
+      <SidebarTab
+        id="register"
+        name="Add Item"
+        icon={DashboardRounded}
+        onClick={() => handlerTabClick("/admin/formupdate")}
         currentTab={props.currentTab}
       />
     </div>
