@@ -12,7 +12,6 @@ import QrScan from "./pages/QrScan";
 import ReportProblem from "./pages/ReportProblem"
 import FormUpdate from "./pages/admin/FormUpdate"
 import Notification from "./pages/Notification";
-import ReportProblem from "./pages/ReportProblem";
 import ExerciseDashboard from "./components/ExerciseDashboard/Dashboard";
 
 function App() {
