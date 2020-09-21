@@ -11,6 +11,7 @@ import { Stepper, Step, StepLabel, Button } from "@material-ui/core";
 import StepConnector from "@material-ui/core/StepConnector";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Formik } from "formik";
+import { navigate } from "@reach/router";
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -95,7 +96,7 @@ export default function Register() {
           >
             {steps.map((label) => (
               <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+                <StepLabel></StepLabel>
               </Step>
             ))}
           </Stepper>
@@ -140,7 +141,7 @@ export default function Register() {
                 <div className="col-12 text-center">
                   <Button
                     className="buttonLogin"
-                    onClick={handleNext}
+                    onClick={() => navigate('/home')}
                     // text={activeStep === steps.length - 1 ? "Submit" : "Next"}
                   >
                     Done

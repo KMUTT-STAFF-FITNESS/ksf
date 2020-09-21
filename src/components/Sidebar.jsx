@@ -16,7 +16,7 @@ import {
 import { Menu } from "@material-ui/core";
 import { useObserver } from "mobx-react-lite";
 import SidebarTab from "./SidebarTab";
-
+import Logo from "../components/core/LogoWhite"
 // import SidebarTab from "./SidebarTab";
 
 export default function Sidebar(props) {
@@ -62,13 +62,14 @@ export default function Sidebar(props) {
 |--------------------------------------------------
 */
   return useObserver(() => (
-    <div className="flex-shrink-0 w-56 bg-primary">
+    <div className="flex-shrink-0 w-56 adminNev">
       <div className="py-4">
         <div className="px-4 mb-4">
-          <p className="text-white">KMUTT STAFF FITNESS</p>
+          <p className="text-white"><Logo/></p>
         </div>
         <div className="flex justify-between">
           <Menu
+            
             id="long-menu"
             elevation={0}
             anchorEl={anchorEl}
