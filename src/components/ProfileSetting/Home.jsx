@@ -59,7 +59,7 @@ export default function Home() {
             </div>
             <div className="col-6 text-center py-4">
               <div className="shadow rounded">
-                <button className="bg-transparent font-semibold  py-10 w-full">
+                <button className="bg-transparent font-semibold  py-10 w-full" onClick={() => navigate('/exercise')}>
                   <FitnessCenterIcon className="buttonHome" fontSize="large" />
                   <h5 className="whitespace-no-wrap">Activity</h5>
                 </button>

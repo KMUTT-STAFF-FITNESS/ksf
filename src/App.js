@@ -13,7 +13,7 @@ import ReportProblem from "./pages/ReportProblem"
 import FormUpdate from "./pages/admin/FormUpdate"
 import Notification from "./pages/Notification";
 import ExerciseDashboard from "./components/ExerciseDashboard/Dashboard";
-
+import HowToPlay from "./components/QrScanner/HowToPlay"
 function App() {
   return (
     <Router>
@@ -25,6 +25,7 @@ function App() {
       <Notification path="/notification" />
       <ReportProblem path="/reportproblem"/>
       <ExerciseDashboard path="/exercise" />
+      <HowToPlay path="/howtoplay"/>
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />

@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect } from "react";
-import axios from "axios";
 import _ from "lodash";
 import { useState } from "react";
 import { Formik, Field, FieldArray } from "formik";
 import DataTable from "../../components/DataTable";
+import { apiFetchUsers } from "../../api/users";
 
 export default function RegisterManage() {
   const [users, setUsers] = useState();
@@ -12,7 +12,7 @@ export default function RegisterManage() {
 
   const fetchData = useCallback(async () => {
     setIsFetch(true);
-    const { data } = await axios.get(`http://localhost:8000/users`);
+    const { data } = await apiFetchUsers()
     const temp = {
       users: data,
     };

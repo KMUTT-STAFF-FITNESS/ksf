@@ -62,12 +62,12 @@ export default function Sidebar(props) {
 |--------------------------------------------------
 */
   return useObserver(() => (
-    <div className="flex-shrink-0 w-56 adminNev">
+    <div className="flex-shrink-0 w-56" style={{backgroundColor: '#023356'}}>
       <div className="py-4">
         <div className="px-4 mb-4">
-          <p className="text-white"><Logo/></p>
+        <img className="mx-auto" src="image/logowhite.png" width="227px" alt="logo"/>
         </div>
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <Menu
             
             id="long-menu"
@@ -97,7 +97,7 @@ export default function Sidebar(props) {
               </div>
             </div>
           </Menu>
-        </div>
+        </div> */}
       </div>
 
       <SidebarTab
