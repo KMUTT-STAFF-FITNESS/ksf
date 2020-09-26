@@ -1,87 +1,69 @@
-import React, { Component } from 'react'
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { Formik } from "formik";
+// import React, { Component } from "react";
 
-const useColorlibStepIconStyles = makeStyles({
-  root: {
-    backgroundColor: "#ccc",
-    zIndex: 1,
-    color: "#fff",
-    width: 50,
-    height: 50,
-    display: "flex",
-    borderRadius: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  active: {
-    backgroundImage:
-      "linear-gradient(to top right, #192527 -17%, #c2691c 100%)",
-    boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
-  },
-  completed: {
-    backgroundImage:
-      "linear-gradient(to top right, #192527 -17%, #c2691c 100%)",
-  },
-});
+// class Notifications extends Component {
+//   state = {
+//     role: "Admin",
+//     detail: "None",
+//     timeSpand: "11 mins ago"
+//   };
 
-const ColorlibConnector = withStyles({
-  alternativeLabel: {
-    top: 22,
-  },
-  active: {
-    "& $line": {
-      backgroundImage: "linear-gradient(to right, #192527 0%, #c2691c 100%)",
-    },
-  },
-  completed: {
-    "& $line": {
-      backgroundImage: "linear-gradient(to right, #192527 0%, #c2691c 100%)",
-    },
-  },
-  line: {
-    height: 3,
-    border: 0,
-    backgroundColor: "#eaeaf0",
-    borderRadius: 1,
-  },
-});
+//   render() {
+//     return (
+//       <div className="container">
+//         <div className="col-12">
+//           <div className="text-center mx-auto">
+//             <div className=" p-3 w-full  overflow-hidden py-4 rounded shadow mx-auto">
+//               <div className="row">
+//                 <div className="text-left mx-auto">
+//                   <strong className="mr-auto">KSF</strong>
+//                 </div>
+//                 <div className="text-right text-gray-700 mx-auto">
+//     <small>{}</small>
+//                 </div>
 
-class Notifications extends Component {
+//                 <div>{this.state.detail}</div>
+//                 <div className="text-right mx-auto">
+//                   <small>{this.state.role}</small>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+// export default Notifications;
+import React, { useState } from "react";
 
-  state = {
-    role: 'Admin',
-    detail: 'None'
-  }
-
-  render() {
-    return (
+export default function Notifications() {
+  const [noti, setNoti] = useState({
+    role: "Admin",
+    detail: "Example na ja....",
+    timeSpand: "11 mins ago",
+  });
+  return (
+    <div>
       <div className="container">
-          <div className="col-12">
-
-            <div className="text-center mx-auto">
-              <div className=" p-3 w-full  overflow-hidden py-4 rounded shadow mx-auto">
-
-                <div className="row">
-                  <div className="text-left mx-auto">
-                    <strong className="mr-auto">KSF</strong>
-                  </div>
-                  <div className="text-right mx-auto">
-                    <small>11 mins ago</small>
-                  </div>
+        <div className="col-12">
+          <div className="text-center mx-auto">
+            <div className=" p-3 w-full  overflow-hidden py-4 rounded shadow mx-auto">
+              <div className="row">
+                <div className="text-left mx-auto">
+                  <strong className="text-lg font-bold mr-auto">KSF</strong>
                 </div>
-                <div>
-                  {this.state.detail}
-                </div>
-                <div className="text-right mx-auto">
-                  <small>{this.state.role}</small>
+                <div className="text-right text-gray-700 mx-auto">
+                  <small>{noti.timeSpand}</small>
                 </div>
               </div>
+              <p class="text-gray-700">
+                {noti.detail}
+              </p>
+              
             </div>
-
           </div>
         </div>
-    );
-  }
+      </div>
+    </div>
+  );
 }
-export default Notifications;

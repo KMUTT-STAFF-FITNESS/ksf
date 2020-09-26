@@ -10,51 +10,47 @@ export default function ReportProblem() {
     {
       selectMachine: "",
       selectIssue: "",
+      otherIssue: "",
     },
   ]);
-  const [isOpenOtherInput, setIsOpenOtherInput] = useState("");
-  const [otherIssue, setOtherIssue] = useState([
-    {
-      other_issue: "",
-    },
-  ]);
+
   function handleSubmit() {
     if (ReportText.selectMachine != null && ReportText.selectIssue != null) {
-      if (ReportText.selectIssue == "issue3") {
-        if (otherIssue != null) {
+      if (ReportText.selectIssue === "issue3") {
+        if (ReportText.otherIssue != null) {
+          console.log(ReportText.otherIssue)
           //ส่งไปหลังบ้าน
         } else {
-          window.alert("กรุณากรอกข้อความให้เรียบร้อย");
+          alert("กรุณากรอกข้อความให้เรียบร้อย2");
         }
-      } else {
-        window.alert("กรุณากรอกข้อความให้เรียบร้อย");
       }
     } else {
-      window.alert("กรุณากรอกข้อความให้เรียบร้อย");
+      alert("กรุณากรอกข้อความให้เรียบร้อย1");
     }
   }
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <Logo />
-        </div>
-        <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
-          <ReportInput />
-        </div>
-      </div>
-
-      <div className="w-full lg:w-1/3 overflow-hidden py-4 mx-auto">
+    <div className="max-w-screen-xl mx-auto min-h-screen">
+      <div className="container">
         <div className="row">
-          <div className="col-6 py-4">
-            <BtnBack text="Back" 
-            onClick={() => navigate('/home')}
+          <div className="col-12">
+            <Logo />
+          </div>
+          <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
+            <ReportInput
+              reportText={ReportText}
+              setReportText={setReportText}
             />
           </div>
-          <div className="col-6 py-4">
-            <BtnNext text="Submit" 
-            onClick ={() => handleSubmit()}
-            />
+        </div>
+
+        <div className="w-full lg:w-1/3 overflow-hidden py-4 mx-auto">
+          <div className="row">
+            <div className="col-6 py-4">
+              <BtnBack text="Back" onClick={() => navigate("/home")} />
+            </div>
+            <div className="col-6 py-4">
+              <BtnNext text="Submit" onClick={() => handleSubmit()} />
+            </div>
           </div>
         </div>
       </div>

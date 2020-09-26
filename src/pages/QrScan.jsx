@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import QrPage from "../components/QrScanner/QrScan";
 import HowToPlay from "../components/QrScanner/HowToPlay";
 import Logo from "../components/core/Logo";
-import { Stepper, Step, StepLabel, Button } from "@material-ui/core";
+import { Stepper, Step, StepLabel } from "@material-ui/core";
 import StepConnector from "@material-ui/core/StepConnector";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Formik } from "formik";
+import { navigate } from "@reach/router";
+import BtnBack from "../components/core/BtnBack";
+import BtnNext from "../components/core/BtnNext";
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -53,10 +56,7 @@ const ColorlibConnector = withStyles({
 })(StepConnector);
 
 function getSteps() {
-  return [
-    "QrScanner",
-    "HowToPlay",
-  ];
+  return ["QrScanner", "HowToPlay"];
 }
 
 export default function QrScan() {
@@ -72,59 +72,52 @@ export default function QrScan() {
   }
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <Logo />
-        </div>
-        <div className="col-12">
-          
-          <div className="text-center mx-auto">
-            <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
-           
+    <div className="max-w-screen-xl mx-auto min-h-screen">
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <Logo />
+          </div>
+          <div className="col-12">
+            <div className="text-center mx-auto">
+              <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
                 {activeStep === 0 && <QrPage />}
                 {activeStep === 1 && <HowToPlay />}
-
-
-    
+              </div>
             </div>
-          </div>
-          <div className="col-12 col-sm-8 col-md-8 col-lg-4 mx-auto my-3">
-            {activeStep !== steps.length - 1 ? ( 
-              <div className="row">
-                <div className="col-6 text-center">
-                  <Button
-                    className="buttonBack"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    text="Back"
-                  >
-                    Back
-                  </Button>
+            <div className="col-12 col-sm-8 col-md-8 col-lg-4 mx-auto my-3">
+              {activeStep !== steps.length - 1 ? (
+                <div className="row">
+                  <div className="col-6 text-center">
+                    <BtnBack
+                      className="buttonBack"
+                      disabled={activeStep === 0}
+                      onClick={() => navigate("/home")}
+                      text="Back"
+                    />
+                  </div>
+                  <div className="col-6 text-center">
+                    <BtnNext
+                      className="buttonLogin"
+                      onClick={() => navigate("/howtoplay")}
+                      text="Next"
+                    />
+                  </div>
                 </div>
-                <div className="col-6 text-center">
-                  <Button
-                    className="buttonLogin"
-                    onClick={handleNext}
-                    // text={activeStep === steps.length - 1 ? "Submit" : "Next"}
-                  >
-                    Next
-                  </Button>
+              ) : (
+                <div className="row">
+                  <div className="col-12 text-center">
+                    <BtnNext
+                      className="buttonLogin"
+                      onClick={handleNext}
+                      text="Done"
+                    >
+                      Done
+                    </BtnNext>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className="row">
-                <div className="col-12 text-center">
-                  <Button
-                    className="buttonLogin"
-                    onClick={handleNext}
-                    // text={activeStep === steps.length - 1 ? "Submit" : "Next"}
-                  >
-                    Done
-                  </Button>
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>

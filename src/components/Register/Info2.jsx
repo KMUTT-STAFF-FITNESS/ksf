@@ -3,7 +3,7 @@ import { Formik,Field } from "formik";
 import Input from "../core/Input";
 
 export default function Info3() {
-  const [formik, setFormik] = useState([
+  const [formik, setFormik] = useState(
     {
       houseNumber: "",
       subdistrict: "",
@@ -11,7 +11,7 @@ export default function Info3() {
       province: "",
       postCode: "",
     },
-  ]);
+  );
 
   return (
     <>

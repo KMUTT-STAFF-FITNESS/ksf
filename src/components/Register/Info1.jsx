@@ -7,7 +7,7 @@ function getSteps() {
 }
 
 export default function Info1() {
-  const [formik, setFormik] = useState([
+  const [formik, setFormik] = useState(
     {
       firstName: "",
       lastName: "",
@@ -16,7 +16,7 @@ export default function Info1() {
       gender: "",
       department: "",
     },
-  ]);
+  );
 
   return (
     <>

@@ -83,26 +83,26 @@ export default function Register() {
   }
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <Logo />
-        </div>
-        <div className="col-12">
-          <Stepper
-            connector={<ColorlibConnector />}
-            activeStep={activeStep}
-            alternativeLabel
-          >
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel></StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <div className="text-center mx-auto">
-            <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
-           
+    <div className="max-w-screen-xl mx-auto min-h-screen">
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <Logo />
+          </div>
+          <div className="col-12">
+            <Stepper
+              connector={<ColorlibConnector />}
+              activeStep={activeStep}
+              alternativeLabel
+            >
+              {steps.map((label) => (
+                <Step key={label}>
+                  <StepLabel></StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+            <div className="text-center mx-auto">
+              <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
                 {activeStep === 0 && <Info1 />}
                 {activeStep === 1 && <Info2 />}
                 {activeStep === 2 && <Info3 />}
@@ -110,45 +110,45 @@ export default function Register() {
                 {activeStep === 4 && <QRPayment />}
                 {activeStep === 5 && <Upload />}
                 {activeStep === 6 && <Complete />}
-    
+              </div>
             </div>
-          </div>
-          <div className="col-12 col-sm-8 col-md-8 col-lg-4 mx-auto my-3">
-            {activeStep !== steps.length - 1 ? ( //check ค่าว่า activestep มีค่าไม่เทากับ ความยาว steps ละให้ render next/back ออกมา มันคือ if else แบบ short hand
-              <div className="row">
-                <div className="col-6 text-center">
-                  <Button
-                    className="buttonBack"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    text="Back"
-                  >
-                    Back
-                  </Button>
+            <div className="col-12 col-sm-8 col-md-8 col-lg-4 mx-auto my-3">
+              {activeStep !== steps.length - 1 ? ( //check ค่าว่า activestep มีค่าไม่เทากับ ความยาว steps ละให้ render next/back ออกมา มันคือ if else แบบ short hand
+                <div className="row">
+                  <div className="col-6 text-center">
+                    <Button
+                      className="buttonBack"
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      text="Back"
+                    >
+                      Back
+                    </Button>
+                  </div>
+                  <div className="col-6 text-center">
+                    <Button
+                      className="buttonLogin"
+                      onClick={handleNext}
+                      // text={activeStep === steps.length - 1 ? "Submit" : "Next"}
+                    >
+                      Next
+                    </Button>
+                  </div>
                 </div>
-                <div className="col-6 text-center">
-                  <Button
-                    className="buttonLogin"
-                    onClick={handleNext}
-                    // text={activeStep === steps.length - 1 ? "Submit" : "Next"}
-                  >
-                    Next
-                  </Button>
+              ) : (
+                <div className="row">
+                  <div className="col-12 text-center">
+                    <Button
+                      className="buttonLogin"
+                      onClick={() => navigate("/home")}
+                      // text={activeStep === steps.length - 1 ? "Submit" : "Next"}
+                    >
+                      Done
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className="row">
-                <div className="col-12 text-center">
-                  <Button
-                    className="buttonLogin"
-                    onClick={() => navigate('/home')}
-                    // text={activeStep === steps.length - 1 ? "Submit" : "Next"}
-                  >
-                    Done
-                  </Button>
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>

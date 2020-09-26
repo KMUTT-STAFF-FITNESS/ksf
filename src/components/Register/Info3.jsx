@@ -3,14 +3,14 @@ import { Formik, Form, Field } from "formik";
 import Input from "../core/Input";
 
 export default function Info3() {
-  const [formik, setFormik] = useState([
+  const [formik, setFormik] = useState(
     {
       weight: "",
       heigh: "",
       disease: "",
       detailDisease: "",
     },
-  ]);
+  );
 
   return (
     <>
