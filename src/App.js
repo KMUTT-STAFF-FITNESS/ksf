@@ -14,7 +14,7 @@ import FormUpdate from "./pages/admin/FormUpdate"
 import Notification from "./pages/Notification";
 import ExerciseDashboard from "./components/ExerciseDashboard/Dashboard";
 import HowToPlay from "./components/QrScanner/HowToPlay"
-import NotiDetail from "./components/Notification/NotificationsDetail"
+import NotiDetail from "./components/Notification/NotificationDetail"
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
       <ReportProblem path="/reportproblem"/>
       <ExerciseDashboard path="/exercise" />
       <HowToPlay path="/howtoplay"/>
-      <NotiDetail path="/notidetail"/>
+      <NotiDetail path="/notidetail/:id"/>
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />

@@ -3,6 +3,7 @@ import { Formik, Field, FieldArray, DataTable } from "formik";
 import Input from "../../components/core/Input";
 import Select from "react-select";
 import _ from "lodash";
+import {apiCreateReportTemplate} from '../../api/report'
 
 export default function FormUpdate() {
   const [machine, setMachhine] = useState([

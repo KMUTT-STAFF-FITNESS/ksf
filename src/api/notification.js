@@ -6,3 +6,6 @@ export const apiFetchNotification = () => {
 export const apiCreateNotification = (data) => {
     return appAxios().post(`${process.env.REACT_APP_BACKEND}/notification`, data)
 }
+export const apiCreateNotificationById = (id) => {
+    return appAxios().get(`${process.env.REACT_APP_BACKEND}/notification/${id}`)
+}

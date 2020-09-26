@@ -4,6 +4,7 @@ import Logo from "../components/core/Logo";
 import BtnNext from "../components/core/BtnNext";
 import BtnBack from "../components/core/BtnBack";
 import { navigate } from "@reach/router";
+import {apiCreateReportProblem} from '../api/report'
 
 export default function ReportProblem() {
   const [ReportText, setReportText] = useState([
@@ -13,13 +14,14 @@ export default function ReportProblem() {
       otherIssue: "",
     },
   ]);
+  
 
   function handleSubmit() {
     if (ReportText.selectMachine != null && ReportText.selectIssue != null) {
       if (ReportText.selectIssue === "issue3") {
         if (ReportText.otherIssue != null) {
           console.log(ReportText.otherIssue)
-          //ส่งไปหลังบ้าน
+          apiCreateReportProblem(ReportText)
         } else {
           alert("กรุณากรอกข้อความให้เรียบร้อย2");
         }
