@@ -1,18 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { Field, Formik } from "formik";
 import Input from "../core/Input";
-import {apiCreateReportTemplate} from "../../api/report"
+import { apiCreateReportTemplate } from "../../api/report";
+import { apiFetchMachine } from "../../api/machine";
 
 export default function Report(props) {
   const [DropDownValue, setDropDownValue] = useState(true);
+  const [machine, setMachine] = useState();
+  const [isFetch, setIsFetch] = useState(false);
+
+  const fetchData = useCallback(async () => {
+    setIsFetch(true);
+    const { data } = await apiFetchMachine();
+    const temp = {
+      machine: data,
+    };
+    setMachine(temp);
+    setIsFetch(false);
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  if (isFetch) {
+    return <div>wait....</div>;
+  }
 
   // const setSelect =()=>{
   //   if (document.getElementById("non")) {
 
   //   }
   // }
-
-
 
   function handleChange() {
     if (document.getElementById("non")) {
@@ -35,18 +54,28 @@ export default function Report(props) {
         <Formik initialValues={props.reportText}>
           <div className=" mx-auto max-w-xs py-2">
             <Field
-            onChange={(e) => props.setReportText({...props.reportText, selectMachine: e.target.value})}
+              onChange={(e) =>
+                props.setReportText({
+                  ...props.reportText,
+                  selectMachine: e.target.value,
+                })
+              }
               name="selectMachine"
               as="select"
               className={`shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline form-control `}
             >
               <option value="exercise">-เลือกเครื่องออกกำลังกาย-</option>
-              <option value="treadmille">ลู่วิ่ง</option>
+              <option value="treadmille">{}</option>
               <option value="bike">จักรยาน</option>
               <option value="chair">เบาะรองยกน้ำหนัก</option>
             </Field>
             <Field
-              onChange={(e) => props.setReportText({...props.reportText, selectIssue: e.target.value})}
+              onChange={(e) =>
+                props.setReportText({
+                  ...props.reportText,
+                  selectIssue: e.target.value,
+                })
+              }
               name="selectIssue"
               as="select"
               className={`shadow border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline form-control `}
@@ -74,7 +103,6 @@ export default function Report(props) {
             </Field> */}
           </div>
         </Formik>
-        
       </div>
     </div>
   );
