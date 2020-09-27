@@ -1,13 +1,31 @@
-import React, {  useState } from "react";
+import React, {  useState, useEffect, useCallback } from "react";
 import Logo from "../core/Logo";
 import BtnBack from "../core/BtnBack";
 import { navigate } from "@reach/router";
+import { apiFetchMachineHowToPlay } from "../../api/machine";
 
 
 export default function HowToPlay() {
-  const [howToPlay, setHowToPlay] = useState({
-    detail:"aaa"
-  })
+  const [howToPlay, setHowToPlay] = useState()
+  const [isFetch, setIsFetch] = useState(false);
+
+  const fetchData = useCallback(async () => {
+    setIsFetch(true);
+    const { data } = await apiFetchMachineHowToPlay(1)
+    const temp = {
+      users: data,
+    };
+    setHowToPlay(temp);
+    setIsFetch(false);
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  if (isFetch) {
+    return <div>wait....</div>;
+  }
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">
         <div className="container">
@@ -21,7 +39,7 @@ export default function HowToPlay() {
               </video>
               <div class="text-center mx-auto my-4">
                 <p className="text-gray-700 text-center text-lg ">
-                  {howToPlay.detail}
+                  {howToPlay && howToPlay.detail}
                 </p>
               </div>
             </div>
