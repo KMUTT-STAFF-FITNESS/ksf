@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Field,Formik } from "formik";
+import { Field, Formik } from "formik";
 
 export default function SelectMachine() {
   const [formik, setFormik] = useState([
@@ -11,7 +11,7 @@ export default function SelectMachine() {
   return (
     <>
       <Formik initialValues={formik}>
-        <div className=" mx-auto max-w-xs py-2">    
+        <div className=" mx-auto max-w-xs py-2">
           <Field
             name="machine"
             as="select"
