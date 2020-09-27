@@ -53,9 +53,15 @@ export default function Report(props) {
     <div>
       <div className="col-12">
         <p className="text-gray-700 text-lg font-bold ">รายงานปัญหา</p>
-        <div className=" mx-auto max-w-xs py-2">
+        <div className=" mx-auto max-w-xs max-h-screen py-2">
           <Field name="selectMachine">
-            {({ field, meta }) => <Select options={props.machine} />}
+            {({ field, meta }) => (
+              <Select
+                options={props.machine}
+                defaultValue={props.defalutVal}
+                className="my-2"
+              />
+            )}
           </Field>
           {/* <Field
             onChange={(e) =>
@@ -73,7 +79,12 @@ export default function Report(props) {
             <option value="bike">จักรยาน</option>
             <option value="chair">เบาะรองยกน้ำหนัก</option>
           </Field> */}
-          <Field
+          <Field name="selectIssue">
+            {({ field, meta }) => (
+              <Select options={props.problemTemplate} className="my-2" />
+            )}
+          </Field>
+          {/* <Field
             onChange={(e) =>
               props.setReportText({
                 ...props.reportText,
@@ -88,7 +99,7 @@ export default function Report(props) {
             <option value="issue1">เปิดไม่ติด</option>
             <option value="issue2">ล้อมีปัญหา</option>
             <option value="issue3">อื่นๆ</option>
-          </Field>
+          </Field> */}
           {props.reportText.selectIssue === "issue3" && (
             <Field name="otherIssue">
               {({ field, meta }) => <Input inputProps={{ ...field }} />}
