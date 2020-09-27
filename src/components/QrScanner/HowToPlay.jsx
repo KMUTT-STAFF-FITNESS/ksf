@@ -12,10 +12,8 @@ export default function HowToPlay() {
   const fetchData = useCallback(async () => {
     setIsFetch(true);
     const { data } = await apiFetchMachineHowToPlay(1)
-    const temp = {
-      users: data,
-    };
-    setHowToPlay(temp);
+  
+    setHowToPlay(data);
     setIsFetch(false);
   }, []);
 
@@ -38,6 +36,7 @@ export default function HowToPlay() {
                 <source src={"video_test/test.mp4"} type="video/mp4" />
               </video>
               <div class="text-center mx-auto my-4">
+                {console.log(howToPlay)}
                 <p className="text-gray-700 text-center text-lg ">
                   {howToPlay && howToPlay.detail}
                 </p>
@@ -55,16 +54,3 @@ export default function HowToPlay() {
       </div>
   )
 }
-
-// class HowToPlay extends Component {
-//   state = {
-//     result: "คำอธิบายที่ 1,2,3,4",
-//   };
-//   render() {
-//     return (
-      
-//     );
-//   }
-// }
-
-// export default HowToPlay;
