@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Formik, Field, FieldArray, DataTable, Form } from "formik";
+import { Formik, Field, FieldArray, Form } from "formik";
 import Input from "../../components/core/Input";
 import Select from "react-select";
 import _ from "lodash";
@@ -7,6 +7,7 @@ import { apiCreateReportTemplate } from "../../api/report";
 import { Helmet } from "react-helmet";
 import MachineForm from "../../components/Machine/MachineForm";
 import { apiFetchMachine } from "../../api/machine";
+import DataTable from "../../components/DataTable";
 
 export default function FormUpdate() {
   const [machine, setMachine] = useState();
@@ -15,8 +16,10 @@ export default function FormUpdate() {
   const fetchData = useCallback(async () => {
     setIsFetch(true);
     const { data } = await apiFetchMachine();
-    console.log(data)
-    setMachine(data);
+    const temp = {
+      machine: data
+    }
+    setMachine(temp);
     setIsFetch(false);
   }, []);
 
@@ -91,6 +94,18 @@ export default function FormUpdate() {
   //   })
   // }
 
+  const columns = [
+    {
+      Header: "Machine Name",
+      accessor: "machine_name",
+      Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
+    },
+    {
+      Header: "Machine Type",
+      accessor: "member_type_name",
+      Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
+    },
+  ];
   return (
     <div className="flex flex-col flex-1">
       <Helmet>
@@ -99,11 +114,20 @@ export default function FormUpdate() {
 
       <Formik initialValues={machine}>
         {(formikProps) => (
-          <Form className="overscroll-y-auto">
-            <div className="p-6 overscroll-y-auto">
-              <MachineForm formik={formikProps} handleAdd={handleAdd} />
-            </div>
-          </Form>
+          <FieldArray name="machine">
+            {(machineArray) => (
+              <Field name="machine">
+                {({ field, meta }) => (
+                  <DataTable data={field.value} columns={columns} />
+                )}
+              </Field>
+            )}
+          </FieldArray>
+          // <Form className="overscroll-y-auto">
+          //   <div className="p-6 overscroll-y-auto">
+          //     <MachineForm formik={formikProps} handleAdd={handleAdd} />
+          //   </div>
+          // </Form>
         )}
       </Formik>
     </div>
