@@ -3,15 +3,6 @@ import { Formik, Form, Field } from "formik";
 import Input from "../core/Input";
 
 export default function Info3() {
-  const [formik, setFormik] = useState(
-    {
-      weight: "",
-      heigh: "",
-      disease: "",
-      detailDisease: "",
-    },
-  );
-
   return (
     <>
       <p className="text-gray-700 text-lg font-bold">ข้อมูลสุขภาพ</p>
@@ -71,13 +62,13 @@ export default function Info3() {
             <p className="text-gray-700 text-md font-bold px-4  mb-4">
               ถ้าเคยเบิก
             </p>
-            <Field name="detailDisease">
-            {({ field, meta }) => (
-              <div>
-                <Input placeholder="เช่น ปวดหลัง" inputProps={{ ...field }} />
-              </div>
-            )}
-          </Field>
+            <Field name="disease_detail">
+              {({ field, meta }) => (
+                <div>
+                  <Input placeholder="เช่น ปวดหลัง" inputProps={{ ...field }} />
+                </div>
+              )}
+            </Field>
           </div>
         </div>
       </Formik>

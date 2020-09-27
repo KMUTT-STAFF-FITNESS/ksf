@@ -12,13 +12,14 @@ import DataTable from "../../components/DataTable";
 export default function FormUpdate() {
   const [machine, setMachine] = useState();
   const [isFetch, setIsFetch] = useState(false);
+  const [prefixNameRowPerPage, setPrefixNameRowPerPage] = useState(10);
 
   const fetchData = useCallback(async () => {
     setIsFetch(true);
     const { data } = await apiFetchMachine();
     const temp = {
-      machine: data
-    }
+      machine: data,
+    };
     setMachine(temp);
     setIsFetch(false);
   }, []);
@@ -102,7 +103,7 @@ export default function FormUpdate() {
     },
     {
       Header: "Machine Type",
-      accessor: "member_type_name",
+      accessor: "machine_type_name",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
   ];
@@ -118,7 +119,13 @@ export default function FormUpdate() {
             {(machineArray) => (
               <Field name="machine">
                 {({ field, meta }) => (
-                  <DataTable data={field.value} columns={columns} />
+                  <DataTable
+                    data={field.value}
+                    columns={columns}
+                    pageSize={prefixNameRowPerPage}
+                    onChangeRowsPerPage={setPrefixNameRowPerPage}
+                    rowsPerPageOptions={[5, 10, 15, 20]}
+                  />
                 )}
               </Field>
             )}
