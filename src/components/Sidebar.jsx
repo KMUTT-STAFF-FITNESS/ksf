@@ -115,10 +115,10 @@ export default function Sidebar(props) {
         currentTab={props.currentTab}
       />
       <SidebarTab
-        id="register"
-        name="Add Item"
+        id="machine"
+        name="Machine Manage"
         icon={DashboardRounded}
-        onClick={() => handlerTabClick("/admin/formupdate")}
+        onClick={() => handlerTabClick("/admin/machine")}
         currentTab={props.currentTab}
       />
     </div>

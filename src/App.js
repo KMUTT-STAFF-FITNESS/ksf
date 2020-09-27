@@ -32,7 +32,7 @@ function App() {
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />
-      <MainLayout component={FormUpdate} path ="/admin/formupdate"/>
+      <MainLayout component={FormUpdate} path ="/admin/machine"/>
     </Router>
   );
 }
