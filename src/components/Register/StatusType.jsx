@@ -10,8 +10,8 @@ export default function StatusType(props) {
           {props &&
             _.map(props.type, (data, index) => (
               <div
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer my-2"
-                onClick={() => props.setSelectType(data.member_type_id)}
+                className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer my-2"
+                onClick={() => props.setSelectType(data.member_type_id)} key={index}
               >
                 {data.member_type}
               </div>
