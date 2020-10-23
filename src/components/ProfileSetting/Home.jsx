@@ -21,12 +21,12 @@ export default function Home() {
         <div className="row">
           <div className="col-12 py-4">
             <div
-              class="col-12  md:flex cardcolor rounded-lg p-6shadow "
+              class="col-12 md:flex cardcolor rounded-lg p-6shadow "
               onClick={() => navigate("/view")}
             >
-              <ImageProfile className="buttonHome " />
-              <div class=" md:text-left text-center ">
-                <div class="text-lg-mx text-white">
+              <ImageProfile className="buttonHome" />
+              <div class=" md:text-left text-center">
+                <div class="text-lg-mx text-white mx-10">
                   {MemberCard.fname} {MemberCard.lname}
                 </div>
                 <div class="text-green-500">Status: {MemberCard.status}</div>
@@ -34,7 +34,6 @@ export default function Home() {
                 <div class="text-white">{MemberCard.depart}</div>
               </div>
             </div>
-
             <div className="row py-8">
               <div className="col-6 text-center">
                 <div className="shadow rounded">

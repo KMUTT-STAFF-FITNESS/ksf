@@ -1,5 +1,6 @@
 import React from "react";
 import "./Main.css";
+import "./App.css";
 import { Router } from "@reach/router";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -15,6 +16,9 @@ import Notification from "./pages/Notification";
 import ExerciseDashboard from "./components/ExerciseDashboard/Dashboard";
 import HowToPlay from "./components/QrScanner/HowToPlay"
 import NotiDetail from "./components/Notification/NotificationDetail"
+import Payment from "./pages/user/Payment"
+
+
 
 function App() {
   return (
@@ -23,6 +27,7 @@ function App() {
       <Register path="/register" />
       <Home path="/home" />
       <Viewprofile path="/view" />
+      <Payment path="/payment" />
       <QrScan path="/qrscanner"/>
       <Notification path="/notification" />
       <ReportProblem path="/reportproblem"/>

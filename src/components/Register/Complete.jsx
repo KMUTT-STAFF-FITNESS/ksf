@@ -1,17 +1,19 @@
-import React from 'react'
+import React from "react";
+import { navigate } from "@reach/router";
 
 export default function Complete() {
-    return (
-        <div>
-            <div class="HeadText">
-                <p className="text-orange-700 text-4xl font-bold" >Complete!</p>
-            </div>
-
-            <p className="text-gray-700 text-lg font-bold">Welcome <br />
-            to be a <br />
-            fitness family.</p>
-
-
-        </div>
-    )
+  return (
+    <div>
+      <div className="HeadText">
+        <p className="text-orange-700 text-4xl font-bold">Complete!</p>
+      </div>
+<div className="col-12"> 
+  <div
+        className=" bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center cursor-pointer my-2"
+        onClick={() => navigate("/payment")}
+      >จ่ายตัง</div>
+</div>
+      
+    </div>
+  );
 }
