@@ -12,7 +12,7 @@ export default function QRPayment() {
       </div>
 
       <div class="text">
-        <p className="text-gray-700 text-lg font-bold">หรือ</p>
+        <p className="text-gray-700 text-lg my-4 font-bold">หรือ</p>
 
         <div class="flex mb-4">
           <div class="w-1/2  h-12">ธนาคารกรุงเทพ (BBL)</div>
@@ -38,6 +38,7 @@ export default function QRPayment() {
           <div class="w-1/2  h-12">705-2-46600-2</div>
         </div>
       </div>
+      <div className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center cursor-pointer my-2">ชำระด้วยเงินสด</div>
     </div>
   );
 }

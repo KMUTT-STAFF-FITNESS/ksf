@@ -2,8 +2,9 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import Logo from "../components/core/Logo";
 import BtnNext from "../components/core/BtnNext";
+import BtnRigis from "../components/core/BtnBack";
 import * as Yup from "yup";
-import Input from "../components/core/Input";
+import { navigate } from "@reach/router";
 
 export default function Login() {
   const LoginSchema = Yup.object().shape({
@@ -66,20 +67,21 @@ export default function Login() {
                       className="invalid-feedback"
                     />
                   </div>
-                  <div className="col-6 mx-auto">
-                    <BtnNext
-                      text="login"
-                      className="btn btn-primary btn-block"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Please wait..." : "Submit"}
-                    </BtnNext>
-                  </div>
                 </Form>
               )}
             </Formik>
-          </div>
+            <div className="w-full lg:w-1/3 overflow-x-hidden py-4 mx-auto">
+                <div className="row">
+                  <div className="col-6 py-4">
+                    <BtnRigis text="Register" onClick={() => navigate("/register")} />
+                  </div>
+                  <div className="col-6 py-4">
+                    <BtnNext text="Login" />
+                  </div>
+                </div>
+              </div>
         </div>
+      </div>
       </div>
     </div>
   );

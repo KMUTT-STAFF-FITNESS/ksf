@@ -4,16 +4,15 @@ import Info2 from "../components/Register/Info2";
 import Info3 from "../components/Register/Info3";
 import StatusType from "../components/Register/StatusType";
 import Logo from "../components/core/Logo";
-import QRPayment from "../components/Register/QRPayment";
-import Upload from "../components/Register/Upload";
 import Complete from "../components/Register/Complete";
 import { Stepper, Step, StepLabel, Button } from "@material-ui/core";
 import StepConnector from "@material-ui/core/StepConnector";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Form, Formik } from "formik";
-import { navigate } from "@reach/router";
 import { apiCreateUser } from "../api/users";
 import { apiFetchMemberType } from "../api/membertype";
+import Pdpa from "../components/Register/Pdpa"
+import { navigate } from "@reach/router";
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -62,17 +61,19 @@ const ColorlibConnector = withStyles({
 
 function getSteps() {
   return [
-    "information",
+    "Pdpa",
+    "Information",
     "Address",
     "Health",
     "Status",
-    "Payment",
-    "Upload",
     "Finish",
   ];
 }
 
 export default function Register() {
+  const classes = useColorlibStepIconStyles();
+ 
+
   const [profile, setProfile] = useState({
     fname: "",
     lname: "",
@@ -121,6 +122,9 @@ export default function Register() {
   };
 
   function handleBack() {
+    if (activeStep === 0) {
+      navigate("/")
+    }
     setActiveStep(activeStep - 1);
   }
 
@@ -166,6 +170,7 @@ export default function Register() {
               connector={<ColorlibConnector />}
               activeStep={activeStep}
               alternativeLabel
+              classes
             >
               {steps.map((label) => (
                 <Step key={label}>
@@ -178,18 +183,18 @@ export default function Register() {
                 <Form className="overflow-y-auto">
                   <div className="text-center mx-auto">
                     <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
-                      {activeStep === 0 && <Info1 />}
-                      {activeStep === 1 && <Info2 />}
-                      {activeStep === 2 && <Info3 />}
-                      {activeStep === 3 && (
+                      {activeStep === 0 && <Pdpa />}
+                      {activeStep === 1 && <Info1 />}
+                      {activeStep === 2 && <Info2 />}
+                      {activeStep === 3 && <Info3 />}
+                      {activeStep === 4 && (
                         <StatusType
                           type={memberType}
                           setSelectType={setSelectType}
                         />
                       )}
-                      {activeStep === 4 && <QRPayment />}
-                      {activeStep === 5 && <Upload />}
-                      {activeStep === 6 && <Complete />}
+                      
+                      {activeStep === 5 && <Complete />}
                     </div>
                   </div>
                   <div className="col-12 col-sm-8 col-md-8 col-lg-4 mx-auto my-3">
@@ -209,7 +214,7 @@ export default function Register() {
                           <Button
                             className="buttonLogin"
                             onClick={
-                              activeStep === 3
+                              activeStep === 5
                                 ? formikProps.submitForm
                                 : handleNext
                             }
@@ -224,10 +229,10 @@ export default function Register() {
                         <div className="col-12 text-center">
                           <Button
                             className="buttonLogin"
-                            onClick={() => navigate("/home")}
+                            onClick={handleBack}
                             // text={activeStep === steps.length - 1 ? "Submit" : "Next"}
                           >
-                            Done
+                            Back
                           </Button>
                         </div>
                       </div>
