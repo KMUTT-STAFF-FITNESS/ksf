@@ -128,7 +128,7 @@ export default function Home() {
                 <BtnBack text="Back" onClick={() => navigate("/home")} />
               </div>
               <div className="col-4 py-4 mr-auto">
-                <BtnSave text="Save" />
+                <BtnSave text="Update" />
               </div>
             </div>
           </div>

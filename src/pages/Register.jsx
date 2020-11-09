@@ -197,7 +197,7 @@ export default function Register() {
                       {activeStep === 5 && <Complete />}
                     </div>
                   </div>
-                  <div className="col-12 col-sm-8 col-md-8 col-lg-4 mx-auto my-3">
+                  <div className="p-3 w-full  overflow-hidden py-4 rounded shadow mx-auto">
                     {activeStep !== steps.length - 1 ? ( //check ค่าว่า activestep มีค่าไม่เทากับ ความยาว steps ละให้ render next/back ออกมา มันคือ if else แบบ short hand
                       <div className="row">
                         <div className="col-6 text-center">

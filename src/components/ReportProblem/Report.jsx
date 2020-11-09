@@ -50,7 +50,7 @@ export default function Report(props) {
   }
 
   return (
-    <div>
+    <div className="max-w-screen-xl mx-auto">
       <div className="col-12">
         <p className="text-gray-700 text-lg font-bold ">รายงานปัญหา</p>
         <div className=" mx-auto max-w-xs max-h-screen py-2">

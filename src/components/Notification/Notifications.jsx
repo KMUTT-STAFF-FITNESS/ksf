@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Notifications(props) {
   return (
-    <div>
+    <div className="max-w-screen-xl mx-auto min-h-screen">
       <div className="container">
         <div className="col-12">
           <div className=" mx-auto">

@@ -7,7 +7,7 @@ export default function Payment() {
         <div className="container">
         <div className="col-12">
             <Logo/>
-          <div className=" mx-auto">
+            <div className=" mx-auto">
             <div className=" p-3 w-full  overflow-hidden py-4 rounded shadow mx-auto">
             <QRpayment/>
         </div>

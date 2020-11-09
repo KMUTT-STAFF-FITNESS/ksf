@@ -22,6 +22,10 @@
   color: #c2691c !important;
 }
 
+.MuiStepIcon-root.MuiStepIcon-completed {
+  color: #c2691c !important;
+}
+
 .MuiStepConnector-alternativeLabel {
   top: 12px !important;
   left: calc(-50% + 20px);
