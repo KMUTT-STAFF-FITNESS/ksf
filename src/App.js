@@ -17,6 +17,7 @@ import ExerciseDashboard from "./components/ExerciseDashboard/Dashboard";
 import HowToPlay from "./components/QrScanner/HowToPlay"
 import NotiDetail from "./components/Notification/NotificationDetail"
 import Payment from "./pages/user/Payment"
+import Wait from './components/Register/Wait'
 
 
 
@@ -34,6 +35,7 @@ function App() {
       <ExerciseDashboard path="/exercise" />
       <HowToPlay path="/howtoplay"/>
       <NotiDetail path="/notidetail/:id"/>
+      <Wait path="/wait"/>
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />

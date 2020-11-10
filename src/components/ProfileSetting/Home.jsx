@@ -76,7 +76,7 @@ export default function Home() {
                 <div className="shadow rounded">
                   <button
                     className="bg-transparent font-semibold  py-10 w-full"
-                    onClick={() => navigate("/exercise")}
+                    onClick={() => navigate("/wait")}
                   >
                     <FitnessCenterIcon
                       className="buttonHome"
