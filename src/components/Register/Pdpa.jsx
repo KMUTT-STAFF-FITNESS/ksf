@@ -1,8 +1,10 @@
 import React from "react";
 
+
 export default function Pdpa() {
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">
+      <div className=" p-3 w-full  overflow-hidden py-4 rounded shadow mx-auto">
         <p className="text-gray-700 text-lg font-bold ">ข้อกำหนดและเงื่อนไข</p>
         <p className=" text-gray-700 text-lg py-2">
           “KSF” เป็นเว็ปแอปพลิเคชันของคณะเทคโนโลยีสารสนเทศ
@@ -59,6 +61,6 @@ export default function Pdpa() {
         เพื่อให้มีการรักษาความปลอดภัยของข้อมูลใดๆ ของผู้ใช้ ทั้งหมด
         </p>
       </div>
-    
+    </div> 
   );
 }
