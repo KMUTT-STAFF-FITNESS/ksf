@@ -1,3 +1,4 @@
+import { navigate } from "@reach/router";
 import React, { useState } from "react";
 import BtnNext from "../../components/core/BtnNext";
 import Logo from "../../components/core/Logo";
@@ -8,6 +9,7 @@ export default function UploadRecipt() {
 
   const handleSubmit = () => {
     console.log(images)
+    navigate('/wait')
   };
 
   return (
