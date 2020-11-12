@@ -1,76 +1,65 @@
-import React from 'react'
-// import axios, { post } from 'axios';
+import React, { useState } from "react";
+import ImageUploading from "react-images-uploading";
+import BtnNext from "../core/BtnNext";
 
-class Upload extends React.Component {
+export default function Upload() {
+  const [images, setImage] = useState([]);
+  const maxNumber = 69;
 
-    state = {
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImage(imageList);
+  };
 
-        selectedFile: null
-    };
-
-
-    onFileChange = event => {
-        this.setState({ selectedFile: event.target.files[0] });
-
-    };
-
-    onFileUpload = () => {
-
-        const formData = new FormData();
-
-        formData.append(
-            "myFile",
-            this.state.selectedFile,
-            this.state.selectedFile.name
-        );
-
-        console.log(this.state.selectedFile);
-
-        // axios.post("api/uploadfile", formData);
-    };
-
-
-    fileData = () => {
-
-        if (this.state.selectedFile) {
-
-            return (
-                <div>
-                    <h2>File Details:</h2>
-                    <p>File Name: {this.state.selectedFile.name}</p>
-                    <p>File Type: {this.state.selectedFile.type}</p>
-                    <p>
-                        Last Modified:{" "}
-                        {this.state.selectedFile.lastModifiedDate.toDateString()}
-                    </p>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                    <br />
-                    Please upload the file and press the upload button. Before pressing the next button.
-                </div>
-            );
-        }
-    };
-
-    render() {
-
-        return (
-            <div>
-                <p className="text-gray-700 text-lg font-bold">Upload Slip</p>
-                <div>
-                    <input type="file" onChange={this.onFileChange} />
-                    <button className="buttonLogin" onClick={this.onFileUpload}>
-                Upload
-            </button>
-
-                </div>
-                {this.fileData()}
+  return (
+    <div>
+      <div class="title">
+        <p className="text-gray-700 text-lg text-center font-bold">
+          อัปโหลดหลักฐานการชำระเงิน
+        </p>
+      </div>
+      <ImageUploading
+        value={images}
+        onChange={onChange}
+        maxNumber={maxNumber}
+        dataURLKey="data_url"
+      >
+        {({ imageList, onImageUpload, onImageRemove }) => (
+          // write your building UI
+          <div className="upload__image-wrapper">
+            <div className="text-center mx-auto d-block py-3">
+              {imageList.length === 0 ? (
+                <div
+                  style={{
+                    height: "400px",
+                    backgroundColor: "#D3D3D3",
+                  }}
+                  className="w-full"
+                ></div>
+              ) : (
+                imageList.map((image, index) => (
+                  <div key={index} className="image-item">
+                    <img
+                      src={image["data_url"]}
+                      alt=""
+                      height="400"
+                      className="w-full"
+                    />
+                    <div className="image-item__btn-wrapper">
+                      <button onClick={() => onImageRemove(index)}>
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
-        );
-    }
+            <BtnNext onClick={onImageUpload} text="Upload here" />
+            &nbsp;
+          </div>
+        )}
+      </ImageUploading>
+    </div>
+  );
 }
-
-export default Upload; 

@@ -182,7 +182,7 @@ export default function Register() {
               {(formikProps) => (
                 <Form className="overflow-y-auto">
                   <div className="text-center mx-auto">
-                    <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
+                    <div className="p-3 w-full overflow-hidden py-4 rounded mx-auto">
                       {activeStep === 0 && <Pdpa />}
                       {activeStep === 1 && <Info1 />}
                       {activeStep === 2 && <Info2 />}
@@ -197,7 +197,7 @@ export default function Register() {
                       {activeStep === 5 && <Complete />}
                     </div>
                   </div>
-                  <div className="p-3 w-full  overflow-hidden py-4 rounded shadow mx-auto">
+                  <div className="p-3 w-full  overflow-hidden py-4 rounded  mx-auto">
                     {activeStep !== steps.length - 1 ? ( //check ค่าว่า activestep มีค่าไม่เทากับ ความยาว steps ละให้ render next/back ออกมา มันคือ if else แบบ short hand
                       <div className="row">
                         <div className="col-6 text-center">

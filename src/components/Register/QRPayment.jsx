@@ -40,6 +40,8 @@ export default function QRPayment() {
         </div>
       </div>
       <div className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center cursor-pointer my-2"
+      onClick={() => navigate("/upload")}>อัปโหลดหลักฐานการชำระเงิน</div>
+      <div className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center cursor-pointer my-2"
       onClick={() => navigate("/wait")}>ชำระด้วยเงินสด</div>
     </div>
   );
