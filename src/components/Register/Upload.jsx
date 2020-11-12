@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import ImageUploading from "react-images-uploading";
 import BtnNext from "../core/BtnNext";
 
-export default function Upload() {
-  const [images, setImage] = useState([]);
+export default function Upload(props) {
   const maxNumber = 69;
 
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
-    setImage(imageList);
+    props.setImage(imageList);
   };
 
   return (
@@ -20,7 +19,7 @@ export default function Upload() {
         </p>
       </div>
       <ImageUploading
-        value={images}
+        value={props.images}
         onChange={onChange}
         maxNumber={maxNumber}
         dataURLKey="data_url"
