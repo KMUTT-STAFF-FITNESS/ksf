@@ -1,5 +1,6 @@
 import { navigate } from "@reach/router";
 import React, { useState } from "react";
+import { apiUploadSlip } from "../../api/image";
 import BtnNext from "../../components/core/BtnNext";
 import Logo from "../../components/core/Logo";
 import Upload from "../../components/Register/Upload";
@@ -7,8 +8,12 @@ import Upload from "../../components/Register/Upload";
 export default function UploadRecipt() {
   const [images, setImage] = useState([]);
 
-  const handleSubmit = () => {
-    console.log(images)
+  const handleSubmit = async () => {
+    console.log(images[0])
+    const formData = new FormData()
+    formData.append("file", images[0].file)
+    const res = await apiUploadSlip(formData)
+    console.log(res)
     navigate('/wait')
   };
 
