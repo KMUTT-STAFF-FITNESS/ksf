@@ -25,7 +25,6 @@ export default function Upload(props) {
         dataURLKey="data_url"
       >
         {({ imageList, onImageUpload, onImageRemove }) => (
-          // write your building UI
           <div className="upload__image-wrapper">
             <div className="text-center mx-auto d-block py-3">
               {imageList.length === 0 ? (
