@@ -191,6 +191,7 @@ export default function Register() {
                         <StatusType
                           type={memberType}
                           setSelectType={setSelectType}
+                          selectType={selectType}
                         />
                       )}
                       

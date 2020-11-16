@@ -9,12 +9,25 @@ export default function StatusType(props) {
         <div className="col align-self-center">
           {props &&
             _.map(props.type, (data, index) => (
-              <div
-                className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer my-2"
-                onClick={() => props.setSelectType(data.member_type_id)} key={index}
-              >
-                {data.member_type}
-              </div>
+              <>
+                {props.selectType === data.member_type_id ? (
+                  <div
+                    className="bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer my-2"
+                    onClick={() => props.setSelectType(data.member_type_id)}
+                    key={index}
+                  >
+                    {data.member_type}
+                  </div>
+                ) : (
+                  <div
+                    className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer my-2"
+                    onClick={() => props.setSelectType(data.member_type_id)}
+                    key={index}
+                  >
+                    {data.member_type}
+                  </div>
+                )}
+              </>
             ))}
           {/* <div className="btn-group-toggle my-3" data-toggle="buttons">
             <label className="btn btn-secondary col-3">
