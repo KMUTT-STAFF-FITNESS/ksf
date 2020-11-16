@@ -13,6 +13,7 @@ import { apiCreateUser } from "../api/users";
 import { apiFetchMemberType } from "../api/membertype";
 import Pdpa from "../components/Register/Pdpa"
 import { navigate } from "@reach/router";
+import SumProfile from "../components/Register/SumProfile";
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -66,6 +67,7 @@ function getSteps() {
     "Address",
     "Health",
     "Status",
+    "Profile",
     "Finish",
   ];
 }
@@ -194,8 +196,9 @@ export default function Register() {
                           selectType={selectType}
                         />
                       )}
+                      {activeStep === 5 && <SumProfile />}
                       
-                      {activeStep === 5 && <Complete />}
+                      {activeStep === 6 && <Complete />}
                     </div>
                   </div>
                   <div className="p-3 w-full  overflow-hidden py-4 rounded  mx-auto">
