@@ -81,7 +81,7 @@ export default function Register() {
     lname: "",
     dob: "",
     email: "",
-    gender: "",
+    gender: "male",
     tel_no: "",
     department: "",
     home_address: {

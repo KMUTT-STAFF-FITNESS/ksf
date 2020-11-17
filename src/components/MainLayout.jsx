@@ -1,10 +1,10 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
+import React from "react";
+import { Helmet } from "react-helmet";
 
-import Sidebar from './Sidebar'
+import Sidebar from "./Sidebar";
 
 export default function MainLayout(props) {
-  const { component: Child } = props
+  const { component: Child } = props;
 
   /**
   |--------------------------------------------------
@@ -73,17 +73,20 @@ export default function MainLayout(props) {
   // }
 
   return (
-    <div className='flex flex-col h-screen'>
+    <div className="flex flex-col h-screen">
       <Helmet>
-        <title>KSF ADMIN</title>
+        <title>KSF-ADMIN</title>
       </Helmet>
 
-      <div className='flex flex-1 overflow-auto'>
-        <Sidebar currentTab={props.currentTab} currentSubTab={props.currentSubTab} />
-        <div className='flex flex-1'>
+      <div className="flex flex-1 overflow-auto">
+        <Sidebar
+          currentTab={props.currentTab}
+          currentSubTab={props.currentSubTab}
+        />
+        <div className="flex flex-1">
           <Child {...props} />
         </div>
       </div>
     </div>
-  )
+  );
 }

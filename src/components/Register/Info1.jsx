@@ -55,7 +55,7 @@ export default function Info1() {
         >
           <option value="male">ชาย</option>
           <option value="female">หญิง</option>
-          <option value="non">ไม่ระบุ</option>
+          <option value="none">ไม่ระบุ</option>
         </Field>
         <Field name="department">
           {({ field, meta }) => (

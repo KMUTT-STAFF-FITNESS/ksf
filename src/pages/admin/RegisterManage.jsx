@@ -1,9 +1,13 @@
 import React, { useCallback, useEffect } from "react";
 import _ from "lodash";
 import { useState } from "react";
-import { Formik, Field, FieldArray } from "formik";
+import { Formik, Field, FieldArray, Form } from "formik";
 import DataTable from "../../components/DataTable";
 import { apiFetchUsers } from "../../api/users";
+import EditHeader from "../../components/Header/EditHeader";
+import { IconButton, Tooltip } from "@material-ui/core";
+import { CreateRounded } from "@material-ui/icons";
+import { navigate } from "@reach/router";
 
 export default function RegisterManage() {
   const [users, setUsers] = useState();
@@ -12,7 +16,7 @@ export default function RegisterManage() {
 
   const fetchData = useCallback(async () => {
     setIsFetch(true);
-    const { data } = await apiFetchUsers()
+    const { data } = await apiFetchUsers();
     const temp = {
       users: data,
     };
@@ -48,32 +52,43 @@ export default function RegisterManage() {
       accessor: "cost",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
+    {
+      Header: "Edit",
+      accessor: "id",
+      Cell: ({ cell: { value } }) => (
+        <Tooltip title="แก้ไข">
+          <IconButton
+            onClick={() => navigate(`/radionews/tools/${value}/edit`)}
+          >
+            <CreateRounded />
+          </IconButton>
+        </Tooltip>
+      ),
+    },
   ];
 
   return (
     <div className="p-6 w-full">
-      {/* {_.map(users, (data, index) => (
-        <div key={index} className="w-full my-2 border p-6">
-          <p>Name: {data.fname}</p>
-          <p>Last name: {data.lname}</p>
-          <p>date of birth: {data.dob}</p>
-          <p>email: {data.email}</p>
-          <p>cost: {data.cost}</p>
-        </div>
-      ))} */}
       <Formik initialValues={users} onSubmit="">
         {(formikProps) => (
           <FieldArray name="users">
             {(userArray) => (
               <Field name="users">
                 {({ field, meta }) => (
-                  <DataTable
-                    data={field.value}
-                    columns={columns}
-                    pageSize={prefixNameRowPerPage}
-                    onChangeRowsPerPage={setPrefixNameRowPerPage}
-                    rowsPerPageOptions={[5, 10, 15, 20]}
-                  />
+                  <>
+                    <EditHeader formik={formikProps} />
+                    <Form className="overflow-y-auto">
+                      <div className="p-6 overflow-y-auto">
+                        <DataTable
+                          data={field.value}
+                          columns={columns}
+                          pageSize={prefixNameRowPerPage}
+                          onChangeRowsPerPage={setPrefixNameRowPerPage}
+                          rowsPerPageOptions={[5, 10, 15, 20]}
+                        />
+                      </div>
+                    </Form>
+                  </>
                 )}
               </Field>
             )}
