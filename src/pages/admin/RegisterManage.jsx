@@ -76,7 +76,7 @@ export default function RegisterManage() {
               <Field name="users">
                 {({ field, meta }) => (
                   <>
-                    <EditHeader formik={formikProps} />
+                    <EditHeader formik={formikProps} title="สมาชิก"/>
                     <Form className="overflow-y-auto">
                       <div className="p-6 overflow-y-auto">
                         <DataTable
