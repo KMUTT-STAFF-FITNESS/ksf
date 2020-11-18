@@ -52,19 +52,19 @@ export default function RegisterManage() {
       accessor: "cost",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
-    {
-      Header: "Edit",
-      accessor: "id",
-      Cell: ({ cell: { value } }) => (
-        <Tooltip title="แก้ไข">
-          <IconButton
-            onClick={() => navigate(`/radionews/tools/${value}/edit`)}
-          >
-            <CreateRounded />
-          </IconButton>
-        </Tooltip>
-      ),
-    },
+    // {
+    //   Header: "Edit",
+    //   accessor: "id",
+    //   Cell: ({ cell: { value } }) => (
+    //     <Tooltip title="แก้ไข">
+    //       <IconButton
+    //         onClick={() => navigate(`/admin/register/${value}/edit`)}
+    //       >
+    //         <CreateRounded />
+    //       </IconButton>
+    //     </Tooltip>
+    //   ),
+    // },
   ];
 
   return (
