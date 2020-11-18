@@ -1,5 +1,7 @@
 import React from 'react'
 import Logo from '../core/Logo'
+import BtnBack from '../core/BtnBack'
+import { navigate } from "@reach/router";
 
 export default function LoginSSO() {
     return (
@@ -10,6 +12,7 @@ export default function LoginSSO() {
                     <div className="col">
                     <img className="mx-auto my-5" width= '227px' src="image/wait.png"/>
                     <p className="text-gray-700 text-center my-4">Comming soon</p>
+                    <BtnBack text='Back' onClick={() => navigate("/")} />
                     </div>
                 </div>
             </div>
