@@ -68,7 +68,7 @@ export default function RegisterManage() {
   ];
 
   return (
-    <div className="p-6 w-full">
+    <div className="w-full">
       <Formik initialValues={users} onSubmit="">
         {(formikProps) => (
           <FieldArray name="users">
