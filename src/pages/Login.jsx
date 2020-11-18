@@ -48,7 +48,7 @@ export default function Login() {
         </div>
         <div className="w-full lg:w-1/3 px-2">
           <Logo />
-          <BtnNext text="Login via SSO" />
+          <BtnNext text="Login via SSO" onClick={()=> navigate("/loginsso")} />
           <BtnRigis
             text="Register via SSO"
             onClick={() => navigate("/register")}

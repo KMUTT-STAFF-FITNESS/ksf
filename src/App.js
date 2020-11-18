@@ -19,6 +19,7 @@ import NotiDetail from "./components/Notification/NotificationDetail";
 import Payment from "./pages/user/Payment";
 import Wait from "./components/Register/Wait";
 import UploadRecipt from "./pages/user/UploadRecipt";
+import LoginSSO from "./components/Login/LoginSSO";
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
       <NotiDetail path="/notidetail/:id" />
       <UploadRecipt path="/upload" />
       <Wait path="/wait" />
+      <LoginSSO path="/loginsso" />
+
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />
