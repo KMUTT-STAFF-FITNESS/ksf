@@ -7,6 +7,7 @@ import { navigate } from "@reach/router";
 import { apiCreateReportProblem, apiFetchReportTemplate } from "../api/report";
 import { apiFetchMachine } from "../api/machine";
 import { Form, Formik } from "formik";
+import Loading from "../components/core/Loading";
 
 export default function ReportProblem() {
   const [ReportText, setReportText] = useState({
@@ -70,7 +71,11 @@ export default function ReportProblem() {
   }, [fetchData]);
 
   if (isFetch) {
-    return <div>wait....</div>;
+    return (
+      <div className="flex flex-col flex-1 min-h-screen">
+        <Loading />
+      </div>
+    );
   }
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">

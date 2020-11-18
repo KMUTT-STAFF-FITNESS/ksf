@@ -5,6 +5,7 @@ import { apiCreateReportTemplate } from "../../api/report";
 import { apiFetchMachine } from "../../api/machine";
 import _ from "lodash";
 import Select from "react-select";
+import Loading from "../core/Loading";
 
 export default function Report(props) {
   const [DropDownValue, setDropDownValue] = useState(true);
@@ -26,7 +27,11 @@ export default function Report(props) {
   }, [fetchData]);
 
   if (isFetch) {
-    return <div>wait....</div>;
+    return (
+      <div className="flex flex-col flex-1 min-h-screen">
+        <Loading />
+      </div>
+    );
   }
 
   // const setSelect =()=>{

@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 import MachineForm from "../../components/Machine/MachineForm";
 import { apiFetchMachine } from "../../api/machine";
 import DataTable from "../../components/DataTable";
+import Loading from "../../components/core/Loading";
 
 export default function FormUpdate() {
   const [machine, setMachine] = useState();
@@ -29,7 +30,11 @@ export default function FormUpdate() {
   }, [fetchData]);
 
   if (isFetch) {
-    return <div>wait....</div>;
+    return (
+      <div className="flex flex-col flex-1 min-h-screen">
+        <Loading />
+      </div>
+    );
   }
 
   function handleAdd() {

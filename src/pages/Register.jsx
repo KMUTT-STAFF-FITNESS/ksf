@@ -11,9 +11,10 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Form, Formik } from "formik";
 import { apiCreateUser } from "../api/users";
 import { apiFetchMemberType } from "../api/membertype";
-import Pdpa from "../components/Register/Pdpa"
+import Pdpa from "../components/Register/Pdpa";
 import { navigate } from "@reach/router";
 import SumProfile from "../components/Register/SumProfile";
+import Loading from "../components/core/Loading";
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -74,7 +75,6 @@ function getSteps() {
 
 export default function Register() {
   const classes = useColorlibStepIconStyles();
- 
 
   const [profile, setProfile] = useState({
     fname: "",
@@ -116,7 +116,11 @@ export default function Register() {
   }, [fetchData]);
 
   if (isFetch) {
-    return <div>wait....</div>;
+    return (
+      <div className="flex flex-col flex-1 min-h-screen">
+        <Loading />
+      </div>
+    );
   }
 
   const handleNext = () => {
@@ -125,7 +129,7 @@ export default function Register() {
 
   function handleBack() {
     if (activeStep === 0) {
-      navigate("/")
+      navigate("/");
     }
     setActiveStep(activeStep - 1);
   }
@@ -197,7 +201,7 @@ export default function Register() {
                         />
                       )}
                       {activeStep === 5 && <SumProfile />}
-                      
+
                       {activeStep === 6 && <Complete />}
                     </div>
                   </div>

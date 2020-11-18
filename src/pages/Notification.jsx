@@ -5,6 +5,7 @@ import BtnBack from "../components/core/BtnBack";
 import { navigate } from "@reach/router";
 import _ from "lodash";
 import { apiFetchNotification } from "../api/notification";
+import Loading from "../components/core/Loading";
 
 export default function Noti() {
   const [isFetch, setIsFetch] = useState(false);
@@ -22,7 +23,7 @@ export default function Noti() {
   }, [fetchData]);
 
   if (isFetch) {
-    return <div>wait....</div>;
+    return <Loading />;
   }
 
   return (
@@ -36,8 +37,11 @@ export default function Noti() {
             <div className="text-center mx-auto">
               <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
                 {_.map(news, (data, index) => (
-                  <div onClick={() => navigate(`/notidetail/${data.news_id}`)} key={index}>
-                    <Notification news={data}/>
+                  <div
+                    onClick={() => navigate(`/notidetail/${data.news_id}`)}
+                    key={index}
+                  >
+                    <Notification news={data} />
                   </div>
                 ))}
               </div>

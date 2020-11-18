@@ -8,6 +8,7 @@ import EditHeader from "../../components/Header/EditHeader";
 import { IconButton, Tooltip } from "@material-ui/core";
 import { CreateRounded } from "@material-ui/icons";
 import { navigate } from "@reach/router";
+import Loading from "../../components/core/Loading";
 
 export default function RegisterManage() {
   const [users, setUsers] = useState();
@@ -29,8 +30,13 @@ export default function RegisterManage() {
   }, [fetchData]);
 
   if (isFetch) {
-    return <div>wait....</div>;
+    return (
+      <div className="flex flex-col flex-1 min-h-screen">
+        <Loading />
+      </div>
+    );
   }
+  
   const columns = [
     {
       Header: "Name",
@@ -76,7 +82,7 @@ export default function RegisterManage() {
               <Field name="users">
                 {({ field, meta }) => (
                   <>
-                    <EditHeader formik={formikProps} title="สมาชิก"/>
+                    <EditHeader formik={formikProps} title="สมาชิก" />
                     <Form className="overflow-y-auto">
                       <div className="p-6 overflow-y-auto">
                         <DataTable

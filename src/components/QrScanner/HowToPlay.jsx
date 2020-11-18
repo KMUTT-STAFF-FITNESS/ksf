@@ -3,6 +3,7 @@ import Logo from "../core/Logo";
 import BtnBack from "../core/BtnBack";
 import { navigate } from "@reach/router";
 import { apiFetchMachineHowToPlay } from "../../api/machine";
+import Loading from "../core/Loading";
 
 
 export default function HowToPlay() {
@@ -22,7 +23,11 @@ export default function HowToPlay() {
   }, [fetchData]);
 
   if (isFetch) {
-    return <div>wait....</div>;
+    return (
+      <div className="flex flex-col flex-1 min-h-screen">
+        <Loading />
+      </div>
+    );
   }
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">

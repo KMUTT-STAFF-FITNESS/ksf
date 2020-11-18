@@ -3,6 +3,7 @@ import { apiCreateNotificationById } from "../../api/notification";
 import { navigate } from "@reach/router";
 import BtnBack from "../core/BtnBack";
 import Logo from "../core/Logo";
+import Loading from "../core/Loading";
 
 
 export default function NotificationDetail(props) {
@@ -23,7 +24,11 @@ export default function NotificationDetail(props) {
   }, [fetchData]);
 
   if (isFetch) {
-    return <div>wait....</div>;
+    return (
+      <div className="flex flex-col flex-1 min-h-screen">
+        <Loading />
+      </div>
+    );
   }
   
   return (
