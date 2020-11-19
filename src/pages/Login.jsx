@@ -48,7 +48,14 @@ export default function Login() {
         </div>
         <div className="w-full lg:w-1/3 px-2">
           <Logo />
-          <BtnNext text="Login via SSO" onClick={()=> navigate("/loginsso")} />
+          <BtnNext
+            text="Login via SSO"
+            onClick={() =>
+              navigate(
+                `https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=u1UOLdKI&redirect_uri=http://localhost:3000/home&state=ksf`
+              )
+            }
+          />
           <BtnRigis
             text="Register via SSO"
             onClick={() => navigate("/register")}
