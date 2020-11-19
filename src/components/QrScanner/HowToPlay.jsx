@@ -15,7 +15,7 @@ export default function HowToPlay({ id }) {
     try {
       setIsFetch(true);
       const { data } = await apiFetchMachineHowToPlay(id);
-      setUrl(data.video_path)
+      setUrl(data.video_path);
       const dataParse = data.detail.split("<br />");
       setHowToPlay(dataParse);
       setIsFetch(false);
@@ -46,23 +46,25 @@ export default function HowToPlay({ id }) {
             <Logo />
           </div>
           <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
-            <div class="mx-auto my-4">
-              {_.map(howToPlay, (data, i) => (
-                <div key={i.toString()}>
-                  <iframe
-                    src={url}
-                    width="560"
-                    height="315"
-                    frameborder="0"
-                    allowfullscreen
-                  ></iframe>
-
-                  <div
-                    className="text-gray-700 text-lg "
-                    dangerouslySetInnerHTML={{ __html: data }}
-                  />
-                </div>
-              ))}
+            <div className="row" >
+              <div className="mx-auto col-12 ">
+                {_.map(howToPlay, (data, i) => (
+                  <div key={i.toString()}>
+                    <iframe
+                      src={url}
+                      width="100%"
+                      height="100%"
+                      frameborder="0"
+                      allowfullscreen
+                    ></iframe>
+                    <div
+                      className="text-gray-700 text-lg py-4"
+                      dangerouslySetInnerHTML={{ __html: data }}
+                    />
+                  </div>
+                ))}
+              </div>
+            
             </div>
           </div>
         </div>
