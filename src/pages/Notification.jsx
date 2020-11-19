@@ -9,12 +9,13 @@ import Loading from "../components/core/Loading";
 
 export default function Noti() {
   const [isFetch, setIsFetch] = useState(false);
-  const [news, setNews] = useState();
+  const [news, setNews] = useState([]);
 
   const fetchData = useCallback(async () => {
     setIsFetch(true);
     const { data } = await apiFetchNotification();
     setNews(data);
+
     setIsFetch(false);
   }, []);
 
@@ -26,6 +27,8 @@ export default function Noti() {
     return <Loading />;
   }
 
+  console.log(news && news.length)
+
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">
       <div className="container">
@@ -36,14 +39,14 @@ export default function Noti() {
           <div className="col-12">
             <div className="text-center mx-auto">
               <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
-                {_.map(news, (data, index) => (
+                {news.map(data => (
                   <div
                     onClick={() => navigate(`/notidetail/${data.news_id}`)}
-                    key={index}
+                    key={data.news_id}
                   >
                     <Notification news={data} />
                   </div>
-                ))}
+                )).reverse()}
               </div>
             </div>
             <div className="col-6 col-lg-4 text-center mx-auto my-3">
