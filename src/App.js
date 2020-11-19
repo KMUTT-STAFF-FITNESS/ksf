@@ -21,6 +21,7 @@ import Payment from "./pages/user/Payment";
 import Wait from "./components/Register/Wait";
 import UploadRecipt from "./pages/user/UploadRecipt";
 import LoginSSO from "./components/Login/LoginSSO";
+import HomeCheck from "./pages/HomeCheck";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
       <UploadRecipt path="/upload" />
       <Wait path="/wait" />
       <LoginSSO path="/loginsso" />
+      <HomeCheck path="/checking"/>
 
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
