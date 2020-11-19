@@ -11,12 +11,12 @@ import {
   PermMediaRounded,
   RadioRounded,
   StorageRounded,
-  DashboardRounded
+  DashboardRounded,
 } from "@material-ui/icons";
 import { Menu } from "@material-ui/core";
 import { useObserver } from "mobx-react-lite";
 import SidebarTab from "./SidebarTab";
-import Logo from "../components/core/LogoWhite"
+import Logo from "../components/core/LogoWhite";
 // import SidebarTab from "./SidebarTab";
 
 export default function Sidebar(props) {
@@ -62,10 +62,11 @@ export default function Sidebar(props) {
 |--------------------------------------------------
 */
   return useObserver(() => (
-    <div className="flex-shrink-0 w-56" style={{backgroundColor: '#023356'}}>
+    <div className="flex-shrink-0 w-56" style={{ backgroundColor: "#023356" }}>
       <div className="py-4">
         <div className="px-4 mb-4">
-        <img className="mx-auto" src="image/logowhite.png" width="227px" alt="logo"/>
+          <p className="text-lg text-white font-weight-bold">KSF - ADMIN</p>
+          {/* <img className="mx-auto" src="image/logowhite.png" width="227px" alt="logo"/> */}
         </div>
         {/* <div className="flex justify-between">
           <Menu
