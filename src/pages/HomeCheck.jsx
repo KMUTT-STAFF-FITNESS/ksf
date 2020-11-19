@@ -26,19 +26,22 @@ export default function HomeCheck(props) {
     if (res.data.user_type === "st_group") {
       navigate("/nopermission");
     } else {
-      const user = await apiFetchUserByUserId(res.data.user_id);
-      console.log("user", user);
-      if (user.data.role_id === "1" || user.data.role_id === "2") {
-        navigate("/admin");
-      } else if (user.data.role_id === "3") {
-        navigate("/home");
-      } else if (!user.data) {
+      if (state === "ksf_login") {
+        const user = await apiFetchUserByUserId(res.data.user_id);
+        console.log("user", user);
+        if (user.data.role_id === "1" || user.data.role_id === "2") {
+          navigate("/admin");
+        } else if (user.data.role_id === "3") {
+          navigate("/home");
+        } else if (!user.data) {
+          navigate("/register");
+        }
+      } else {
         navigate("/register");
       }
     }
-    // const res = await apiFecthLogin(temp);
     console.log("res", res);
-  }, [props]);
+  }, [authenticationStore, props]);
 
   useEffect(() => {
     fetchData();
