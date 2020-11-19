@@ -43,8 +43,7 @@ export default function Login() {
       </Helmet>
 
       <div className="flex flex-1 overflow-auto">
-        <div className="w-0 lg:w-2/3 bg-black">
-          <img src="/image/sample.png" alt="" />
+        <div className="w-0 lg:w-2/3" style={{backgroundImage: `url('/image/LoginWallpaper.png')`, backgroundSize: 'cover'}}>
         </div>
         <div className="w-full lg:w-1/3 px-2">
           <Logo />
