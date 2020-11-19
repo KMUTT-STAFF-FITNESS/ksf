@@ -9,6 +9,10 @@ import MachineForm from "../../components/Machine/MachineForm";
 import { apiFetchMachine } from "../../api/machine";
 import DataTable from "../../components/DataTable";
 import Loading from "../../components/core/Loading";
+import EditHeader from "../../components/Header/EditHeader";
+import { IconButton, Tooltip } from "@material-ui/core";
+import { CreateRounded } from "@material-ui/icons";
+import { navigate } from "@reach/router";
 
 export default function FormUpdate() {
   const [machine, setMachine] = useState();
@@ -111,6 +115,17 @@ export default function FormUpdate() {
       accessor: "machine_type_name",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
+    {
+      Header: "Edit",
+      accessor: "machine_id",
+      Cell: ({ cell: { value } }) => (
+        <Tooltip title="แก้ไข">
+          <IconButton onClick={() => navigate(`/admin/machine/${value}/edit`)}>
+            <CreateRounded />
+          </IconButton>
+        </Tooltip>
+      ),
+    },
   ];
   return (
     <div className="flex flex-col flex-1">
@@ -124,13 +139,23 @@ export default function FormUpdate() {
             {(machineArray) => (
               <Field name="machine">
                 {({ field, meta }) => (
-                  <DataTable
-                    data={field.value}
-                    columns={columns}
-                    pageSize={prefixNameRowPerPage}
-                    onChangeRowsPerPage={setPrefixNameRowPerPage}
-                    rowsPerPageOptions={[5, 10, 15, 20]}
-                  />
+                  <>
+                    <EditHeader
+                      formik={formikProps}
+                      title="เครื่องออกกำลังกาย"
+                    />
+                    <Form className="overflow-y-auto">
+                      <div className="p-6 overflow-y-auto">
+                        <DataTable
+                          data={field.value}
+                          columns={columns}
+                          pageSize={prefixNameRowPerPage}
+                          onChangeRowsPerPage={setPrefixNameRowPerPage}
+                          rowsPerPageOptions={[5, 10, 15, 20]}
+                        />
+                      </div>
+                    </Form>
+                  </>
                 )}
               </Field>
             )}

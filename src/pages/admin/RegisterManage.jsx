@@ -6,7 +6,7 @@ import DataTable from "../../components/DataTable";
 import { apiFetchUsers } from "../../api/users";
 import EditHeader from "../../components/Header/EditHeader";
 import { IconButton, Tooltip } from "@material-ui/core";
-import { CreateRounded } from "@material-ui/icons";
+import { CloseRounded, CreateRounded } from "@material-ui/icons";
 import { navigate } from "@reach/router";
 import Loading from "../../components/core/Loading";
 
@@ -36,7 +36,7 @@ export default function RegisterManage() {
       </div>
     );
   }
-  
+
   const columns = [
     {
       Header: "Name",
@@ -58,19 +58,17 @@ export default function RegisterManage() {
       accessor: "cost",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
-    // {
-    //   Header: "Edit",
-    //   accessor: "id",
-    //   Cell: ({ cell: { value } }) => (
-    //     <Tooltip title="แก้ไข">
-    //       <IconButton
-    //         onClick={() => navigate(`/admin/register/${value}/edit`)}
-    //       >
-    //         <CreateRounded />
-    //       </IconButton>
-    //     </Tooltip>
-    //   ),
-    // },
+    {
+      Header: "Delete",
+      accessor: "profile_id",
+      Cell: ({ cell: { value } }) => (
+        <Tooltip title="ลบ">
+          <IconButton onClick={() => navigate(`/admin/register/${value}/edit`)}>
+            <CloseRounded />
+          </IconButton>
+        </Tooltip>
+      ),
+    },
   ];
 
   return (
