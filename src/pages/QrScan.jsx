@@ -88,19 +88,12 @@ export default function QrScan() {
             <div className="col-12 col-sm-8 col-md-8 col-lg-4 mx-auto my-3">
               {activeStep !== steps.length - 1 ? (
                 <div className="row">
-                  <div className="col-6 text-center">
+                  <div className="col-12 text-center">
                     <BtnBack
                       className="buttonBack"
                       disabled={activeStep === 0}
                       onClick={() => navigate("/home")}
                       text="Back"
-                    />
-                  </div>
-                  <div className="col-6 text-center">
-                    <BtnNext
-                      className="buttonLogin"
-                      onClick={() => navigate("/howtoplay")}
-                      text="Next"
                     />
                   </div>
                 </div>
