@@ -12,6 +12,7 @@ import RegisterManage from "./pages/admin/RegisterManage";
 import QrScan from "./pages/QrScan";
 import ReportProblem from "./pages/ReportProblem";
 import FormUpdate from "./pages/admin/FormUpdate";
+import CreateNoti from "./pages/admin/CreateNoti";
 import Notification from "./pages/Notification";
 import ExerciseDashboard from "./components/ExerciseDashboard/Dashboard";
 import HowToPlay from "./components/QrScanner/HowToPlay";
@@ -43,6 +44,7 @@ function App() {
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />
       <MainLayout component={FormUpdate} path="/admin/machine" />
+      <MainLayout component={CreateNoti} path="/admin/createnoti" />
     </Router>
   );
 }

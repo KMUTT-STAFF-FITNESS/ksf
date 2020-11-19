@@ -65,7 +65,7 @@ export default function Sidebar(props) {
     <div className="flex-shrink-0 w-56" style={{backgroundColor: '#023356'}}>
       <div className="py-4">
         <div className="px-4 mb-4">
-        <img className="mx-auto" src="image/logowhite.png" width="227px" alt="logo"/>
+        <img className="mx-auto" src="/image/logowhite.png" width="227px" alt="logo"/>
         </div>
         {/* <div className="flex justify-between">
           <Menu
@@ -119,6 +119,13 @@ export default function Sidebar(props) {
         name="Machine Manage"
         icon={DashboardRounded}
         onClick={() => handlerTabClick("/admin/machine")}
+        currentTab={props.currentTab}
+      />
+      <SidebarTab
+        id="createnoti"
+        name="Create Notification"
+        icon={DashboardRounded}
+        onClick={() => handlerTabClick("/admin/createnoti")}
         currentTab={props.currentTab}
       />
     </div>
