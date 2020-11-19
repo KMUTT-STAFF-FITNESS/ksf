@@ -75,7 +75,7 @@ export default function MainLayout(props) {
   return (
     <div className="flex flex-col h-screen">
       <Helmet>
-        <title>KSF-ADMIN</title>
+        <title>KSF</title>
       </Helmet>
 
       <div className="flex flex-1 overflow-auto">

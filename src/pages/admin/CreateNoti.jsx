@@ -3,6 +3,8 @@ import { Field, Formik, Form } from "formik";
 import Input from "../../components/core/Input";
 import BtnSubmit from "../../components/core/BtnBack";
 import { apiCreateNotification } from "../../api/notification";
+import EditHeader from "../../components/Header/EditHeader";
+import { Helmet } from "react-helmet";
 export default function CreateNoti() {
   const [notification, setNotification] = useState({
     message_title: "",
@@ -20,20 +22,22 @@ export default function CreateNoti() {
   };
 
   return (
-    <div className="w-full h-full">
-      <div className="container">
-        <div className="row my-4">
-          <div className="col-12">
-            <p className="text-gray-700 text-lg font-bold text-left">
-              กรอกข่าวสาร
-            </p>
-            <Formik initialValues={notification} onSubmit={handleSubmit}>
-              <Form>
+    <div className="flex flex-col flex-1">
+      <Helmet>
+        <title>จัดการข่าวสาร</title>
+      </Helmet>
+
+      <Formik initialValues={notification} onSubmit={handleSubmit}>
+        {(formikProps) => (
+          <>
+            <EditHeader title="กรอกข่าวสาร" />
+            <Form className="overflow-y-auto">
+              <div className="p-6 overflow-y-auto">
                 <Field name="message_title">
                   {({ field, meta }) => (
                     <div>
                       <Input
-                        placeholder="ใส่ข้อความ"
+                        placeholder="กรอกหัวข้อ"
                         inputProps={{ ...field }}
                       />
                     </div>
@@ -43,7 +47,7 @@ export default function CreateNoti() {
                   {({ field, meta }) => (
                     <div>
                       <Input
-                        placeholder="ใส่ข้อความ"
+                        placeholder="กรอกเนื้อหา"
                         inputProps={{ ...field }}
                       />
                     </div>
@@ -54,11 +58,11 @@ export default function CreateNoti() {
                     Submit
                   </button>
                 </div>
-              </Form>
-            </Formik>
-          </div>
-        </div>
-      </div>
+              </div>
+            </Form>
+          </>
+        )}
+      </Formik>
     </div>
   );
 }
