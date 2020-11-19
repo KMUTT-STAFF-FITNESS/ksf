@@ -2,11 +2,11 @@ import React from "react";
 
 export default function Notifications(props) {
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-xl mx-auto min-h-screen">
       <div className="container">
         <div className="col-12">
           <div className=" mx-auto">
-            <div className=" p-3 w-full overflow-hidden py-4 rounded shadow mx-auto">
+            <div className=" p-3 w-full  overflow-hidden py-4 rounded shadow mx-auto">
               <div className="row">
                 <div className="text-left mx-auto">
                   <strong className="text-lg text-left mx-4 font-bold ">
