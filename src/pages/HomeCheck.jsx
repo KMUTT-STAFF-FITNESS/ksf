@@ -13,11 +13,12 @@ export default function HomeCheck(props) {
       .state;
 
     const temp = {
-      code: codeState
-    }
+      code: codeState,
+    };
 
-    await apiFecthLogin(temp);
+    const res = await apiFecthLogin(temp);
     console.log(codeState, " == > ", state);
+    console.log("res", res);
   }, [props]);
 
   useEffect(() => {
