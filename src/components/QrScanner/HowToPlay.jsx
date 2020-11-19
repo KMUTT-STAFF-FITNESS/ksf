@@ -33,7 +33,7 @@ export default function HowToPlay({ id }) {
 
   if (isFetch) {
     return (
-      <div className="flex flex-col flex-1 min-h-screen">
+      <div className="flex flex-col flex-1">
         <Loading />
       </div>
     );

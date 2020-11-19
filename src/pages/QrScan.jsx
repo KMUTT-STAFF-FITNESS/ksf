@@ -80,7 +80,7 @@ export default function QrScan() {
           </div>
           <div className="col-12">
             <div className="text-center mx-auto">
-              <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
+              <div className="p-3 w-full lg:w-1/3 overflow-y-scroll py-4 rounded shadow mx-auto">
                 {activeStep === 0 && <QrPage />}
                 {activeStep === 1 && <HowToPlay />}
               </div>
