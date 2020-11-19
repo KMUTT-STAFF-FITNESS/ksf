@@ -6,17 +6,25 @@ import { apiFetchMachineHowToPlay } from "../../api/machine";
 import Loading from "../core/Loading";
 import _ from "lodash";
 
-export default function HowToPlay() {
+export default function HowToPlay({ id }) {
   const [howToPlay, setHowToPlay] = useState();
+  const [url, setUrl] = useState();
   const [isFetch, setIsFetch] = useState(false);
 
   const fetchData = useCallback(async () => {
-    setIsFetch(true);
-    const { data } = await apiFetchMachineHowToPlay(1);
-    const dataParse = data.detail.split("<br />");
-    setHowToPlay(dataParse);
-    console.log(dataParse);
-    setIsFetch(false);
+    try {
+      setIsFetch(true);
+      const { data } = await apiFetchMachineHowToPlay(id);
+      setUrl(data.video_path)
+      const dataParse = data.detail.split("<br />");
+      setHowToPlay(dataParse);
+      setIsFetch(false);
+    } catch (error) {
+      console.log("Error: " + error);
+      setIsFetch(false);
+    } finally {
+      setIsFetch(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -31,22 +39,29 @@ export default function HowToPlay() {
     );
   }
   return (
-    <div className="max-w-screen-xl mx-auto min-h-screen">
+    <div className="max-w-screen-xl mx-auto">
       <div className="container">
         <div className="row">
           <div className="col-12">
             <Logo />
           </div>
           <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
-            <video controls>
-              <source src={"video_test/test.mp4"} type="video/mp4" />
-            </video>
-            <div class="text-center mx-auto my-4">
+            <div class="mx-auto my-4">
               {_.map(howToPlay, (data, i) => (
-                <>
-                  <p className="text-gray-700 text-center text-lg ">{data}</p>
-                  <br />
-                </>
+                <div key={i.toString()}>
+                  <iframe
+                    src={url}
+                    width="560"
+                    height="315"
+                    frameborder="0"
+                    allowfullscreen
+                  ></iframe>
+
+                  <div
+                    className="text-gray-700 text-lg "
+                    dangerouslySetInnerHTML={{ __html: data }}
+                  />
+                </div>
               ))}
             </div>
           </div>

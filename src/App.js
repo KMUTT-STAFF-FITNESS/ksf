@@ -34,7 +34,7 @@ function App() {
       <Notification path="/notification" />
       <ReportProblem path="/reportproblem" />
       <ExerciseDashboard path="/exercise" />
-      <HowToPlay path="/howtoplay" />
+      <HowToPlay path="/howtoplay/:id" />
       <NotiDetail path="/notidetail/:id" />
       <UploadRecipt path="/upload" />
       <Wait path="/wait" />
