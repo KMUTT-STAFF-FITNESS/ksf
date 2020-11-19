@@ -62,47 +62,6 @@ export default function FormUpdate() {
     };
     setMachine(temp);
   }
-  // const [machine, setMachine] = useState([]);
-
-  // const addItem = () => {
-  //   setMachine([
-  //     ...machine,
-  //     {
-  //       id: "",
-  //       newItem: "",
-  //     },
-  //   ]);
-  // };
-
-  // return (
-  //   <div>
-  //     <Formik initialValues={machine}>
-  //       <form>
-  //         <input className="form-control" onSubmit={(e)=>{this.addItem(e)}}>
-  //         </input>
-  //       </form>
-  //     </Formik>
-  //     <ul>
-  //       {machine.map((item) => (
-  //         <li key={item.id}>{item.newItem}</li>
-  //       ))}
-  //     </ul>
-  //     <button onClick={addItem}>Add Machine</button>
-  //   </div>
-  // );
-
-  // function additem (e) {
-  //   const [machine, setMachine] = useState([])
-  //   const addMachine =()=>{
-  //     setMachine([... machine,{
-  //       name: ""
-  //     }])
-  //   }
-
-  //   setMachhine({
-  //     machine:[...this.state.machine , newMachine]
-  //   })
-  // }
 
   const columns = [
     {
