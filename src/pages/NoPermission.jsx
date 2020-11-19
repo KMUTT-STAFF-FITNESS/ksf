@@ -1,9 +1,9 @@
-import React from "react";
-import Logo from "../core/Logo";
-import BtnBack from "../core/BtnBack";
 import { navigate } from "@reach/router";
+import React from "react";
+import BtnBack from "../components/core/BtnBack";
+import Logo from "../components/core/Logo";
 
-export default function LoginSSO() {
+export default function NoPermission() {
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">
       <Logo />
@@ -16,7 +16,7 @@ export default function LoginSSO() {
               src="image/wait.png"
               alt=""
             />
-            <p className="text-gray-700 text-center my-4">Coming soon</p>
+            <p className="text-gray-700 text-center my-4">You don't have permission to access this website</p>
             <BtnBack text="Back" onClick={() => navigate("/")} />
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Info1 from "../components/Register/Info1";
 import Info2 from "../components/Register/Info2";
 import Info3 from "../components/Register/Info3";
@@ -15,6 +15,7 @@ import Pdpa from "../components/Register/Pdpa";
 import { navigate } from "@reach/router";
 import SumProfile from "../components/Register/SumProfile";
 import Loading from "../components/core/Loading";
+import { storesContext } from "../context";
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -74,30 +75,11 @@ function getSteps() {
 }
 
 export default function Register() {
+  const { authenticationStore } = useContext(storesContext);
   const classes = useColorlibStepIconStyles();
+  const [user, setUser] = useState();
 
-  const [profile, setProfile] = useState({
-    fname: "",
-    lname: "",
-    dob: "",
-    email: "",
-    gender: "male",
-    tel_no: "",
-    department: "",
-    home_address: {
-      houseNumber: "",
-      subdistrict: "",
-      district: "",
-      province: "",
-      postCode: "",
-    },
-    weight: "",
-    height: "",
-    disease: "",
-    disease_detail: "",
-    role_id: "3",
-    member_type_id: "",
-  });
+  const [profile, setProfile] = useState();
   const [memberType, setMemberType] = useState();
   const [selectType, setSelectType] = useState("");
   const [isFetch, setIsFetch] = useState(false);
@@ -106,10 +88,39 @@ export default function Register() {
 
   const fetchData = useCallback(async () => {
     setIsFetch(true);
+    const res = await authenticationStore.me();
     const { data } = await apiFetchMemberType();
+
+    const name = res.name_th.split(" ");
+    const first_name = name[0].split("นาย")
+    console.log("data", res)
+    console.log("name split", first_name);
+
+    const temp = {
+      fname: name[0],
+      lname: name[1],
+      dob: "",
+      email: res.email,
+      gender: "male",
+      tel_no: "",
+      department: "",
+      home_address: {
+        houseNumber: "",
+        subdistrict: "",
+        district: "",
+        province: "",
+        postCode: "",
+      },
+      weight: "",
+      height: "",
+      disease: "",
+      disease_detail: "",
+      role_id: "3",
+      member_type_id: "",
+    };
     setMemberType(data);
     setIsFetch(false);
-  }, []);
+  }, [authenticationStore]);
 
   useEffect(() => {
     fetchData();
@@ -169,6 +180,7 @@ export default function Register() {
       <div className="container">
         <div className="row">
           <div className="col-12">
+            {console.log("me/regis", user)}
             <Logo />
           </div>
           <div className="col-12">

@@ -37,6 +37,10 @@ export default function RegisterManage() {
     );
   }
 
+  const handleRemove = (id) => {
+    console.log(id);
+  };
+
   const columns = [
     {
       Header: "Name",
@@ -63,7 +67,7 @@ export default function RegisterManage() {
       accessor: "profile_id",
       Cell: ({ cell: { value } }) => (
         <Tooltip title="ลบ">
-          <IconButton onClick={() => navigate(`/admin/register/${value}/edit`)}>
+          <IconButton onClick={() => handleRemove(value)}>
             <CloseRounded />
           </IconButton>
         </Tooltip>
