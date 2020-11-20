@@ -4,7 +4,7 @@ export const apiFetchMachine = () => {
     return appAxios().get(`${process.env.REACT_APP_BACKEND}/machine`)
 }
 export const apiFetchMachineGroup = () => {
-    return appAxios().get(`${process.env.REACT_APP_BACKEND}/machine_group`)
+    return appAxios().get(`${process.env.REACT_APP_BACKEND}/machine-group`)
 }
 export const apiFetchMachineHowToPlay = (id) => {
     return appAxios().get(`${process.env.REACT_APP_BACKEND}/machine/${id}/howtoplay`)

@@ -3,6 +3,7 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { storesContext } from "../context";
 import Loading from "./core/Loading";
+import { apiFetchUserByUserId } from "../api/users";
 
 export default function UserMainLayout(props) {
   const { component: Child } = props;
@@ -21,6 +22,10 @@ export default function UserMainLayout(props) {
     try {
       if (Cookies.get(process.env.REACT_APP_ACCESS_TOKEN_NAME)) {
         await authenticationStore.me();
+        const usr = await apiFetchUserByUserId(
+          authenticationStore.currentUserId
+        );
+        console.log("user =>", usr);
         if (authenticationStore.currentUser) {
           onAuthen();
           setIsCheckingAuth(false);

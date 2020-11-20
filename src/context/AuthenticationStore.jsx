@@ -13,14 +13,6 @@ export class AuthenticationStore {
     return this.currentUser?.name;
   }
 
-  @computed get currentUserCompanyId() {
-    return this.currentUser?.company_id;
-  }
-
-  @computed get currentUserRoleId() {
-    return this.currentUser?.role_id;
-  }
-
   @computed get is_auth() {
     const accessToken = Cookies.get(process.env.REACT_APP_ACCESS_TOKEN_NAME);
     return accessToken;
@@ -28,6 +20,7 @@ export class AuthenticationStore {
 
   @action async me() {
     const { data } = await apiFetchMe();
+    console.log("me = =asd=as=d", data);
     this.currentUser = data;
     return data;
   }

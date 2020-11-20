@@ -13,10 +13,8 @@ import { apiCreateUser } from "../api/users";
 import { apiFetchMemberType } from "../api/membertype";
 import Pdpa from "../components/Register/Pdpa";
 import { navigate } from "@reach/router";
-import SumProfile from "../components/Register/SumProfile";
 import Loading from "../components/core/Loading";
 import { storesContext } from "../context";
-import Alert from "../components/core/Modal/Alert";
 import ErrorModal from "../components/core/Modal/ErrorModal";
 
 const useColorlibStepIconStyles = makeStyles({
@@ -65,15 +63,7 @@ const ColorlibConnector = withStyles({
 })(StepConnector);
 
 function getSteps() {
-  return [
-    "Pdpa",
-    "Information",
-    "Address",
-    "Health",
-    "Status",
-    "Profile",
-    "Finish",
-  ];
+  return ["Pdpa", "Information", "Address", "Health", "Status", "Finish"];
 }
 
 export default function Register() {
@@ -103,6 +93,7 @@ export default function Register() {
       fname: name[0],
       lname: name[1],
       dob: "",
+      user_id: res.user_id,
       email: res.email,
       gender: "male",
       tel_no: "",
@@ -151,6 +142,7 @@ export default function Register() {
 
   const handleSubmit = async (data) => {
     const temp = {
+      user_id: data.user_id,
       fname: data.fname,
       lname: data.lname,
       dob: data.dob,
@@ -190,8 +182,10 @@ export default function Register() {
       temp.member_type_id !== ""
     ) {
       await apiCreateUser(temp);
+      handleNext();
     } else {
       setIsOpenErrorModal(true);
+      return;
     }
     handleNext();
   };
@@ -237,9 +231,8 @@ export default function Register() {
                           selectType={selectType}
                         />
                       )}
-                      {activeStep === 5 && <SumProfile profile={profile} />}
 
-                      {activeStep === 6 && <Complete />}
+                      {activeStep === 5 && <Complete />}
                     </div>
                   </div>
                   <div className="p-3 w-full  overflow-hidden py-4 rounded  mx-auto">
@@ -259,7 +252,7 @@ export default function Register() {
                           <Button
                             className="buttonLogin"
                             onClick={
-                              activeStep === 5
+                              activeStep === 4
                                 ? formikProps.submitForm
                                 : handleNext
                             }
