@@ -42,9 +42,8 @@ function App() {
       <UserMainLayout component={UploadRecipt} path="/upload" />
       <UserMainLayout component={Wait} path="/wait" />
       <UserMainLayout component={LoginSSO} path="/comingsoon" />
-      <UserMainLayout component={HomeCheck} path="/checking" />
       <UserMainLayout component={NoPermission} path="/nopermission" />
-
+      <HomeCheck path="/checking" />
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />
