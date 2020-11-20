@@ -16,6 +16,8 @@ import { navigate } from "@reach/router";
 import SumProfile from "../components/Register/SumProfile";
 import Loading from "../components/core/Loading";
 import { storesContext } from "../context";
+import Alert from "../components/core/Modal/Alert";
+import ErrorModal from "../components/core/Modal/ErrorModal";
 
 const useColorlibStepIconStyles = makeStyles({
   root: {
@@ -84,6 +86,7 @@ export default function Register() {
   const [selectType, setSelectType] = useState("");
   const [isFetch, setIsFetch] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+  const [isOpenErrorModal, setIsOpenErrorModal] = useState(false);
   const steps = getSteps();
 
   const fetchData = useCallback(async () => {
@@ -92,8 +95,8 @@ export default function Register() {
     const { data } = await apiFetchMemberType();
 
     const name = res.name_th.split(" ");
-    const first_name = name[0].split("นาย")
-    console.log("data", res)
+    const first_name = name[0].split("นาย");
+    console.log("data", res);
     console.log("name split", first_name);
 
     const temp = {
@@ -118,7 +121,7 @@ export default function Register() {
       role_id: "3",
       member_type_id: "",
     };
-    setProfile(temp)
+    setProfile(temp);
     setMemberType(data);
     setIsFetch(false);
   }, [authenticationStore]);
@@ -172,12 +175,33 @@ export default function Register() {
         data.home_address.postCode,
       member_type_id: selectType,
     };
-    await apiCreateUser(temp);
+    console.log("register", temp);
+    if (
+      temp.fname !== "" &&
+      temp.lname !== "" &&
+      temp.dob !== "" &&
+      temp.email !== "" &&
+      temp.gender !== "" &&
+      temp.tel_no !== "" &&
+      temp.department !== "" &&
+      temp.weight !== "" &&
+      temp.height !== "" &&
+      temp.address !== "" &&
+      temp.member_type_id !== ""
+    ) {
+      await apiCreateUser(temp);
+    } else {
+      setIsOpenErrorModal(true);
+    }
     handleNext();
   };
 
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">
+      <ErrorModal
+        open={isOpenErrorModal}
+        onClose={() => setIsOpenErrorModal(false)}
+      />
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -213,7 +237,7 @@ export default function Register() {
                           selectType={selectType}
                         />
                       )}
-                      {activeStep === 5 && <SumProfile profile={profile}/>}
+                      {activeStep === 5 && <SumProfile profile={profile} />}
 
                       {activeStep === 6 && <Complete />}
                     </div>
