@@ -27,11 +27,14 @@ export default function UserMainLayout(props) {
           const usr = await apiFetchUserByUserId(
             authenticationStore.currentUserId
           );
-
-          if (usr.data.is_member) {
-            navigate("/home");
+          if (usr.data === "") {
+            onAuthen();
           } else {
-            navigate("/wait");
+            if (usr.data.is_member) {
+              navigate("/home");
+            } else {
+              navigate("/wait");
+            }
           }
           onAuthen();
           setIsCheckingAuth(false);
