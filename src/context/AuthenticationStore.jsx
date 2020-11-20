@@ -28,7 +28,7 @@ export class AuthenticationStore {
 
   @action async me() {
     const { data } = await apiFetchMe();
-    this.currentUser = data.user;
+    this.currentUser = data;
     return data;
   }
 

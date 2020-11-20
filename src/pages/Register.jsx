@@ -118,6 +118,7 @@ export default function Register() {
       role_id: "3",
       member_type_id: "",
     };
+    setProfile(temp)
     setMemberType(data);
     setIsFetch(false);
   }, [authenticationStore]);
@@ -212,7 +213,7 @@ export default function Register() {
                           selectType={selectType}
                         />
                       )}
-                      {activeStep === 5 && <SumProfile />}
+                      {activeStep === 5 && <SumProfile profile={profile}/>}
 
                       {activeStep === 6 && <Complete />}
                     </div>
