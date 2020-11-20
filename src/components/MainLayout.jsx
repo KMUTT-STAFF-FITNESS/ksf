@@ -40,9 +40,6 @@ export default function MainLayout(props) {
       if (Cookies.get(process.env.REACT_APP_ACCESS_TOKEN_NAME)) {
         await authenticationStore.me();
         if (authenticationStore.currentUser) {
-          // if (props.superAdminOnly && !authenticationStore.isSuperAdmin) {
-          //   navigate(`/`);
-          // }
           onAuthen();
 
           setIsCheckingAuth(false);
