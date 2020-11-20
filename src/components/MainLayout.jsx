@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import Sidebar from "./Sidebar";
 import Loading from "./core/Loading";
 import { navigate } from "@reach/router";
+import { apiFetchUserByUserId } from "../api/users";
 
 export default function MainLayout(props) {
   const { component: Child } = props;
@@ -40,6 +41,16 @@ export default function MainLayout(props) {
       if (Cookies.get(process.env.REACT_APP_ACCESS_TOKEN_NAME)) {
         await authenticationStore.me();
         if (authenticationStore.currentUser) {
+          const usr = await apiFetchUserByUserId(
+            authenticationStore.currentUserId
+          );
+          if (usr.data.role_id === "3") {
+            navigate("/nopermission");
+          }else {
+            if(!usr.data.is_member){
+              navigate("/wait");
+            }
+          }
           onAuthen();
 
           setIsCheckingAuth(false);

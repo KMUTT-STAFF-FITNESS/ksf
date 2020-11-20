@@ -40,10 +40,11 @@ function App() {
       <UserMainLayout component={HowToPlay} path="/howtoplay/:id" />
       <UserMainLayout component={NotiDetail} path="/notidetail/:id" />
       <UserMainLayout component={UploadRecipt} path="/upload" />
-      <UserMainLayout component={Wait} path="/wait" />
       <UserMainLayout component={LoginSSO} path="/comingsoon" />
       <UserMainLayout component={NoPermission} path="/nopermission" />
       <HomeCheck path="/checking" />
+      <Wait path="/wait" />
+
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />

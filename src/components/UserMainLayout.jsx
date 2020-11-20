@@ -22,11 +22,17 @@ export default function UserMainLayout(props) {
     try {
       if (Cookies.get(process.env.REACT_APP_ACCESS_TOKEN_NAME)) {
         await authenticationStore.me();
-        const usr = await apiFetchUserByUserId(
-          authenticationStore.currentUserId
-        );
-        console.log("user =>", usr);
+
         if (authenticationStore.currentUser) {
+          const usr = await apiFetchUserByUserId(
+            authenticationStore.currentUserId
+          );
+
+          if (usr.data.is_member) {
+            navigate("/home");
+          } else {
+            navigate("/wait");
+          }
           onAuthen();
           setIsCheckingAuth(false);
           return;
@@ -40,7 +46,7 @@ export default function UserMainLayout(props) {
       setIsNotSigned(true);
       setIsCheckingAuth(false);
     }
-  }, [authenticationStore]);
+  }, [authenticationStore, props]);
 
   useEffect(() => {
     checkAuth();
