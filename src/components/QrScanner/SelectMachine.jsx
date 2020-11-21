@@ -22,11 +22,9 @@ export default function SelectMachine(props) {
         mg.push(m);
       });
 
-      console.log("data===" + data);
       setMachine(mg);
       setIsFetch(false);
     } catch (error) {
-      console.log("Error: " + error);
       setIsFetch(false);
     } finally {
       setIsFetch(false);

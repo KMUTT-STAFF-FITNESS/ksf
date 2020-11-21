@@ -20,7 +20,6 @@ export default function UploadRecipt() {
 
     formData.append("file", images[0].file);
     const res = await apiUploadSlip(user.profile_id, formData);
-    console.log(res);
     navigate("/wait");
   };
   const fecthData = useCallback(async () => {

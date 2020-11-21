@@ -20,7 +20,6 @@ export default function HowToPlay({ id }) {
       setHowToPlay(dataParse);
       setIsFetch(false);
     } catch (error) {
-      console.log("Error: " + error);
       setIsFetch(false);
     } finally {
       setIsFetch(false);

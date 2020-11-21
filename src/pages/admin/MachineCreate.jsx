@@ -5,29 +5,19 @@ import ErrorModal from "../../components/core/Modal/ErrorModal";
 import EditHeader from "../../components/Header/EditHeader";
 import Input from "../../components/core/Input";
 import {
-  apiEditMachine,
-  apiDeleteMachine,
+  apiCreateMachine,
   apiFetchMachineGroup,
-  apiFetchMachineId,
   apiFetchMachineType,
 } from "../../api/machine";
 import { navigate } from "@reach/router";
 import _ from "lodash";
 import Loading from "../../components/core/Loading";
 import Select from "react-select";
-import ConfirmModal from "../../components/core/Modal/ConfirmModal";
-import { apiDeleteMember } from "../../api/users";
-import BtnBack from "../../components/core/BtnBack";
 
-export default function MachineEdit(props) {
+export default function MachineCreate() {
   const [isOpenErrorModal, setIsOpenErrorModal] = useState(false);
   const [isOpenSuccessModal, setIsOpenSuccessModal] = useState(false);
-  const [isOpenConfirm, setIsOpenConfirm] = useState(false);
-  const [machine, setMachine] = useState({
-    machine_name: "",
-    machine_group_id: 1,
-    machine_type_id: 1,
-  });
+  const [machine, setMachine] = useState();
   const [isFetch, setIsFetch] = useState(false);
   const [machineGroup, setMachineGroup] = useState([]);
   const [machineType, setMachineType] = useState([]);
@@ -38,16 +28,6 @@ export default function MachineEdit(props) {
     setIsFetch(true);
     const machineGroup = await apiFetchMachineGroup();
     const machineType = await apiFetchMachineType();
-    const { data } = await apiFetchMachineId(props.id);
-
-    const temp = {
-      machine_name: data.machine_name,
-      machine_group_id: parseInt(data.machine_group_id),
-      machine_type_id: parseInt(data.machine_type_id),
-    };
-
-    setGroupId(temp.machine_group_id);
-    setTypeId(temp.machine_type_id);
 
     const mg = [];
     _.map(machineGroup.data, (data, id) => {
@@ -68,9 +48,12 @@ export default function MachineEdit(props) {
     });
     setMachineType(mt);
 
+    const temp = {
+      machine: "",
+    };
     setMachine(temp);
     setIsFetch(false);
-  }, [props]);
+  }, []);
 
   useEffect(() => {
     fetchData();
@@ -86,14 +69,13 @@ export default function MachineEdit(props) {
 
   const handleSubmit = async (data) => {
     const temp = {
-      machine_id: props.id,
       machine_name: data.machine_name,
       machine_group_id: groupId,
       machine_type_id: typeId,
     };
 
     try {
-      await apiEditMachine(temp);
+      await apiCreateMachine(temp);
       setIsOpenSuccessModal(true);
       setTimeout(() => {
         navigate("/admin/machine");
@@ -111,25 +93,6 @@ export default function MachineEdit(props) {
     setTypeId(data);
   };
 
-  const handleRemove = () => {
-    setIsOpenConfirm(true);
-  };
-
-  const handleDelete = async () => {
-    const temp = {
-      machine_id: props.id,
-    };
-    try {
-      await apiDeleteMachine(temp);
-      setIsOpenSuccessModal(true);
-      setTimeout(() => {
-        navigate("/admin/machine");
-      }, 2000);
-    } catch (err) {
-      setIsOpenErrorModal(true);
-    }
-  };
-
   return (
     <div className="flex flex-col flex-1">
       <ErrorModal
@@ -139,11 +102,6 @@ export default function MachineEdit(props) {
       <CreateSuccessModal
         open={isOpenSuccessModal}
         onClose={() => setIsOpenSuccessModal(false)}
-      />
-      <ConfirmModal
-        open={isOpenConfirm}
-        onClose={() => setIsOpenConfirm(false)}
-        onConfirm={() => handleDelete()}
       />
       <Formik initialValues={machine} onSubmit={handleSubmit}>
         {(formikProps) => (
@@ -164,38 +122,27 @@ export default function MachineEdit(props) {
                 <div className="my-3">
                   <Select
                     value={machineType.find(
-                      (option) => option.value === machine.machine_type_id
+                      (option) => option.value === option.value
                     )}
                     options={machineType}
                     onChange={(option) => handleType(option.value)}
-                    defaultValue={machineType[machine.machine_type_id]}
+                    defaultValue={machineType[0]}
                   />
                 </div>
                 <div className="my-3">
                   <Select
                     value={machineGroup.find(
-                      (option) => option.value === machine.machine_group_id
+                      (option) => option.value === option.value
                     )}
                     options={machineGroup}
                     onChange={(option) => handleGroup(option.value)}
-                    defaultValue={machineGroup[machine.machine_group_id]}
+                    defaultValue={machineGroup[0]}
                   />
                 </div>
-                <div className="row">
-                  <div className="col-6 mx-auto">
-                    <button
-                      type="button"
-                      onClick={() => handleRemove()}
-                      className="buttonBack btn-block"
-                    >
-                      ลบ
-                    </button>
-                  </div>
-                  <div className="col-6 mx-auto">
-                    <button value="submit" className="buttonBack btn-block">
-                      แก้ไขเครื่องออกกำลังกาย
-                    </button>
-                  </div>
+                <div className="col-4 mx-auto">
+                  <button value="submit" className="buttonBack btn-block">
+                    สร้างเครื่องออกกำลังกาย
+                  </button>
                 </div>
               </div>
             </Form>

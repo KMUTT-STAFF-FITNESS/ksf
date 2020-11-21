@@ -86,8 +86,6 @@ export default function Register() {
 
     const name = res.name_th.split(" ");
     const first_name = name[0].split("นาย");
-    console.log("data", res);
-    console.log("name split", first_name);
 
     const temp = {
       fname: name[0],
@@ -167,7 +165,6 @@ export default function Register() {
         data.home_address.postCode,
       member_type_id: selectType,
     };
-    console.log("register", temp);
     if (
       temp.fname !== "" &&
       temp.lname !== "" &&
@@ -199,7 +196,6 @@ export default function Register() {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            {console.log("me/regis", user)}
             <Logo />
           </div>
           <div className="col-12">

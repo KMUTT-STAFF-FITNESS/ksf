@@ -30,7 +30,6 @@ export default function ReportProblem() {
   // }
 
   const handleSubmit = async (data) => {
-    console.log("report", data);
     if (data.selectIssue === "") {
       setIsOpenErrorModal(true);
       return;

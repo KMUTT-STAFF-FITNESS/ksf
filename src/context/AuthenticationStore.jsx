@@ -20,7 +20,6 @@ export class AuthenticationStore {
 
   @action async me() {
     const { data } = await apiFetchMe();
-    console.log("me = =asd=as=d", data);
     this.currentUser = data;
     return data;
   }
@@ -34,7 +33,6 @@ export class AuthenticationStore {
 
   @action async signIn(data) {
     const response = await apiFecthLogin(data);
-    console.log(response);
     const { token } = response.data;
     this.setToken(token);
     return response;

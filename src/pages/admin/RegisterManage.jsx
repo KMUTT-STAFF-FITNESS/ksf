@@ -3,17 +3,24 @@ import _ from "lodash";
 import { useState } from "react";
 import { Formik, Field, FieldArray, Form } from "formik";
 import DataTable from "../../components/DataTable";
-import { apiFetchUsers } from "../../api/users";
+import { apiDeleteMember, apiFetchUsers } from "../../api/users";
 import EditHeader from "../../components/Header/EditHeader";
 import { IconButton, Tooltip } from "@material-ui/core";
 import { CloseRounded, CreateRounded } from "@material-ui/icons";
 import { navigate } from "@reach/router";
 import Loading from "../../components/core/Loading";
+import ConfirmModal from "../../components/core/Modal/ConfirmModal";
+import CreateSuccessModal from "../../components/core/Modal/CreateSuccessModal";
+import ErrorModal from "../../components/core/Modal/ErrorModal";
 
 export default function RegisterManage() {
   const [users, setUsers] = useState();
   const [isFetch, setIsFetch] = useState(false);
+  const [isOpenConfirm, setIsOpenConfirm] = useState(false);
+  const [isOpenSuccess, setIsOpenSuccess] = useState(false);
+  const [isOpenError, setIsOpenError] = useState(false);
   const [prefixNameRowPerPage, setPrefixNameRowPerPage] = useState(10);
+  const [removerId, setRemoveId] = useState();
 
   const fetchData = useCallback(async () => {
     setIsFetch(true);
@@ -38,9 +45,24 @@ export default function RegisterManage() {
   }
 
   const handleRemove = (id) => {
-    console.log(id);
+    setRemoveId(id);
+    setIsOpenConfirm(true);
   };
-  
+
+  const handleDelete = async (id) => {
+    const data = {
+      profile_id: id,
+    };
+    try {
+      await apiDeleteMember(data);
+      setIsOpenSuccess(true);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    } catch (err) {
+      setIsOpenError(true);
+    }
+  };
 
   const columns = [
     {
@@ -78,6 +100,16 @@ export default function RegisterManage() {
 
   return (
     <div className="w-full">
+      <ConfirmModal
+        open={isOpenConfirm}
+        onClose={() => setIsOpenConfirm(false)}
+        onConfirm={() => handleDelete(removerId)}
+      />
+      <CreateSuccessModal
+        open={isOpenSuccess}
+        onClose={() => setIsOpenSuccess(false)}
+      />
+      <ErrorModal open={isOpenError} onClose={() => setIsOpenError(false)} />
       <Formik initialValues={users} onSubmit="">
         {(formikProps) => (
           <FieldArray name="users">

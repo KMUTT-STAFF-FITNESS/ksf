@@ -20,7 +20,6 @@ export default function Dashboard() {
   const fetchData = useCallback(async () => {
     setIsFetch(true);
     const { data } = await apiFetchPendingUsers();
-    console.log(data);
     const temp = {
       user: data,
     };

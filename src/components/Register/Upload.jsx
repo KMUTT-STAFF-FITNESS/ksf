@@ -7,7 +7,6 @@ export default function Upload(props) {
 
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
-    console.log(imageList, addUpdateIndex);
     props.setImage(imageList);
   };
 

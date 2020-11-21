@@ -1,18 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Formik, Field, FieldArray, Form } from "formik";
-import Input from "../../components/core/Input";
-import Select from "react-select";
-import _ from "lodash";
-import { apiCreateReportTemplate } from "../../api/report";
 import { Helmet } from "react-helmet";
-import MachineForm from "../../components/Machine/MachineForm";
 import { apiFetchMachine } from "../../api/machine";
 import DataTable from "../../components/DataTable";
 import Loading from "../../components/core/Loading";
-import EditHeader from "../../components/Header/EditHeader";
 import { IconButton, Tooltip } from "@material-ui/core";
 import { CreateRounded } from "@material-ui/icons";
 import { navigate } from "@reach/router";
+import CreateHeader from "../../components/Header/CreateHeader";
 
 export default function FormUpdate() {
   const [machine, setMachine] = useState();
@@ -54,7 +49,6 @@ export default function FormUpdate() {
   }
 
   function handleChange(val, index) {
-    console.log(val, index);
     let temp = machine;
     temp[index] = {
       ...machine[index],
@@ -99,8 +93,8 @@ export default function FormUpdate() {
               <Field name="machine">
                 {({ field, meta }) => (
                   <>
-                    <EditHeader
-                      formik={formikProps}
+                    <CreateHeader
+                      onClick={() => navigate("/admin/machine/create")}
                       title="เครื่องออกกำลังกาย"
                     />
                     <Form className="overflow-y-auto">

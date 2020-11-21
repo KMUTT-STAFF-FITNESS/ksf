@@ -27,7 +27,6 @@ export default function MachineForm(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {console.log("test",machineArray)}
                     {_.map(machineArray.form.values, (data, index) => (
                       <tr>
                         <td>{data.machine_name}</td>

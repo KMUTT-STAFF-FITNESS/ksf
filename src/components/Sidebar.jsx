@@ -5,8 +5,8 @@ import {
   ExitToAppRounded,
   GroupRounded,
   FitnessCenterRounded,
-  AnnouncementRounded,
   ReportProblemRounded,
+  NotificationsActiveRounded,
 } from "@material-ui/icons";
 import { Menu } from "@material-ui/core";
 import { useObserver } from "mobx-react-lite";
@@ -93,7 +93,7 @@ export default function Sidebar(props) {
       <SidebarTab
         id="notification"
         name="การจัดการข่าวสาร"
-        icon={AnnouncementRounded}
+        icon={NotificationsActiveRounded}
         onClick={() => handlerTabClick("/admin/notification")}
         currentTab={props.currentTab}
       />

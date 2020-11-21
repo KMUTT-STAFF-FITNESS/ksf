@@ -15,7 +15,6 @@ export default function NotificationDetail(props) {
     setIsFetch(true);
     const { data } = await apiCreateNotificationById(props.id);
     setNews(data);
-    console.log(data)
     setIsFetch(false);
   }, [props.id]);
 

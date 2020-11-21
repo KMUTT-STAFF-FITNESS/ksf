@@ -56,7 +56,7 @@ export default function CreateNoti() {
       <Formik initialValues={notification} onSubmit={handleSubmit}>
         {(formikProps) => (
           <>
-            <EditHeader title="กรอกข่าวสาร" />
+            <EditHeader title="สร้างข่าวสาร" />
             <Form className="overflow-y-auto">
               <div className="p-6 overflow-y-auto">
                 <Field name="message_title">

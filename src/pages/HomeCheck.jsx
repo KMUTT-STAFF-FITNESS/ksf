@@ -28,7 +28,6 @@ export default function HomeCheck(props) {
     } else {
       if (state === "ksf_login") {
         const user = await apiFetchUserByUserId(res.data.user_id);
-        console.log("user", user);
         if (user.data.role_id === "1" || user.data.role_id === "2") {
           navigate("/admin");
         } else if (user.data.role_id === "3") {
@@ -40,7 +39,6 @@ export default function HomeCheck(props) {
         navigate("/register");
       }
     }
-    console.log("res", res);
   }, [authenticationStore, props]);
 
   useEffect(() => {

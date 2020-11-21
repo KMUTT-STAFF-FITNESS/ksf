@@ -29,6 +29,8 @@ import UserMainLayout from "./components/UserMainLayout";
 import TableNotification from "./pages/admin/TableNotification";
 import TableReport from "./pages/admin/TableReport";
 import SignOut from "./pages/SignOut";
+import MachineCreate from "./pages/admin/MachineCreate";
+import MachineEdit from "./pages/admin/MachineEdit";
 
 function App() {
   return (
@@ -55,6 +57,8 @@ function App() {
       <MainLayout component={Dashboard} path="/admin" />
       <MainLayout component={RegisterManage} path="/admin/register" />
       <MainLayout component={FormUpdate} path="/admin/machine" />
+      <MainLayout component={MachineCreate} path="/admin/machine/create" />
+      <MainLayout component={MachineEdit} path="/admin/machine/:id/edit" />
       <MainLayout component={CreateNoti} path="/admin/createnoti" />
       <MainLayout component={TableReport} path="/admin/report" />
       <MainLayout component={TableNotification} path="/admin/notification" />

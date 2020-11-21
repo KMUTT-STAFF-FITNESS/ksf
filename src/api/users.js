@@ -23,5 +23,9 @@ export const apiFetchPendingUsers = () => {
 };
 
 export const apiApproveMember = (data) => {
-  return appAxios().put(`${process.env.REACT_APP_BACKEND}/approve`, data)
-}
+  return appAxios().put(`${process.env.REACT_APP_BACKEND}/approve`, data);
+};
+
+export const apiDeleteMember = (data) => {
+  return appAxios().put(`${process.env.REACT_APP_BACKEND}/user`, data);
+};
