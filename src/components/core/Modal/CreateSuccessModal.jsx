@@ -18,7 +18,7 @@ export default function CreateSuccessModal(props) {
               className="text-green-500 mx-auto mb-4"
               style={{ width: "8rem", height: "8rem" }}
             />
-            <p className="text-2xl tracking-tight">สร้างสำเร็จ</p>
+            <p className="text-2xl tracking-tight">สำเร็จ</p>
           </div>
         </div>
         {/* CONTENTS ──────────────────────────────────────────────────────────────────────────────── */}

@@ -240,7 +240,7 @@ export default function Register() {
                       <div className="row">
                         <div className="col-6 text-center">
                           <Button
-                            className="buttonBack"
+                            className="buttonBack btn-block"
                             disabled={activeStep === 0}
                             onClick={handleBack}
                             text="Back"
@@ -250,7 +250,7 @@ export default function Register() {
                         </div>
                         <div className="col-6 text-center">
                           <Button
-                            className="buttonLogin"
+                            className="buttonLogin btn-block"
                             onClick={
                               activeStep === 4
                                 ? formikProps.submitForm
@@ -266,7 +266,7 @@ export default function Register() {
                       <div className="row">
                         <div className="col-12 text-center">
                           <Button
-                            className="buttonLogin"
+                            className="buttonLogin btn-block"
                             onClick={handleBack}
                             // text={activeStep === steps.length - 1 ? "Submit" : "Next"}
                           >

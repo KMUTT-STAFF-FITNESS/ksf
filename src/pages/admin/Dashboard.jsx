@@ -2,16 +2,20 @@ import { IconButton, Tooltip } from "@material-ui/core";
 import { CheckRounded } from "@material-ui/icons";
 import { Field, FieldArray, Form, Formik } from "formik";
 import React, { useCallback, useEffect, useState } from "react";
-import { apiFetchPendingUsers } from "../../api/users";
+import { apiApproveMember, apiFetchPendingUsers } from "../../api/users";
 import Loading from "../../components/core/Loading";
 import DataTable from "../../components/DataTable";
 import EditHeader from "../../components/Header/EditHeader";
 import Zoom from "react-medium-image-zoom";
+import CreateSuccessModal from "../../components/core/Modal/CreateSuccessModal";
+import ErrorModal from "../../components/core/Modal/ErrorModal";
 
 export default function Dashboard() {
   const [isFetch, setIsFetch] = useState(false);
   const [user, setUser] = useState();
   const [prefixNameRowPerPage, setPrefixNameRowPerPage] = useState(10);
+  const [isOpenSuccessModal, setIsOpenSuccessModal] = useState(false);
+  const [isOpenErrorModal, setIsOpenErrorModal] = useState(false);
 
   const fetchData = useCallback(async () => {
     setIsFetch(true);
@@ -35,6 +39,21 @@ export default function Dashboard() {
       </div>
     );
   }
+
+  const handleApprove = async (id) => {
+    const data = {
+      profile_id: id,
+    };
+    try {
+      await apiApproveMember(data);
+      setIsOpenSuccessModal(true);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    } catch (err) {
+      setIsOpenErrorModal(true);
+    }
+  };
 
   const columns = [
     {
@@ -83,7 +102,7 @@ export default function Dashboard() {
       accessor: "profile_id",
       Cell: ({ cell: { value } }) => (
         <Tooltip title="ลบ">
-          <IconButton onClick={() => console.log(value)}>
+          <IconButton onClick={() => handleApprove(value)}>
             <CheckRounded />
           </IconButton>
         </Tooltip>
@@ -93,6 +112,14 @@ export default function Dashboard() {
 
   return (
     <div className="w-full">
+      <CreateSuccessModal
+        open={isOpenSuccessModal}
+        onClose={() => setIsOpenSuccessModal(false)}
+      />
+      <ErrorModal
+        open={isOpenErrorModal}
+        onClose={() => setIsOpenErrorModal(false)}
+      />
       <Formik initialValues={user} onSubmit="">
         {(formikProps) => (
           <FieldArray name="user">

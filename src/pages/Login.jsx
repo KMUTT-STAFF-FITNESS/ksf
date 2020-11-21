@@ -1,13 +1,81 @@
-import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Logo from "../components/core/Logo";
 import BtnNext from "../components/core/BtnNext";
 import BtnRigis from "../components/core/BtnBack";
-import * as Yup from "yup";
 import { navigate } from "@reach/router";
 import { Helmet } from "react-helmet";
+import Cookies from "js-cookie";
+import { apiFetchUserByUserId } from "../api/users";
+import Loading from "../components/core/Loading";
+import { storesContext } from "../context";
 
 export default function Login() {
+  const { authenticationStore } = useContext(storesContext);
+
+  /**
+  |--------------------------------------------------
+  | States
+  |--------------------------------------------------
+  */
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [isNotSigned, setIsNotSigned] = useState(false);
+
+  /**
+  |--------------------------------------------------
+  | Handlers
+  |--------------------------------------------------
+  */
+  function onAuthen() {
+    setIsCheckingAuth(false);
+    setIsNotSigned(false);
+  }
+
+  const checkAuth = useCallback(async () => {
+    try {
+      if (Cookies.get(process.env.REACT_APP_ACCESS_TOKEN_NAME)) {
+        await authenticationStore.me();
+        if (authenticationStore.currentUser) {
+          const usr = await apiFetchUserByUserId(
+            authenticationStore.currentUserId
+          );
+          if (usr.data.role_id !== "3") {
+            navigate("/admin");
+          } else {
+            if (!usr.data.is_member) {
+              navigate("/wait");
+            } else {
+              navigate("/home");
+            }
+          }
+          onAuthen();
+
+          setIsCheckingAuth(false);
+          return;
+        }
+      }
+
+      setIsNotSigned(true);
+      setIsCheckingAuth(false);
+    } catch (error) {
+      console.error(error);
+      setIsNotSigned(true);
+      setIsCheckingAuth(false);
+    }
+  }, [authenticationStore]);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  /**
+  |--------------------------------------------------
+  | Render
+  |--------------------------------------------------
+  */
+
+  if (isCheckingAuth) {
+    return <Loading />;
+  }
   return (
     <div className="flex flex-col h-screen">
       <Helmet>

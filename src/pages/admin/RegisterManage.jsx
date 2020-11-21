@@ -40,6 +40,7 @@ export default function RegisterManage() {
   const handleRemove = (id) => {
     console.log(id);
   };
+  
 
   const columns = [
     {

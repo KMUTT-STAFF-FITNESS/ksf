@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import ImageProfile from "../core/ImageProfile";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ReportProblemIcon from "@material-ui/icons/ReportProblem";
-import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import CropFreeIcon from "@material-ui/icons/CropFree";
 import { navigate } from "@reach/router";
+import { ExitToApp } from "@material-ui/icons";
 
 export default function Home() {
   const [MemberCard, setMemberCard] = useState({
@@ -78,13 +78,10 @@ export default function Home() {
                 <div className="shadow rounded">
                   <button
                     className="bg-transparent font-semibold  py-10 w-full"
-                    onClick={() => navigate("/wait")}
+                    onClick={() => navigate("/signout")}
                   >
-                    <FitnessCenterIcon
-                      className="buttonHome"
-                      fontSize="large"
-                    />
-                    <h5 className="whitespace-no-wrap">Activity</h5>
+                    <ExitToApp className="buttonHome" fontSize="large" />
+                    <h5 className="whitespace-no-wrap">Logout</h5>
                   </button>
                 </div>
               </div>

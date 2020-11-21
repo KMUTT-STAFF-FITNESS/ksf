@@ -28,11 +28,12 @@ import NoPermission from "./pages/NoPermission";
 import UserMainLayout from "./components/UserMainLayout";
 import TableNotification from "./pages/admin/TableNotification";
 import TableReport from "./pages/admin/TableReport";
+import SignOut from "./pages/SignOut";
 
 function App() {
   return (
     <Router>
-      <Login path="/" exact />
+      <Login path="/" />
       <UserMainLayout component={Register} path="/register" />
       <UserMainLayout component={Home} path="/home" />
       <UserMainLayout component={Viewprofile} path="/view" />
@@ -48,6 +49,7 @@ function App() {
       <HomeCheck path="/checking" />
       <Wait path="/wait" />
       <UploadRecipt path="/upload" />
+      <SignOut path="/signout" />
 
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />

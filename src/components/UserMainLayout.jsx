@@ -30,11 +30,16 @@ export default function UserMainLayout(props) {
           if (usr.data === "") {
             onAuthen();
           } else {
-            if (!usr.data.receipt_path) {
-              navigate("/payment");
+            if (usr.data.is_member) {
+              setIsCheckingAuth(false);
+              return;
             } else {
-              if (!usr.data.is_member) {
-                navigate("/wait");
+              if (!usr.data.receipt_path) {
+                navigate("/payment");
+              } else {
+                if (!usr.data.is_member) {
+                  navigate("/wait");
+                }
               }
             }
           }

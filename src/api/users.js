@@ -21,3 +21,7 @@ export const apiFetchUserByUserId = (user_id) => {
 export const apiFetchPendingUsers = () => {
   return appAxios().get(`${process.env.REACT_APP_BACKEND}/userspending`);
 };
+
+export const apiApproveMember = (data) => {
+  return appAxios().put(`${process.env.REACT_APP_BACKEND}/approve`, data)
+}
