@@ -1,13 +1,38 @@
 import { IconButton, Tooltip } from "@material-ui/core";
 import { CheckRounded } from "@material-ui/icons";
 import { Field, FieldArray, Form, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { apiFetchPendingUsers } from "../../api/users";
+import Loading from "../../components/core/Loading";
 import DataTable from "../../components/DataTable";
 import EditHeader from "../../components/Header/EditHeader";
 
 export default function Dashboard() {
+  const [isFetch, setIsFetch] = useState(false);
   const [user, setUser] = useState();
   const [prefixNameRowPerPage, setPrefixNameRowPerPage] = useState(10);
+
+  const fetchData = useCallback(async () => {
+    setIsFetch(true);
+    const { data } = await apiFetchPendingUsers();
+    const temp = {
+      user: data
+    }
+    setUser(temp);
+    setIsFetch(false);
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  if (isFetch) {
+    return (
+      <div className="flex flex-col flex-1 min-h-screen">
+        <Loading />
+      </div>
+    );
+  }
 
   const columns = [
     {

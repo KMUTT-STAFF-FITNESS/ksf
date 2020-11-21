@@ -1,17 +1,23 @@
-import {appAxios} from '../libs/axios'
+import { appAxios } from "../libs/axios";
 
 export const apiFetchUsers = () => {
-    return appAxios().get(`${process.env.REACT_APP_BACKEND}/users`)
-}
+  return appAxios().get(`${process.env.REACT_APP_BACKEND}/users`);
+};
 
 export const apiFetchUsersID = (id) => {
-    return appAxios().get(`${process.env.REACT_APP_BACKEND}/users/${id}`)
-}
+  return appAxios().get(`${process.env.REACT_APP_BACKEND}/users/${id}`);
+};
 
 export const apiCreateUser = (data) => {
-    return appAxios().post(`${process.env.REACT_APP_BACKEND}/users`, data)
-}
+  return appAxios().post(`${process.env.REACT_APP_BACKEND}/users`, data);
+};
 
 export const apiFetchUserByUserId = (user_id) => {
-    return appAxios().get(`${process.env.REACT_APP_BACKEND}/user/type/${user_id}`)
-}
+  return appAxios().get(
+    `${process.env.REACT_APP_BACKEND}/user/type/${user_id}`
+  );
+};
+
+export const apiFetchPendingUsers = () => {
+  return appAxios().get(`${process.env.REACT_APP_BACKEND}/userspending`);
+};
