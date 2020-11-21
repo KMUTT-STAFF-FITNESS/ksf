@@ -5,12 +5,18 @@ import BtnSubmit from "../../components/core/BtnBack";
 import { apiCreateNotification } from "../../api/notification";
 import EditHeader from "../../components/Header/EditHeader";
 import { Helmet } from "react-helmet";
+import ErrorModal from "../../components/core/Modal/ErrorModal";
+import CreateSuccessModal from "../../components/core/Modal/CreateSuccessModal";
+import { navigate } from "@reach/router";
+
 export default function CreateNoti() {
   const [notification, setNotification] = useState({
     message_title: "",
     content: "",
     author: "Admin_001",
   });
+  const [isOpenErrorModal, setIsOpenErrorModal] = useState(false);
+  const [isOpenSuccessModal, setIsOpenSuccessModal] = useState(false);
 
   const handleSubmit = async (data) => {
     const body = {
@@ -18,7 +24,19 @@ export default function CreateNoti() {
       content: data.content,
       author: data.author,
     };
-    await apiCreateNotification(body);
+    if (body.message_title === "") {
+      setIsOpenErrorModal(true);
+      return;
+    }
+    try {
+      await apiCreateNotification(body);
+      setIsOpenSuccessModal(true);
+      setTimeout(() => {
+        navigate("/admin/notification");
+      }, 2000);
+    } catch (err) {
+      setIsOpenErrorModal(true);
+    }
   };
 
   return (
@@ -27,6 +45,14 @@ export default function CreateNoti() {
         <title>จัดการข่าวสาร</title>
       </Helmet>
 
+      <ErrorModal
+        open={isOpenErrorModal}
+        onClose={() => setIsOpenErrorModal(false)}
+      />
+      <CreateSuccessModal
+        open={isOpenSuccessModal}
+        onClose={() => setIsOpenSuccessModal(false)}
+      />
       <Formik initialValues={notification} onSubmit={handleSubmit}>
         {(formikProps) => (
           <>
