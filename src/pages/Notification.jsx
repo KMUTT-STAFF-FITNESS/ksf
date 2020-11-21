@@ -27,7 +27,7 @@ export default function Noti() {
   }
 
   return (
-    <div className="max-w-screen-xl mx-auto min-h-screen">
+    <div className="max-w-screen-xl mx-auto ">
       <div className="container">
         <div className="row">
           <div className="col-12">

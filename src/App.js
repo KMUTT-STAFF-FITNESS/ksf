@@ -24,6 +24,8 @@ import LoginSSO from "./components/Login/LoginSSO";
 import HomeCheck from "./pages/HomeCheck";
 import NoPermission from "./pages/NoPermission";
 import UserMainLayout from "./components/UserMainLayout";
+import TableNotification from "./pages/admin/TableNotification";
+import TableReport from "./pages/admin/TableReport";
 
 function App() {
   return (
@@ -50,6 +52,8 @@ function App() {
       <MainLayout component={RegisterManage} path="/admin/register" />
       <MainLayout component={FormUpdate} path="/admin/machine" />
       <MainLayout component={CreateNoti} path="/admin/createnoti" />
+      <MainLayout component={TableNotification} path="/admin/notification" />
+      <MainLayout component={TableReport} path="/admin/report" />
     </Router>
   );
 }

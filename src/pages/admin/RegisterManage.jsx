@@ -43,12 +43,12 @@ export default function RegisterManage() {
 
   const columns = [
     {
-      Header: "Name",
+      Header: "ชื่อ",
       accessor: "fname",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
     {
-      Header: "Surname",
+      Header: "นามสกุล",
       accessor: "lname",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
@@ -58,12 +58,12 @@ export default function RegisterManage() {
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
     {
-      Header: "Cost",
-      accessor: "cost",
+      Header: "ประเภทสมาชิก",
+      accessor: "member_type",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
     {
-      Header: "Delete",
+      Header: "ลบข้อมูล",
       accessor: "profile_id",
       Cell: ({ cell: { value } }) => (
         <Tooltip title="ลบ">

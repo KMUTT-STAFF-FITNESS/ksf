@@ -1,63 +1,45 @@
-import { IconButton, Tooltip } from "@material-ui/core";
-import { CheckRounded } from "@material-ui/icons";
 import { Field, FieldArray, Form, Formik } from "formik";
 import React, { useState } from "react";
+import Loading from "../../components/core/Loading";
 import DataTable from "../../components/DataTable";
 import EditHeader from "../../components/Header/EditHeader";
 
-export default function Dashboard() {
-  const [user, setUser] = useState();
+export default function TableReport() {
+  const [report, setReport] = useState();
+  const [isFetch, setIsFetch] = useState(false);
   const [prefixNameRowPerPage, setPrefixNameRowPerPage] = useState(10);
+
+  // if (isFetch) {
+  //   return (
+  //     <div className="flex flex-col flex-1 min-h-screen">
+  //       <Loading />
+  //     </div>
+  //   );
+  // }
 
   const columns = [
     {
-      Header: "ชื่อ",
-      accessor: "fname",
+      Header: "ปัญหา",
+      accessor: "report_message",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
     {
-      Header: "นามสกุล",
-      accessor: "lname",
+      Header: "เครื่องออกกำลังกาย",
+      accessor: "machine_name",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
-    },
-    {
-      Header: "E-mail",
-      accessor: "email",
-      Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
-    },
-    {
-      Header: "ประเภทสมาชิก",
-      accessor: "member_type",
-      Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
-    },
-    {
-      Header: "หลักฐานการชำระเงิน",
-      accessor: "receipt_path",
-      Cell: ({ cell: { value } }) => <img src={value} alt="" />,
-    },
-    {
-      Header: "อนุมัติ",
-      accessor: "profile_id",
-      Cell: ({ cell: { value } }) => (
-        <Tooltip title="ลบ">
-          <IconButton onClick={() => console.log(value)}>
-            <CheckRounded />
-          </IconButton>
-        </Tooltip>
-      ),
     },
   ];
 
   return (
     <div className="w-full">
-      <Formik initialValues={user} onSubmit="">
+      <Formik initialValues={report} onSubmit="">
         {(formikProps) => (
-          <FieldArray name="user">
+          <FieldArray name="report">
             {(notiArray) => (
-              <Field name="user">
+              <Field name="report">
                 {({ field, meta }) => (
                   <>
-                    <EditHeader formik={formikProps} title="สมัครสมาชิก" />
+                    <EditHeader formik={formikProps} title="ปัญหา" />
                     <Form className="overflowy-auto">
                       <div className="p-6 overflow-x-hidden">
                         <DataTable

@@ -30,11 +30,9 @@ export default function UserMainLayout(props) {
           if (usr.data === "") {
             onAuthen();
           } else {
-            if (usr.data.is_member) {
-              navigate("/home");
-            } else {
+            if (!usr.data.is_member) {
               navigate("/wait");
-            }
+            } 
           }
           onAuthen();
           setIsCheckingAuth(false);

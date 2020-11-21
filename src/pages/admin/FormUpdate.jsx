@@ -65,12 +65,12 @@ export default function FormUpdate() {
 
   const columns = [
     {
-      Header: "Machine Name",
+      Header: "เครื่องออกกำลังกาย",
       accessor: "machine_name",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
     {
-      Header: "Machine Type",
+      Header: "ประเภทเครื่องออกกำลังกาย",
       accessor: "machine_type_name",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },

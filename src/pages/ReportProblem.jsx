@@ -8,63 +8,59 @@ import { apiCreateReportProblem, apiFetchReportTemplate } from "../api/report";
 import { apiFetchMachine } from "../api/machine";
 import { Form, Formik } from "formik";
 import Loading from "../components/core/Loading";
+import ErrorModal from "../components/core/Modal/ErrorModal";
 
 export default function ReportProblem() {
   const [ReportText, setReportText] = useState({
     selectMachine: "1",
     selectIssue: "",
-    otherIssue: "",
   });
   const [machine, setMachine] = useState();
   const [defalutVal, setDefalutVal] = useState();
-  const [problemTemplate, setProblemTemplate] = useState();
   const [isFetch, setIsFetch] = useState(false);
+  const [isOpenErrorModal, setIsOpenErrorModal] = useState(false);
 
-  function handleSubmit() {
-    if (ReportText.selectMachine != null && ReportText.selectIssue != null) {
-      if (ReportText.selectIssue === "issue3") {
-        if (ReportText.otherIssue != null) {
-          console.log(ReportText.otherIssue);
-          apiCreateReportProblem(ReportText);
-        } else {
-          alert("กรุณากรอกข้อความให้เรียบร้อย2");
-        }
-      }
-    } else {
-      alert("กรุณากรอกข้อความให้เรียบร้อย1");
+  // async function handleSubmit() {
+  //   if (ReportText) {
+  //     await apiCreateReportProblem(ReportText);
+  //   } else {
+  //     setIsOpenErrorModal(true);
+  //     // alert("กรุณากรอกข้อความให้เรียบร้อย1");
+  //   }
+  // }
+
+  const handleSubmit = async (data) => {
+    console.log("report", data);
+    if (data.selectIssue === "") {
+      setIsOpenErrorModal(true);
+      return;
     }
-  }
+    const temp = {
+      machine_id: data.selectMachine,
+      report_message: data.selectIssue,
+    };
+    try {
+      await apiCreateReportProblem(temp);
+    } catch (err) {
+      setIsOpenErrorModal(true);
+    }
+  };
 
   const fetchData = useCallback(async () => {
     setIsFetch(true);
     const { data } = await apiFetchMachine();
-    const template = await apiFetchReportTemplate(ReportText.selectMachine);
     const temp = [];
     for (let i = 0; i < data.length; i++) {
       temp.push({
-        value: data[i].machine_group_id,
+        value: data[i].machine_id,
         label: data[i].machine_name,
       });
     }
 
-    const problem = [];
-
-    for (let j = 0; j < template.data.length; j++) {
-      problem.push({
-        value: template.data[j].problem_temp_id,
-        label: template.data[j].message,
-      });
-    }
-
-    problem.push({
-      value: "issue3",
-      label: "อื่นๆ",
-    });
-    setProblemTemplate(problem);
     setDefalutVal(temp[0]);
     setMachine(temp);
     setIsFetch(false);
-  }, [ReportText]);
+  }, []);
 
   useEffect(() => {
     fetchData();
@@ -79,6 +75,10 @@ export default function ReportProblem() {
   }
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">
+      <ErrorModal
+        open={isOpenErrorModal}
+        onClose={() => setIsOpenErrorModal(false)}
+      />
       <Formik initialValues={ReportText} onSubmit={handleSubmit}>
         {(formikProps) => (
           <Form className="overflow-y-auto min-h-screen">
@@ -93,7 +93,6 @@ export default function ReportProblem() {
                     setReportText={setReportText}
                     machine={machine}
                     defalutVal={defalutVal}
-                    problemTemplate={problemTemplate}
                   />
                 </div>
               </div>
@@ -104,7 +103,7 @@ export default function ReportProblem() {
                     <BtnBack text="Back" onClick={() => navigate("/home")} />
                   </div>
                   <div className="col-6 py-4">
-                    <BtnNext text="Submit" onClick={() => handleSubmit()} />
+                    <BtnNext text="Submit" onClick={formikProps.submitForm} />
                   </div>
                 </div>
               </div>

@@ -102,30 +102,37 @@ export default function Sidebar(props) {
 
       <SidebarTab
         id="dashboard"
-        name="Dashboard"
+        name="อนุมัติการสมัครสมาชิก"
         icon={DashboardRounded}
         onClick={() => handlerTabClick("/admin")}
         currentTab={props.currentTab}
       />
       <SidebarTab
         id="register"
-        name="Register Manage"
+        name="การจัดการสมาชิก"
         icon={DashboardRounded}
         onClick={() => handlerTabClick("/admin/register")}
         currentTab={props.currentTab}
       />
       <SidebarTab
         id="machine"
-        name="Machine Manage"
+        name="การจัดการเครื่องออกกำลังกาย"
         icon={DashboardRounded}
         onClick={() => handlerTabClick("/admin/machine")}
         currentTab={props.currentTab}
       />
       <SidebarTab
-        id="createnoti"
-        name="Create Notification"
+        id="notification"
+        name="การจัดการข่าวสาร"
         icon={DashboardRounded}
-        onClick={() => handlerTabClick("/admin/createnoti")}
+        onClick={() => handlerTabClick("/admin/notification")}
+        currentTab={props.currentTab}
+      />
+      <SidebarTab
+        id="report"
+        name="การจัดการปัญหา"
+        icon={DashboardRounded}
+        onClick={() => handlerTabClick("/admin/report")}
         currentTab={props.currentTab}
       />
     </div>
