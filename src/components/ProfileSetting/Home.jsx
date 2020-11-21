@@ -37,8 +37,10 @@ export default function Home() {
             <div className="row py-8">
               <div className="col-6 text-center">
                 <div className="shadow rounded">
-                  <button className=" bg-transparent font-semibold py-10 w-full"
-                          onClick={() => navigate("/notification")}>
+                  <button
+                    className=" bg-transparent font-semibold py-10 w-full"
+                    onClick={() => navigate("/notification")}
+                  >
                     <NotificationsIcon
                       className="buttonHome"
                       fontSize="large"
@@ -87,30 +89,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* <iv className="row">
-            <div className="col-12 text-center">
-              <button className=" bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-20 px-20 border md:mr-6 hover:border-transparent rounded ">
-                <NotificationsIcon className="buttonHome" fontSize="large" />
-                <h5>Notification</h5>
-              </button>
-              <button className="bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-20 px-20 border md:my-6 hover:border-transparent rounded ">
-                <ReportProblemIcon className="buttonHome" fontSize="large" />
-                <h5>Report Issue</h5>
-              </button>
-            </div>
-          </iv>
-          <div className="row">
-            <div className="col-12 text-center">
-              <button className="bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-20 px-20 border md:mr-6 hover:border-transparent rounded ">
-                <CropFreeIcon className="buttonHome" fontSize="large" />
-                <h5>Scan QR code</h5>
-              </button>
-              <button className="bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-20 px-20 border hover:border-transparent rounded ">
-                <FitnessCenterIcon className="buttonHome" fontSize="large" />
-                <h5>Activity</h5>
-              </button>
-            </div>
-          </div> */}
           </div>
         </div>
       </div>

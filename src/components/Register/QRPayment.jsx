@@ -1,7 +1,8 @@
 import React from "react";
 import { navigate } from "@reach/router";
+import { apiPayCash } from "../../api/image";
 
-export default function QRPayment() {
+export default function QRPayment(props) {
   return (
     <div>
       <div class="title">
@@ -39,10 +40,18 @@ export default function QRPayment() {
           <div class="w-1/2  h-12">705-2-46600-2</div>
         </div>
       </div>
-      <div className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center cursor-pointer my-2"
-      onClick={() => navigate("/upload")}>อัปโหลดหลักฐานการชำระเงิน</div>
-      <div className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center cursor-pointer my-2"
-      onClick={() => navigate("/wait")}>ชำระด้วยเงินสด</div>
+      <div
+        className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center cursor-pointer my-2"
+        onClick={() => navigate("/upload")}
+      >
+        อัปโหลดหลักฐานการชำระเงิน
+      </div>
+      <div
+        className="bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center cursor-pointer my-2"
+        onClick={() => props.handleCash()}
+      >
+        ชำระด้วยเงินสด
+      </div>
     </div>
   );
 }

@@ -30,9 +30,13 @@ export default function UserMainLayout(props) {
           if (usr.data === "") {
             onAuthen();
           } else {
-            if (!usr.data.is_member) {
-              navigate("/wait");
-            } 
+            if (!usr.data.receipt_path) {
+              navigate("/payment");
+            } else {
+              if (!usr.data.is_member) {
+                navigate("/wait");
+              }
+            }
           }
           onAuthen();
           setIsCheckingAuth(false);
@@ -47,7 +51,7 @@ export default function UserMainLayout(props) {
       setIsNotSigned(true);
       setIsCheckingAuth(false);
     }
-  }, [authenticationStore, props]);
+  }, [authenticationStore]);
 
   useEffect(() => {
     checkAuth();

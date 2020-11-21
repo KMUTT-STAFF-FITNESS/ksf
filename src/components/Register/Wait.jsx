@@ -1,6 +1,4 @@
-import { navigate } from "@reach/router";
 import React from "react";
-import BtnBack from "../core/BtnBack";
 import Logo from "../core/Logo";
 
 export default function Wait() {
@@ -17,7 +15,6 @@ export default function Wait() {
               alt=""
             />
             <p className="text-gray-700 text-center my-4">Wait for approve</p>
-            <BtnBack text="Payment Page" onClick={() => navigate("/payment")} />
           </div>
         </div>
       </div>
