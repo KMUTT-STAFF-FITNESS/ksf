@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "Kanit";
+  font-style: italic;
+  font-weight: 400;
+  src: url("./fonts/Kanit-Regular.ttf"); /* IE9 Compat Modes */
+}
+/* kanit-regular - thai */
+@font-face {
+  font-family: "Kanit";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/Kanit-Regular.ttf");
+}
+/* kanit-700 - thai */
+@font-face {
+  font-family: "Kanit";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/Kanit-Bold.ttf"); /* IE9 Compat Modes */
+}
+/* kanit-700italic - thai */
+@font-face {
+  font-family: "Kanit";
+  font-style: italic;
+  font-weight: 700;
+  src: url("./fonts/Kanit-BoldItalic.ttf"); /* IE9 Compat Modes */
+}
+
+/* sarabun-regular - thai */
+@font-face {
+  font-family: "Sarabun";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/Sarabun-Regular.ttf"); /* IE9 Compat Modes */
+}
+/* sarabun-italic - thai */
+@font-face {
+  font-family: "Sarabun";
+  font-style: italic;
+  font-weight: 400;
+  src: url("./fonts/Sarabun-Regular.ttf"); /* IE9 Compat Modes */
+}
+/* sarabun-700 - thai */
+@font-face {
+  font-family: "Sarabun";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/Sarabun-Bold.ttf"); /* IE9 Compat Modes */
+}
+/* sarabun-700italic - thai */
+@font-face {
+  font-family: "Sarabun";
+  font-style: italic;
+  font-weight: 700;
+  src: url("./fonts/Sarabun-BoldItalic.ttf"); /* IE9 Compat Modes */
+}

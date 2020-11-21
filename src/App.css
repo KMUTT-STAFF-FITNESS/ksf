@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body * {
+  font-family: 'Kanit', sans-serif;
+  transition: background-color 0.2s;
+}
+
 
 .App {
   text-align: center;

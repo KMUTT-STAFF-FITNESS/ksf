@@ -1,6 +1,7 @@
 import React from "react";
 import "./Main.css";
 import "./App.css";
+import "./Fonts.css";
 import "react-medium-image-zoom/dist/styles.css";
 import { Router } from "@reach/router";
 import Login from "./pages/Login";
