@@ -1,9 +1,10 @@
+import { navigate } from "@reach/router";
 import { Field, FieldArray, Form, Formik } from "formik";
 import React, { useCallback, useEffect, useState } from "react";
 import { apiFetchNotification } from "../../api/notification";
 import Loading from "../../components/core/Loading";
 import DataTable from "../../components/DataTable";
-import EditHeader from "../../components/Header/EditHeader";
+import CreateHeader from "../../components/Header/CreateHeader";
 
 export default function TableNotification() {
   const [notifications, setNotifications] = useState();
@@ -74,7 +75,7 @@ export default function TableNotification() {
               <Field name="notifications">
                 {({ field, meta }) => (
                   <>
-                    <EditHeader formik={formikProps} title="ข่าวสาร" />
+                    <CreateHeader onClick={() => navigate("/admin/notification/create")} title="ข่าวสาร" />
                     <Form className="overflowy-auto">
                       <div className="p-6 overflow-x-hidden">
                         <DataTable

@@ -52,8 +52,9 @@ function App() {
       <MainLayout component={RegisterManage} path="/admin/register" />
       <MainLayout component={FormUpdate} path="/admin/machine" />
       <MainLayout component={CreateNoti} path="/admin/createnoti" />
-      <MainLayout component={TableNotification} path="/admin/notification" />
       <MainLayout component={TableReport} path="/admin/report" />
+      <MainLayout component={TableNotification} path="/admin/notification" />
+      <MainLayout component={CreateNoti} path="/admin/notification/create" />
     </Router>
   );
 }

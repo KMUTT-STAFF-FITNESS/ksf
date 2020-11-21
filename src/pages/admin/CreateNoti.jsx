@@ -55,7 +55,7 @@ export default function CreateNoti() {
                 </Field>
                 <div className="col-4 mx-auto">
                   <button value="submit" className="buttonBack btn-block">
-                    Submit
+                    สร้างข่าวสาร
                   </button>
                 </div>
               </div>
