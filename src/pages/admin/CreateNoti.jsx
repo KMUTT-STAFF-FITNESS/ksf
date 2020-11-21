@@ -24,7 +24,7 @@ export default function CreateNoti() {
       content: data.content,
       author: data.author,
     };
-    if (body.message_title === "") {
+    if (body.message_title === "" || body.content === "") {
       setIsOpenErrorModal(true);
       return;
     }

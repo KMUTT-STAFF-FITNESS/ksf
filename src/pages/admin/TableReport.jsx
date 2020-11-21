@@ -1,5 +1,6 @@
 import { Field, FieldArray, Form, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { apiFetchReportProblem } from "../../api/report";
 import Loading from "../../components/core/Loading";
 import DataTable from "../../components/DataTable";
 import EditHeader from "../../components/Header/EditHeader";
@@ -9,13 +10,27 @@ export default function TableReport() {
   const [isFetch, setIsFetch] = useState(false);
   const [prefixNameRowPerPage, setPrefixNameRowPerPage] = useState(10);
 
-  // if (isFetch) {
-  //   return (
-  //     <div className="flex flex-col flex-1 min-h-screen">
-  //       <Loading />
-  //     </div>
-  //   );
-  // }
+  const fetchData = useCallback(async () => {
+    setIsFetch(true);
+    const { data } = await apiFetchReportProblem();
+    const temp = {
+      report: data,
+    };
+    setReport(temp);
+    setIsFetch(false);
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  if (isFetch) {
+    return (
+      <div className="flex flex-col flex-1 min-h-screen">
+        <Loading />
+      </div>
+    );
+  }
 
   const columns = [
     {
