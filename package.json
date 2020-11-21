@@ -27,6 +27,8 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
     "react-images-uploading": "^3.1.2",
+    "react-inner-image-zoom": "^1.2.0",
+    "react-medium-image-zoom": "^4.3.1",
     "react-minimal-pie-chart": "^8.0.1",
     "react-qr-reader": "^2.2.1",
     "react-router-dom": "^5.2.0",

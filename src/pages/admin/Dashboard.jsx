@@ -6,6 +6,7 @@ import { apiFetchPendingUsers } from "../../api/users";
 import Loading from "../../components/core/Loading";
 import DataTable from "../../components/DataTable";
 import EditHeader from "../../components/Header/EditHeader";
+import Zoom from "react-medium-image-zoom";
 
 export default function Dashboard() {
   const [isFetch, setIsFetch] = useState(false);
@@ -15,9 +16,10 @@ export default function Dashboard() {
   const fetchData = useCallback(async () => {
     setIsFetch(true);
     const { data } = await apiFetchPendingUsers();
+    console.log(data);
     const temp = {
-      user: data
-    }
+      user: data,
+    };
     setUser(temp);
     setIsFetch(false);
   }, []);
@@ -58,7 +60,23 @@ export default function Dashboard() {
     {
       Header: "หลักฐานการชำระเงิน",
       accessor: "receipt_path",
-      Cell: ({ cell: { value } }) => <img src={value} alt="" />,
+      Cell: ({ cell: { value } }) => (
+        // <img src={`http://localhost:8000/${value}`} alt="" />
+        <>
+          {value === "cash" ? (
+            <p className="font-sarabun">ชำระด้วยเงินสด</p>
+          ) : (
+            <Zoom>
+              <img
+                src={`http://localhost:8000/${value.substring(6)}`}
+                alt=""
+                width="120"
+                height="120"
+              />
+            </Zoom>
+          )}
+        </>
+      ),
     },
     {
       Header: "อนุมัติ",

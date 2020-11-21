@@ -1,6 +1,5 @@
 import React from "react";
 import { navigate } from "@reach/router";
-import { apiPayCash } from "../../api/image";
 
 export default function QRPayment(props) {
   return (

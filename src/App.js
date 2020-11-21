@@ -1,6 +1,7 @@
 import React from "react";
 import "./Main.css";
 import "./App.css";
+import "react-medium-image-zoom/dist/styles.css";
 import { Router } from "@reach/router";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -41,11 +42,11 @@ function App() {
       <UserMainLayout component={ExerciseDashboard} path="/exercise" />
       <UserMainLayout component={HowToPlay} path="/howtoplay/:id" />
       <UserMainLayout component={NotiDetail} path="/notidetail/:id" />
-      <UserMainLayout component={UploadRecipt} path="/upload" />
       <UserMainLayout component={LoginSSO} path="/comingsoon" />
       <UserMainLayout component={NoPermission} path="/nopermission" />
       <HomeCheck path="/checking" />
       <Wait path="/wait" />
+      <UploadRecipt path="/upload" />
 
       {/* admin */}
       <MainLayout component={Dashboard} path="/admin" />
