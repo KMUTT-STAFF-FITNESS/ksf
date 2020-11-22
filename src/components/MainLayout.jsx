@@ -83,7 +83,7 @@ export default function MainLayout(props) {
 
   if (isNotSigned) {
     return navigate(
-      "https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=u1UOLdKI&redirect_uri=http://localhost:3000/checking&state=ksf_login"
+      "https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=u1UOLdKI&redirect_uri=http://ksf.sit.kmutt.ac.th/checking&state=ksf_login"
     );
   }
 
