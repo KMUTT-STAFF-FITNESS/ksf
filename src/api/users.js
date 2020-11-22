@@ -29,3 +29,7 @@ export const apiApproveMember = (data) => {
 export const apiDeleteMember = (data) => {
   return appAxios().put(`${process.env.REACT_APP_BACKEND}/user`, data);
 };
+
+export const apiUpdateProfile = (data, id) => {
+  return appAxios().put(`${process.env.REACT_APP_BACKEND}/user/${id}`, data);
+};

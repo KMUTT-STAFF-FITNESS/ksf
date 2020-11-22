@@ -1,19 +1,41 @@
-import React, { useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import ImageProfile from "../core/ImageProfile";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ReportProblemIcon from "@material-ui/icons/ReportProblem";
 import CropFreeIcon from "@material-ui/icons/CropFree";
 import { navigate } from "@reach/router";
 import { ExitToApp } from "@material-ui/icons";
+import { apiFetchUserByUserId } from "../../api/users";
+import { storesContext } from "../../context";
+import { identity } from "lodash";
+import Loading from "../core/Loading";
 
 export default function Home() {
-  const [MemberCard, setMemberCard] = useState({
-    fname: "Sarinrat",
-    lname: "Charoenkunasit",
-    status: "Year",
-    depart: "Information Technology",
-    memberID: "xxx-xxx-xxxx",
-  });
+  const [memberCard, setMemberCard] = useState();
+  const { authenticationStore } = useContext(storesContext);
+  const [isFetch, setIsFetch] = useState(false);
+
+  const fetchData = useCallback(async () => {
+    setIsFetch(true);
+    const { data } = await apiFetchUserByUserId(
+      authenticationStore.currentUserId
+    );
+    console.log(data);
+    setMemberCard(data);
+    setIsFetch(false);
+  }, [authenticationStore]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  if (isFetch) {
+    return (
+      <div className="flex flex-col flex-1 min-h-screen">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">
@@ -21,18 +43,10 @@ export default function Home() {
         <div className="row">
           <div className="col-12 py-4">
             <div
-              class="col-12 md:flex cardcolor rounded-lg p-6shadow "
+              class="cardcolor rounded-lg p-6 shadow cursor-pointer"
               onClick={() => navigate("/view")}
             >
-              <ImageProfile className="buttonHome" />
-              <div class=" md:text-left text-center">
-                <div class="text-lg-mx text-white mx-10">
-                  {MemberCard.fname} {MemberCard.lname}
-                </div>
-                <div class="text-green-500">Status: {MemberCard.status}</div>
-                <div class="text-white">{MemberCard.memberID}</div>
-                <div class="text-white">{MemberCard.depart}</div>
-              </div>
+              <ImageProfile/>
             </div>
             <div className="row py-8">
               <div className="col-6 text-center">
