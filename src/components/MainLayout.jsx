@@ -46,10 +46,6 @@ export default function MainLayout(props) {
           );
           if (usr.data.role_id === "3") {
             navigate("/nopermission");
-          }else {
-            if(!usr.data.is_member){
-              navigate("/wait");
-            }
           }
           onAuthen();
 
