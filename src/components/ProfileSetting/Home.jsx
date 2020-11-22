@@ -20,7 +20,6 @@ export default function Home() {
     const { data } = await apiFetchUserByUserId(
       authenticationStore.currentUserId
     );
-    console.log(data);
     setMemberCard(data);
     setIsFetch(false);
   }, [authenticationStore]);
