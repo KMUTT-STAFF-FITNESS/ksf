@@ -7,20 +7,30 @@ import Loading from "../../components/core/Loading";
 import Logo from "../../components/core/Logo";
 import Upload from "../../components/Register/Upload";
 import { storesContext } from "../../context";
-
+import CreateSuccessModal from "../../components/core/Modal/CreateSuccessModal";
+import ErrorModal from "../../components/core/Modal/ErrorModal";
 
 export default function UploadRecipt() {
   const { authenticationStore } = useContext(storesContext);
   const [images, setImage] = useState([]);
   const [user, setUser] = useState();
   const [isFetch, setIsFetch] = useState(false);
+  const [isOpenSuccess, setIsOpenSuccess] = useState(false);
+  const [isOpenError, setIsOpenError] = useState(false);
 
   const handleSubmit = async () => {
-    const formData = new FormData();
+    try {
+      const formData = new FormData();
 
-    formData.append("file", images[0].file);
-    const res = await apiUploadSlip(user.profile_id, formData);
-    navigate("/wait");
+      formData.append("file", images[0].file);
+      const res = await apiUploadSlip(user.profile_id, formData);
+      setIsOpenSuccess(true);
+      setTimeout(() => {
+        navigate("/wait");
+      }, 2000);
+    } catch (err) {
+      setIsOpenError(true);
+    }
   };
   const fecthData = useCallback(async () => {
     setIsFetch(true);
@@ -43,6 +53,11 @@ export default function UploadRecipt() {
 
   return (
     <div className="container">
+      <CreateSuccessModal
+        open={isOpenSuccess}
+        onClose={() => setIsOpenSuccess(false)}
+      />
+      <ErrorModal open={isOpenError} onClose={() => setIsOpenError(false)} />
       <div className="col-12">
         <Logo />
         <div className="mx-auto">

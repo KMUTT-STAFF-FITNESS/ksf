@@ -9,6 +9,7 @@ import { apiFetchMachine } from "../api/machine";
 import { Form, Formik } from "formik";
 import Loading from "../components/core/Loading";
 import ErrorModal from "../components/core/Modal/ErrorModal";
+import CreateSuccessModal from "../components/core/Modal/CreateSuccessModal";
 
 export default function ReportProblem() {
   const [ReportText, setReportText] = useState({
@@ -19,6 +20,7 @@ export default function ReportProblem() {
   const [defalutVal, setDefalutVal] = useState();
   const [isFetch, setIsFetch] = useState(false);
   const [isOpenErrorModal, setIsOpenErrorModal] = useState(false);
+  const [isOpenSuccess, setIsOpenSuccess] = useState(false);
 
   // async function handleSubmit() {
   //   if (ReportText) {
@@ -40,6 +42,10 @@ export default function ReportProblem() {
     };
     try {
       await apiCreateReportProblem(temp);
+      setIsOpenSuccess(true);
+      setTimeout(() => {
+        navigate("/home");
+      }, 2000);
     } catch (err) {
       setIsOpenErrorModal(true);
     }
@@ -77,6 +83,10 @@ export default function ReportProblem() {
       <ErrorModal
         open={isOpenErrorModal}
         onClose={() => setIsOpenErrorModal(false)}
+      />
+      <CreateSuccessModal
+        open={isOpenSuccess}
+        onClose={() => setIsOpenSuccess(false)}
       />
       <Formik initialValues={ReportText} onSubmit={handleSubmit}>
         {(formikProps) => (
