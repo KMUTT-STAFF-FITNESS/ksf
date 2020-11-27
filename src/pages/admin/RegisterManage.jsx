@@ -12,6 +12,7 @@ import Loading from "../../components/core/Loading";
 import ConfirmModal from "../../components/core/Modal/ConfirmModal";
 import CreateSuccessModal from "../../components/core/Modal/CreateSuccessModal";
 import ErrorModal from "../../components/core/Modal/ErrorModal";
+import { CSVLink } from "react-csv";
 
 export default function RegisterManage() {
   const [users, setUsers] = useState();
@@ -21,6 +22,7 @@ export default function RegisterManage() {
   const [isOpenError, setIsOpenError] = useState(false);
   const [prefixNameRowPerPage, setPrefixNameRowPerPage] = useState(10);
   const [removerId, setRemoveId] = useState();
+  const [exportData, setExport] = useState(false);
 
   const fetchData = useCallback(async () => {
     setIsFetch(true);
@@ -30,6 +32,7 @@ export default function RegisterManage() {
     };
     setUsers(temp);
     setIsFetch(false);
+    setExport(true);
   }, []);
 
   useEffect(() => {
@@ -97,6 +100,15 @@ export default function RegisterManage() {
       ),
     },
   ];
+  const headers = [
+    { label: "ชื่อ", key: "fname" },
+    { label: "นามสกุล", key: "lname" },
+    { label: "Email", key: "email" },
+    { label: "เบอร์โทร", key: "tel_no" },
+    { label: "เพศ", key: "gender" },
+    { label: "หน่วยงาน/สังกัด", key: "department" },
+    { label: "id", key: "user_id" },
+  ];
 
   return (
     <div className="w-full">
@@ -110,7 +122,7 @@ export default function RegisterManage() {
         onClose={() => setIsOpenSuccess(false)}
       />
       <ErrorModal open={isOpenError} onClose={() => setIsOpenError(false)} />
-      <Formik initialValues={users} onSubmit="">
+      <Formik initialValues={users} onSubmit="s">
         {(formikProps) => (
           <FieldArray name="users">
             {(userArray) => (
@@ -118,6 +130,19 @@ export default function RegisterManage() {
                 {({ field, meta }) => (
                   <>
                     <EditHeader formik={formikProps} title="สมาชิก" />
+                    {exportData && (
+                      <div className="text-center my-2">
+                        <CSVLink
+                          data={field.value}
+                          headers={headers}
+                          filename={"users.csv"}
+                          className="btn btn-primary"
+                        >
+                          ดาวน์โหลด
+                        </CSVLink>
+                      </div>
+                    )}
+                    {console.log(field.value)}
                     <Form className="overflow-y-auto">
                       <div className="p-6 overflow-y-auto">
                         <DataTable
