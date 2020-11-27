@@ -86,7 +86,7 @@ export default function Dashboard() {
           ) : (
             <Zoom>
               <img
-                src={`http://localhost:8000/${value.substring(6)}`}
+                src={`http://ksf.sit.kmutt.ac.th:8000/${value.substring(6)}`}
                 alt=""
                 width="120"
                 height="120"

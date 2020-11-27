@@ -96,7 +96,7 @@ export default function Login() {
             text="Login via SSO"
             onClick={() =>
               navigate(
-                `https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=u1UOLdKI&redirect_uri=http://localhost:3000/checking&state=ksf_login`
+                `https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=u1UOLdKI&redirect_uri=http://ksf.sit.kmutt.ac.th/checking&state=ksf_login`
               )
             }
           />
@@ -104,7 +104,7 @@ export default function Login() {
             text="Register via SSO"
             onClick={() =>
               navigate(
-                `https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=u1UOLdKI&redirect_uri=http://localhost:3000/checking&state=ksf_register`
+                `https://std-sso-fe.sit.kmutt.ac.th/login?response_type=code&client_id=u1UOLdKI&redirect_uri=http://ksf.sit.kmutt.ac.th/checking&state=ksf_register`
               )
             }
           />
