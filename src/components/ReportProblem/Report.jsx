@@ -12,13 +12,9 @@ export default function Report(props) {
           <Field name="selectMachine">
             {({ field, meta }) => (
               <Select
-                value={props.machine.find(
-                  (option) => option.value === option.value
-                )}
                 options={props.machine}
                 defaultValue={props.defalutVal}
                 className="my-2"
-                onChange={(option) => props.handleMachineId(option.value)}
               />
             )}
           </Field>

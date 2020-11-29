@@ -16,7 +16,6 @@ export default function ReportProblem() {
     selectMachine: "1",
     selectIssue: "",
   });
-  const [machineId, setMachineId] = useState(1);
   const [machine, setMachine] = useState();
   const [defalutVal, setDefalutVal] = useState();
   const [isFetch, setIsFetch] = useState(false);
@@ -29,7 +28,7 @@ export default function ReportProblem() {
       return;
     }
     const temp = {
-      machine_id: machineId,
+      machine_id: data.selectMachine,
       report_message: data.selectIssue,
     };
     try {
@@ -41,9 +40,6 @@ export default function ReportProblem() {
     } catch (err) {
       setIsOpenErrorModal(true);
     }
-  };
-  const handleMachineId = (id) => {
-    setMachineId(id);
   };
 
   const fetchData = useCallback(async () => {
@@ -92,11 +88,7 @@ export default function ReportProblem() {
                   <Logo />
                 </div>
                 <div className="p-3 w-full lg:w-1/3  py-4 rounded shadow mx-auto">
-                  <ReportInput
-                    machine={machine}
-                    defalutVal={defalutVal}
-                    handleMachineId={handleMachineId}
-                  />
+                  <ReportInput machine={machine} defalutVal={defalutVal} />
                 </div>
               </div>
 
