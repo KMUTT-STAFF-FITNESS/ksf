@@ -16,6 +16,9 @@ export default function Report(props) {
                 defaultValue={props.defalutVal}
                 className="my-2"
                 name="selectMachine"
+                onChange={(val) =>
+                  props.setReportText({ selectMachine: val, selectIssue: "" })
+                }
               />
             )}
           </Field>
