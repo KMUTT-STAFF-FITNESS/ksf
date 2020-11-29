@@ -16,7 +16,6 @@ import ReportProblem from "./pages/ReportProblem";
 import FormUpdate from "./pages/admin/FormUpdate";
 import CreateNoti from "./pages/admin/CreateNoti";
 import Notification from "./pages/Notification";
-import ExerciseDashboard from "./components/ExerciseDashboard/Dashboard";
 import HowToPlay from "./components/QrScanner/HowToPlay";
 import NotiDetail from "./components/Notification/NotificationDetail";
 import Payment from "./pages/user/Payment";
@@ -43,7 +42,6 @@ function App() {
       <UserMainLayout component={QrScan} path="/qrscanner" />
       <UserMainLayout component={Notification} path="/notification" />
       <UserMainLayout component={ReportProblem} path="/reportproblem" />
-      <UserMainLayout component={ExerciseDashboard} path="/exercise" />
       <UserMainLayout component={HowToPlay} path="/howtoplay/:id" />
       <UserMainLayout component={NotiDetail} path="/notidetail/:id" />
       <UserMainLayout component={LoginSSO} path="/comingsoon" />
