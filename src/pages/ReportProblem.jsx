@@ -4,7 +4,7 @@ import Logo from "../components/core/Logo";
 import BtnNext from "../components/core/BtnNext";
 import BtnBack from "../components/core/BtnBack";
 import { navigate } from "@reach/router";
-import { apiCreateReportProblem, apiFetchReportTemplate } from "../api/report";
+import { apiCreateReportProblem } from "../api/report";
 import { apiFetchMachine } from "../api/machine";
 import { Form, Formik } from "formik";
 import Loading from "../components/core/Loading";
@@ -55,7 +55,7 @@ export default function ReportProblem() {
     }
 
     setDefalutVal(temp[0]);
-    setMachine(temp);
+    setMachine({ temp, selectIssue: "" });
     setIsFetch(false);
   }, []);
 
@@ -80,7 +80,7 @@ export default function ReportProblem() {
         open={isOpenSuccess}
         onClose={() => setIsOpenSuccess(false)}
       />
-      <Formik initialValues={ReportText} onSubmit={handleSubmit}>
+      <Formik initialValues={machine} onSubmit={handleSubmit}>
         {(formikProps) => (
           <Form className="overflow-y-auto min-h-screen">
             <div className="container">
@@ -89,11 +89,7 @@ export default function ReportProblem() {
                   <Logo />
                 </div>
                 <div className="p-3 w-full lg:w-1/3  py-4 rounded shadow mx-auto">
-                  <ReportInput
-                    machine={machine}
-                    defalutVal={defalutVal}
-                    setReportText={setReportText}
-                  />
+                  <ReportInput />
                 </div>
               </div>
 
