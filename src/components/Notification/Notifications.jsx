@@ -1,4 +1,5 @@
 import React from "react";
+import dayjs from "dayjs";
 
 export default function Notifications(props) {
   return (
@@ -14,10 +15,14 @@ export default function Notifications(props) {
                   </strong>
                 </div>
                 <div className="text-right text-gray-700 mx-auto">
-                  <small>{props.news.create_at}</small>
+                  <small>
+                    {dayjs(props.news.create_at).format("DD/MM/YYYY")}
+                  </small>
                 </div>
               </div>
-              <p className="text-gray-700 truncate text-left">{props.news.content}</p>
+              <p className="text-gray-700 truncate text-left">
+                {props.news.content}
+              </p>
             </div>
           </div>
         </div>
