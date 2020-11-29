@@ -2,58 +2,9 @@ import React, { useState } from "react";
 import QrPage from "../components/QrScanner/QrScan";
 import HowToPlay from "../components/QrScanner/HowToPlay";
 import Logo from "../components/core/Logo";
-import { Stepper, Step, StepLabel } from "@material-ui/core";
-import StepConnector from "@material-ui/core/StepConnector";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { Formik } from "formik";
 import { navigate } from "@reach/router";
 import BtnBack from "../components/core/BtnBack";
 import BtnNext from "../components/core/BtnNext";
-
-const useColorlibStepIconStyles = makeStyles({
-  root: {
-    backgroundColor: "#ccc",
-    zIndex: 1,
-    color: "#fff",
-    width: 50,
-    height: 50,
-    display: "flex",
-    borderRadius: "50%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  active: {
-    backgroundImage:
-      "linear-gradient(to top right, #192527 -17%, #c2691c 100%)",
-    boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
-  },
-  completed: {
-    backgroundImage:
-      "linear-gradient(to top right, #192527 -17%, #c2691c 100%)",
-  },
-});
-
-const ColorlibConnector = withStyles({
-  alternativeLabel: {
-    top: 22,
-  },
-  active: {
-    "& $line": {
-      backgroundImage: "linear-gradient(to right, #192527 0%, #c2691c 100%)",
-    },
-  },
-  completed: {
-    "& $line": {
-      backgroundImage: "linear-gradient(to right, #192527 0%, #c2691c 100%)",
-    },
-  },
-  line: {
-    height: 3,
-    border: 0,
-    backgroundColor: "#eaeaf0",
-    borderRadius: 1,
-  },
-})(StepConnector);
 
 function getSteps() {
   return ["QrScanner", "HowToPlay"];
@@ -66,10 +17,6 @@ export default function QrScan() {
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
-
-  function handleBack() {
-    setActiveStep(activeStep - 1);
-  }
 
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">

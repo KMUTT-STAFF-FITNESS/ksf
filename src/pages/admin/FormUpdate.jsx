@@ -36,27 +36,6 @@ export default function FormUpdate() {
     );
   }
 
-  function handleAdd() {
-    const values = [];
-    values.push(...machine, { value: null });
-    setMachine(values);
-  }
-
-  function handleRemove(i) {
-    const values = [...machine];
-    values.splice(i, 1);
-    setMachine(values);
-  }
-
-  function handleChange(val, index) {
-    let temp = machine;
-    temp[index] = {
-      ...machine[index],
-      type: val,
-    };
-    setMachine(temp);
-  }
-
   const columns = [
     {
       Header: "เครื่องออกกำลังกาย",

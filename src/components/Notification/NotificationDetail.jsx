@@ -5,9 +5,7 @@ import BtnBack from "../core/BtnBack";
 import Logo from "../core/Logo";
 import Loading from "../core/Loading";
 
-
 export default function NotificationDetail(props) {
-
   const [isFetch, setIsFetch] = useState(false);
   const [news, setNews] = useState();
 
@@ -29,13 +27,13 @@ export default function NotificationDetail(props) {
       </div>
     );
   }
-  
+
   return (
     <div className="max-w-screen-xl mx-auto min-h-screen">
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <Logo/>
+            <Logo />
           </div>
           <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
             <div class="px-6 py-4">

@@ -44,27 +44,6 @@ export default function TableNotification() {
       accessor: "content",
       Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
     },
-    // {
-    //   Header: "E-mail",
-    //   accessor: "email",
-    //   Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
-    // },
-    // {
-    //   Header: "Cost",
-    //   accessor: "cost",
-    //   Cell: ({ cell: { value } }) => <p className="font-sarabun">{value}</p>,
-    // },
-    // {
-    //   Header: "Delete",
-    //   accessor: "profile_id",
-    //   Cell: ({ cell: { value } }) => (
-    //     <Tooltip title="ลบ">
-    //       <IconButton onClick={() => handleRemove(value)}>
-    //         <CloseRounded />
-    //       </IconButton>
-    //     </Tooltip>
-    //   ),
-    // },
   ];
   return (
     <div className="w-full">
@@ -75,7 +54,10 @@ export default function TableNotification() {
               <Field name="notifications">
                 {({ field, meta }) => (
                   <>
-                    <CreateHeader onClick={() => navigate("/admin/notification/create")} title="ข่าวสาร" />
+                    <CreateHeader
+                      onClick={() => navigate("/admin/notification/create")}
+                      title="ข่าวสาร"
+                    />
                     <Form className="overflowy-auto">
                       <div className="p-6 overflow-x-hidden">
                         <DataTable

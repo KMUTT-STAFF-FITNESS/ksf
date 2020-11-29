@@ -6,7 +6,6 @@ export default function Upload(props) {
   const maxNumber = 69;
 
   const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
     props.setImage(imageList);
   };
 

@@ -29,16 +29,6 @@ export default function StatusType(props) {
                 )}
               </>
             ))}
-          {/* <div className="btn-group-toggle my-3" data-toggle="buttons">
-            <label className="btn btn-secondary col-3">
-              <input type="radio" /> รายปี
-            </label>
-          </div>
-          <div className="btn-group-toggle my-3" data-toggle="buttons">
-            <label className="btn btn-secondary col-3">
-              <input type="radio" /> ตลอดชีพ
-            </label>
-          </div> */}
         </div>
       </div>
     </>

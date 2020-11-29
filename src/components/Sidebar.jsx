@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { navigate } from "@reach/router";
 import {
   PersonRounded,
@@ -8,54 +8,14 @@ import {
   ReportProblemRounded,
   NotificationsActiveRounded,
 } from "@material-ui/icons";
-import { Menu } from "@material-ui/core";
 import { useObserver } from "mobx-react-lite";
 import SidebarTab from "./SidebarTab";
-import Logo from "../components/core/LogoWhite";
-// import SidebarTab from "./SidebarTab";
 
 export default function Sidebar(props) {
-  /**
-  |--------------------------------------------------
-  | Contexts
-  |--------------------------------------------------
-  */
-  //  const { authenticationStore } = useContext(storesContext)
-
-  /**
-|--------------------------------------------------
-| States
-|--------------------------------------------------
-*/
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  /**
-|--------------------------------------------------
-| Handlers
-|--------------------------------------------------
-*/
-  function handleClick(event) {
-    setAnchorEl(event.currentTarget);
-  }
-
-  function handleClose() {
-    setAnchorEl(null);
-  }
-
-  /**
-|--------------------------------------------------
-| Handlers
-|--------------------------------------------------
-*/
   function handlerTabClick(url) {
     navigate(url);
   }
 
-  /**
-|--------------------------------------------------
-| Render
-|--------------------------------------------------
-*/
   return useObserver(() => (
     <div className="flex-shrink-0 w-56" style={{ backgroundColor: "#023356" }}>
       <div className="py-4">

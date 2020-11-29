@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { Field, Formik, Form } from "formik";
 import { apiFetchMachineGroup } from "../../api/machine";
 import Select from "react-select";
 import { navigate } from "@reach/router";

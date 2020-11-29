@@ -16,6 +16,7 @@ export default function ReportProblem() {
     selectMachine: "1",
     selectIssue: "",
   });
+  const [machineId, setMachineId] = useState(1);
   const [machine, setMachine] = useState();
   const [defalutVal, setDefalutVal] = useState();
   const [isFetch, setIsFetch] = useState(false);
@@ -27,9 +28,8 @@ export default function ReportProblem() {
       setIsOpenErrorModal(true);
       return;
     }
-    console.log(data);
     const temp = {
-      machine_id: data.selectMachine,
+      machine_id: machineId,
       report_message: data.selectIssue,
     };
     try {
@@ -41,6 +41,9 @@ export default function ReportProblem() {
     } catch (err) {
       setIsOpenErrorModal(true);
     }
+  };
+  const handleMachineId = (id) => {
+    setMachineId(id);
   };
 
   const fetchData = useCallback(async () => {
@@ -55,7 +58,7 @@ export default function ReportProblem() {
     }
 
     setDefalutVal(temp[0]);
-    setMachine({ temp, selectIssue: "" });
+    setMachine(temp);
     setIsFetch(false);
   }, []);
 
@@ -80,7 +83,7 @@ export default function ReportProblem() {
         open={isOpenSuccess}
         onClose={() => setIsOpenSuccess(false)}
       />
-      <Formik initialValues={machine} onSubmit={handleSubmit}>
+      <Formik initialValues={ReportText} onSubmit={handleSubmit}>
         {(formikProps) => (
           <Form className="overflow-y-auto min-h-screen">
             <div className="container">
@@ -89,7 +92,11 @@ export default function ReportProblem() {
                   <Logo />
                 </div>
                 <div className="p-3 w-full lg:w-1/3  py-4 rounded shadow mx-auto">
-                  <ReportInput />
+                  <ReportInput
+                    machine={machine}
+                    defalutVal={defalutVal}
+                    handleMachineId={handleMachineId}
+                  />
                 </div>
               </div>
 

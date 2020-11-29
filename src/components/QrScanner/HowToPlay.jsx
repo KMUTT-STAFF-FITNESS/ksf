@@ -45,7 +45,7 @@ export default function HowToPlay({ id }) {
             <Logo />
           </div>
           <div className="p-3 w-full lg:w-1/3 overflow-hidden py-4 rounded shadow mx-auto">
-            <div className="row" >
+            <div className="row">
               <div className="mx-auto col-12 ">
                 {_.map(howToPlay, (data, i) => (
                   <div key={i.toString()}>
@@ -63,7 +63,6 @@ export default function HowToPlay({ id }) {
                   </div>
                 ))}
               </div>
-            
             </div>
           </div>
         </div>

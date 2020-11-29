@@ -1,21 +1,8 @@
-import React, { useState } from "react";
-import { Field, Formik } from "formik";
+import React from "react";
+import { Field } from "formik";
 import Input from "../core/Input";
 
-function getSteps() {
-  return ["information", "Address", "Health", "Status", "Payment"];
-}
-
 export default function Info1() {
-  const [formik, setFormik] = useState({
-    firstName: "",
-    lastName: "",
-    telNo: "",
-    dob: "",
-    gender: "",
-    department: "",
-  });
-
   return (
     <>
       <p className="text-gray-700 text-lg font-bold ">ประวัติส่วนตัว</p>

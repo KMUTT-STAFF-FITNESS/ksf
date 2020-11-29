@@ -16,8 +16,6 @@ import _ from "lodash";
 import Loading from "../../components/core/Loading";
 import Select from "react-select";
 import ConfirmModal from "../../components/core/Modal/ConfirmModal";
-import { apiDeleteMember } from "../../api/users";
-import BtnBack from "../../components/core/BtnBack";
 
 export default function MachineEdit(props) {
   const [isOpenErrorModal, setIsOpenErrorModal] = useState(false);

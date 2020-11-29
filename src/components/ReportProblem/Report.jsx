@@ -9,13 +9,16 @@ export default function Report(props) {
       <div className="col-12">
         <p className="text-gray-700 text-lg font-bold ">รายงานปัญหา</p>
         <div className=" mx-auto max-w-xs max-h-screen py-2">
-          <Field name="temp">
+          <Field name="selectMachine">
             {({ field, meta }) => (
               <Select
-                options={field.value}
-                defaultValue={field.value[0]}
+                value={props.machine.find(
+                  (option) => option.value === option.value
+                )}
+                options={props.machine}
+                defaultValue={props.defalutVal}
                 className="my-2"
-                name="selectMachine"
+                onChange={(option) => props.handleMachineId(option.value)}
               />
             )}
           </Field>

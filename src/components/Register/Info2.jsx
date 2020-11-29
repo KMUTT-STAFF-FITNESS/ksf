@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Formik, Field } from "formik";
+import React from "react";
+import { Field } from "formik";
 import Input from "../core/Input";
 
 export default function Info3() {

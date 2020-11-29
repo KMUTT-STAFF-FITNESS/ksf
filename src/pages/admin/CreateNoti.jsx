@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Field, Formik, Form } from "formik";
 import Input from "../../components/core/Input";
-import BtnSubmit from "../../components/core/BtnBack";
 import { apiCreateNotification } from "../../api/notification";
 import EditHeader from "../../components/Header/EditHeader";
 import { Helmet } from "react-helmet";

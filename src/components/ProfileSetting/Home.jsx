@@ -7,7 +7,6 @@ import { navigate } from "@reach/router";
 import { ExitToApp } from "@material-ui/icons";
 import { apiFetchUserByUserId } from "../../api/users";
 import { storesContext } from "../../context";
-import { identity } from "lodash";
 import Loading from "../core/Loading";
 
 export default function Home() {
@@ -45,7 +44,7 @@ export default function Home() {
               class="cardcolor rounded-lg p-6 shadow cursor-pointer"
               onClick={() => navigate("/view")}
             >
-              <ImageProfile/>
+              <ImageProfile />
             </div>
             <div className="row py-8">
               <div className="col-6 text-center">
