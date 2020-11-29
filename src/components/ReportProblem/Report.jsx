@@ -1,11 +1,7 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { Field, FieldArray, Formik } from "formik";
+import React from "react";
+import { Field } from "formik";
 import Input from "../core/Input";
-import { apiCreateReportTemplate } from "../../api/report";
-import { apiFetchMachine } from "../../api/machine";
-import _ from "lodash";
 import Select from "react-select";
-import Loading from "../core/Loading";
 
 export default function Report(props) {
   return (
