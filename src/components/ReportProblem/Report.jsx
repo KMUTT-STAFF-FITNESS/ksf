@@ -15,6 +15,7 @@ export default function Report(props) {
                 options={props.machine}
                 defaultValue={props.defalutVal}
                 className="my-2"
+                name="selectMachine"
               />
             )}
           </Field>

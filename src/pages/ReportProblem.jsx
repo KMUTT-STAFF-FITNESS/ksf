@@ -13,7 +13,7 @@ import CreateSuccessModal from "../components/core/Modal/CreateSuccessModal";
 
 export default function ReportProblem() {
   const [ReportText, setReportText] = useState({
-    selectMachine: "",
+    selectMachine: "1",
     selectIssue: "",
   });
   const [machine, setMachine] = useState();
@@ -23,10 +23,11 @@ export default function ReportProblem() {
   const [isOpenSuccess, setIsOpenSuccess] = useState(false);
 
   const handleSubmit = async (data) => {
-    if (data.selectIssue === "" || data.selectMachine === "") {
+    if (data.selectIssue === "") {
       setIsOpenErrorModal(true);
       return;
     }
+    console.log(data);
     const temp = {
       machine_id: data.selectMachine,
       report_message: data.selectIssue,
@@ -88,7 +89,11 @@ export default function ReportProblem() {
                   <Logo />
                 </div>
                 <div className="p-3 w-full lg:w-1/3  py-4 rounded shadow mx-auto">
-                  <ReportInput machine={machine} defalutVal={defalutVal} />
+                  <ReportInput
+                    machine={machine}
+                    defalutVal={defalutVal}
+                    setReportText={setReportText}
+                  />
                 </div>
               </div>
 
