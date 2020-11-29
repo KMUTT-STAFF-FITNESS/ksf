@@ -13,7 +13,7 @@ import CreateSuccessModal from "../components/core/Modal/CreateSuccessModal";
 
 export default function ReportProblem() {
   const [ReportText, setReportText] = useState({
-    selectMachine: "1",
+    selectMachine: "",
     selectIssue: "",
   });
   const [machine, setMachine] = useState();
@@ -22,17 +22,8 @@ export default function ReportProblem() {
   const [isOpenErrorModal, setIsOpenErrorModal] = useState(false);
   const [isOpenSuccess, setIsOpenSuccess] = useState(false);
 
-  // async function handleSubmit() {
-  //   if (ReportText) {
-  //     await apiCreateReportProblem(ReportText);
-  //   } else {
-  //     setIsOpenErrorModal(true);
-  //     // alert("กรุณากรอกข้อความให้เรียบร้อย1");
-  //   }
-  // }
-
   const handleSubmit = async (data) => {
-    if (data.selectIssue === "") {
+    if (data.selectIssue === "" || data.selectMachine === "") {
       setIsOpenErrorModal(true);
       return;
     }
@@ -97,10 +88,7 @@ export default function ReportProblem() {
                   <Logo />
                 </div>
                 <div className="p-3 w-full lg:w-1/3  py-4 rounded shadow mx-auto">
-                  <ReportInput
-                    machine={machine}
-                    defalutVal={defalutVal}
-                  />
+                  <ReportInput machine={machine} defalutVal={defalutVal} />
                 </div>
               </div>
 
