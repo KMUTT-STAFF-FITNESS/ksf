@@ -27,12 +27,16 @@ export default function HomeCheck(props) {
       navigate("/nopermission");
     } else {
       if (state === "ksf_login") {
-        const user = await apiFetchUserByUserId(res.data.user_id);
-        if (user.data.role_id === "1" || user.data.role_id === "2") {
-          navigate("/admin");
-        } else if (user.data.role_id === "3") {
-          navigate("/home");
-        } else if (!user.data) {
+        try {
+          const user = await apiFetchUserByUserId(res.data.user_id);
+          if (user.data.role_id === "1" || user.data.role_id === "2") {
+            navigate("/admin");
+          } else if (user.data.role_id === "3") {
+            navigate("/home");
+          } else if (!user.data) {
+            navigate("/register");
+          }
+        } catch (err) {
           navigate("/register");
         }
       } else {
