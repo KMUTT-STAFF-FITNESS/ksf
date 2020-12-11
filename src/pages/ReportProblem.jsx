@@ -88,7 +88,12 @@ export default function ReportProblem() {
                   <Logo />
                 </div>
                 <div className="p-3 w-full lg:w-1/3  py-4 rounded shadow mx-auto">
-                  <ReportInput machine={machine} defalutVal={defalutVal} />
+                  <ReportInput
+                    machine={machine}
+                    defalutVal={defalutVal}
+                    setReportText={setReportText}
+                    ReportText={ReportText}
+                  />
                 </div>
               </div>
 

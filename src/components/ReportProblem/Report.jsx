@@ -14,6 +14,12 @@ export default function Report(props) {
               <Select
                 options={props.machine}
                 defaultValue={props.defalutVal}
+                onChange={(option) =>
+                  props.setReportText({
+                    ...props.ReportText,
+                    selectMachine: option.value,
+                  })
+                }
                 className="my-2"
               />
             )}
